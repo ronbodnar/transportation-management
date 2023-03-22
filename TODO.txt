@@ -1,0 +1,17 @@
+[X] BOL Images for shipment tables
+[X] Ability to see a history of what door/location a driver was assigned by the facility
+[X] Set daily goal for shipments (per facility) with a tracker for shipments sent
+[X] Driver Log Records to see previous daily logs
+[X] Shipments per day per driver
+[X] Ability to compare analytics such as shipments per month (and year) and facility wait times (per facility and per year)
+[X] Refuse load reason => Trailer Unsafe => Prompt "Put trailer OOS?" => Reason
+[X] Ability for driver to stop at other facility (Northern yard / Fuel station / ???) and pause the current shipment
+[X] ETAs for driving round trip to facilities in real-time with live traffic (Distance Matrix API)
+[X] Ability for driver to put trailer OOS and for lead to assign driver to take a trailer to the shop (OOS trailer table?)
+[X] Ability for driver to hand shipment off to other driver (Ontario drivers who take loads at end of shift / driver breakdown)
+[X] Assign shipment to driver updating
+[X] Assign door to driver updating
+[X] Assign yard moves to driver updating
+[X] Add inbound shipment data to yard/door status
+[X] Create Driver Details page
+[X] Create Shipment Details page
