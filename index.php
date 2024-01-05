@@ -1,7 +1,7 @@
 <?php
 
-require 'header.php';
-require 'config.php';
+require 'src/header.php';
+require 'src/config.php';
 
 loadConfig();
 
@@ -213,15 +213,15 @@ loadConfig();
 
                                     <tbody>
                                         <tr>
-                                            <td>Carlos Madrigal</td>
+                                            <td>Jason Smith</td>
                                             <td>2550</td>
                                         </tr>
                                         <tr>
-                                            <td>Brent Pamplin</td>
+                                            <td>Brent Smith</td>
                                             <td>8050</td>
                                         </tr>
                                         <tr>
-                                            <td>Anthony Taylor</td>
+                                            <td>Anthony Smith</td>
                                             <td>Bobtail</td>
                                         </tr>
                                     </tbody>
@@ -606,7 +606,7 @@ loadConfig();
         </div>
     </div>
 <?php } else {
-    include 'login-form.php';
+    include 'src/modules/login-form.php';
 } ?>
 
-<?php include 'footer.php'; ?>
+<?php include 'src/footer.php'; ?>

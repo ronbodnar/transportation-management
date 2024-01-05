@@ -1,4 +1,4 @@
-var socket = io("https://mron.dev:8080", { path: "/" });
+var socket = io("https://ronbodnar.com:8080", { path: "/" });
 
 socket.on("chat message", function (msg) {
   console.log("Message received: " + msg);

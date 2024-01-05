@@ -2,7 +2,7 @@
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(E_ALL);
 
 ini_set('session.cookie_lifetime', 120 * 60);
 ini_set('session.gc_maxlifetime', 120 * 60); // expires in 120 minutes
@@ -22,21 +22,22 @@ if (!isset($_SESSION['CREATED'])) {
     session_destroy();
 }
 
-require 'functions.php';
-require 'Database.class.php';
+require 'src/functions.php';
+require 'src/Database.class.php';
 
 $database = new Database();
 
-$user = $database->getUserData($_SESSION['id']);
+$user = isset($_SESSION['id']) ? $database->getUserData($_SESSION['id']) : null;
 
 $formattedPageNames = array(
-    'tms' => 'Dashboard',
-    'osd' => 'OS&D Report',
-    'backend' => 'OS&D Backend',
+    'logistics-management' => 'Dashboard',
     'trip-management' => 'Trip Management',
+    'logs' => 'Logs',
     'analytics' => 'Analytics',
     'drivers' => 'Drivers',
-    'shipments' => 'Shipments'
+    'shipments' => 'Shipments',
+    'facility-map' => 'Facility Map',
+    'admin' => 'Administration'
 );
 
 $directoryName = end(explode('/', basename(getcwd())));
@@ -45,16 +46,16 @@ $pageTitle = $formattedPageNames[$directoryName];
 
 // Redirecting
 $adminPages = array(
-    'tms', 'admin', 'analytics', 'drivers', 'facility-map', 'logs', 'shipments'
+    'logistics-management', 'admin', 'analytics', 'drivers', 'facility-map', 'logs', 'shipments'
 );
 if ($user === null) {
-    if (strcmp($directoryName, 'tms') === false) {
-        $redirectUrl = 'https://mron.dev/projects/tms/';
+    if (strcmp($directoryName, 'logistics-management') === false) {
+        $redirectUrl = 'https://ronbodnar.com/projects/logistics-management/';
         header('Location: ' . $redirectUrl);
         die();
     }
 } else {
-    $redirectUrl = ($user->isDriver() ? 'https://mron.dev/projects/tms/driver-tools/trip-management/' : ($user->isWarehouse() ? 'https://mron.dev/projects/tms/warehouses/' : 'https://mron.dev/projects/tms/'));
+    $redirectUrl = 'https://ronbodnar.com/projects/logistics-management/';
     if (!$user->isAdmin()) {
         if (in_array($directoryName, $adminPages)) {
             header('Location: ' . $redirectUrl);
@@ -71,12 +72,12 @@ if ($user === null) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MRonTMS is a Transportation Management System geared towards streamlining logistics and providing analysis of data collected.">
+    <meta name="description" content="Logistics Management is a mixture of a Transportation Management System and a Warehouse Management System, geared towards streamlining logistics and providing analytics of data collected.">
     <meta name="author" content="Ron Bodnar">
 
-    <title>MRon Development | TMS | <?php echo $pageTitle; ?></title>
+    <title><?php echo $pageTitle; ?> | Logistics Management</title>
 
-    <link rel="canonical" href="https://mron.dev/projects/tms/">
+    <link rel="canonical" href="https://ronbodnar.com/projects/logistics-management/">
 
     <script>
         // Render blocking
@@ -98,34 +99,13 @@ if ($user === null) {
 
 <body class="body" id="body-pd">
     <?php if (isLoggedIn()) { ?>
-        <!-- Top Header -->
+        <!-- Top Navbar -->
         <header class="header top-bar" id="header">
             <div class="header-toggle">
                 <i class="bx bx-menu" id="header-toggle"></i>
             </div>
 
             <div class="d-flex justify-content-center align-items-center">
-                <div class="notification-bell-header question-mark pt-2">
-                    <div class="dropdown presentation-dropdown">
-                        <a href="#" class="text-mron d-flex align-items-center text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-question-circle text-mron" style="font-size: 22px;"></i>
-                        </a>
-                        <ul class="dropdown-menu text-small shadow">
-                            <li><a class="dropdown-item" href="<?php echo getRelativePath(); ?>presentation/benefits">View Benefits</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="<?php echo getRelativePath(); ?>presentation/data-sources">View Data Sources</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="notification-bell-header pt-2">
-                    <a href="" class="nav-link nav-icon messages">
-                        <i class="bi bi-chat-square-text" style="font-size: 22px;"></i>
-                    </a>
-                </div>
-
 
                 <div class="notification-bell-header pt-2">
                     <a href="" class="nav-link nav-icon notification-bell notify">
@@ -135,7 +115,7 @@ if ($user === null) {
 
                 <div class="dropdown">
                     <a href="#" class="text-mron d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://mron.dev/assets/img/favicon-32x32.png" alt="MR" width="32" height="32" class="rounded-circle">
+                        <img src="https://ronbodnar.com/assets/img/favicon-32x32.png" alt="MR" width="32" height="32" class="rounded-circle">
                         <span class="d-none d-sm-inline mx-1"><?php echo $user->getFullName(); ?></span>
                     </a>
                     <ul class="dropdown-menu text-small shadow">
@@ -147,15 +127,10 @@ if ($user === null) {
                                 </div>
                             </a>
                         </li>
-                        <!--<li><a class="dropdown-item" href="">Change Password</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="">Help</a></li>-->
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="<?php echo getRelativePath(); ?>signout.php" id="signOut">Sign out</a></li>
+                        <li><a class="dropdown-item" href="<?php echo getRelativePath(); ?>login.php" id="signOut">Sign out</a></li>
                     </ul>
                 </div>
             </div>
@@ -169,14 +144,14 @@ if ($user === null) {
             <nav class="sidebar">
                 <div>
                     <div class="nav_logo">
-                        <a href="https://mron.dev/projects/tms/">
-                            <img src="https://mron.dev/assets/img/header.png?v=2" id="nav-header" alt="MRon Development" />
+                        <a href="https://ronbodnar.com/projects/logistics-management/">
+                            <img src="https://ronbodnar.com/assets/img/header.png" id="nav-header" alt="MRon Development" />
                         </a>
                     </div>
 
                     <div class="nav_list">
                         <?php if ($user->isAdmin()) { ?>
-                            <a href="<?php echo getRelativePath(); ?>" class="nav_link<?php echo ($directoryName === 'tms' ? ' active' : '') ?>">
+                            <a href="<?php echo getRelativePath(); ?>" class="nav_link<?php echo ($directoryName === 'logistics-management' ? ' active' : '') ?>">
                                 <i class="bi bi-grid"></i>
                                 <span class="nav_name">Dashboard</span>
                             </a>
@@ -187,10 +162,10 @@ if ($user === null) {
                             </a>
                             <div class="collapse<?php echo ($directoryName === 'analytics' ? ' show' : ''); ?>" id="analyticsCollapse">
                                 <div class="submenu-items">
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>analytics/" class="nav_link">
+                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/analytics/" class="nav_link">
                                         <span class="nav_name">Overview</span>
                                     </a>
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>analytics/compare" class="nav_link">
+                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/analytics/compare" class="nav_link">
                                         <span class="nav_name">Comparisons</span>
                                     </a>
                                 </div>
@@ -202,26 +177,19 @@ if ($user === null) {
                             </a>
                             <div class="collapse<?php echo ($directoryName === 'logs' ? ' show' : ''); ?>" id="logsCollapse">
                                 <div class="submenu-items">
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>logs/daily-activity-logs" class="nav_link">
+                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/logs/daily-activity-logs" class="nav_link">
                                         <span class="nav_name">Daily Activity Logs</span>
                                     </a>
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>logs/flagged-activity-logs" class="nav_link">
+                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/logs/flagged-activity-logs" class="nav_link">
                                         <span class="nav_name">Flagged Activity Logs</span>
                                     </a>
                                 </div>
                             </div>
 
-                            <a href="<?php echo getRelativePath(); ?>drivers" class="nav_link<?php echo ($directoryName === 'drivers' ? ' active' : '') ?>">
+                            <a href="<?php echo getRelativePath(); ?>src/modules/drivers" class="nav_link<?php echo ($directoryName === 'drivers' ? ' active' : '') ?>">
                                 <i class="bi bi-person"></i>
                                 <span class="nav_name">Drivers</span>
                             </a>
-
-                            <!--<a href="<?php //echo getRelativePath(); 
-                                            ?>drivers/" class="nav_link<?php //echo ($directoryName === 'drivers' ? ' active' : '') 
-                                                                        ?>">
-                                <i class="bi bi-person"></i>
-                                <span class="nav_name">Drivers</span>
-                            </a>-->
 
                             <a class="nav_link submenu<?php echo ($directoryName === 'shipments' ? ' active' : '') ?>" data-bs-toggle="collapse" href="#shipmentsCollapse" role="button" aria-expanded="false" aria-controls="shipmentsCollapse">
                                 <i class="bi bi-truck"></i>
@@ -229,51 +197,20 @@ if ($user === null) {
                             </a>
                             <div class="collapse<?php echo ($directoryName === 'shipments' ? ' show' : ''); ?>" id="shipmentsCollapse">
                                 <div class="submenu-items">
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>shipments/inbound" class="nav_link">
+                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/shipments/inbound" class="nav_link">
                                         <span class="nav_name">Inbound</span>
                                     </a>
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>shipments/outbound" class="nav_link">
+                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/shipments/outbound" class="nav_link">
                                         <span class="nav_name">Outbound</span>
                                     </a>
                                 </div>
                             </div>
 
-                            <a href="<?php echo getRelativePath(); ?>facility-map/" class="nav_link<?php echo ($directoryName === 'facility-map' ? ' active' : '') ?>">
-                                <i class="bi bi-pin-map"></i>
-                                <span class="nav_name">Facility Map</span>
-                            </a>
-
-                            <a href="<?php echo getRelativePath(); ?>admin/" class="nav_link<?php echo ($directoryName === 'admin' ? ' active' : '') ?>">
+                            <a href="<?php echo getRelativePath(); ?>src/modules/settings" class="nav_link<?php echo ($directoryName === 'admin' ? ' active' : '') ?>">
                                 <i class="bi bi-sliders"></i>
-                                <span class="nav_name">Administration</span>
+                                <span class="nav_name">Settings</span>
                             </a>
 
-                        <?php }
-                        if (strcmp($user->getFullName(), 'Ron Bodnar') === 0 || strcmp($user->getFullName(), 'Mark Hudock') === 0) {
-                            echo '<span class="separator">Drivers View</span>';
-                        } ?>
-
-                        <?php if ($user->isDriver() || strcmp($user->getFullName(), 'Ron Bodnar') === 0 || strcmp($user->getFullName(), 'Mark Hudock') === 0) { ?>
-                            <a href="<?php echo getRelativePath(); ?>driver-tools/trip-management/" class="nav_link<?php echo ($directoryName === 'trip-management' ? ' active' : '') ?>">
-                                <i class="bi bi-boxes"></i>
-                                <span class="nav_name">Danone Workflow</span>
-                            </a>
-
-                            <a href="<?php echo getRelativePath(); ?>driver-tools/claim-shipment" class="nav_link<?php echo ($directoryName === 'driver-tools' ? ' active' : '') ?>">
-                                <i class="bi bi-truck"></i>
-                                <span class="nav_name">Claim Shipment</span>
-                            </a>
-                        <?php } ?>
-
-                        <?php if (strcmp($user->getFullName(), 'Ron Bodnar') === 0 || strcmp($user->getFullName(), 'Mark Hudock') === 0) { ?>
-                            <span class="separator">Warehouse View</span>
-                        <?php } ?>
-
-                        <?php if ($user->isWarehouse() || strcmp($user->getFullName(), 'Ron Bodnar') === 0 || strcmp($user->getFullName(), 'Mark Hudock') === 0) { ?>
-                            <a href="<?php echo getRelativePath(); ?>warehouses/" class="nav_link<?php echo ($directoryName === 'warehouses' ? ' active' : '') ?>">
-                                <i class="bi bi-grid"></i>
-                                <span class="nav_name"><?php echo ($user->isWarehouse() ? "" : "Warehouse "); ?>Dashboard</span>
-                            </a>
                         <?php } ?>
                     </div>
                 </div>

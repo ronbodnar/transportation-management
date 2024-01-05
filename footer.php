@@ -1,6 +1,6 @@
 <?php if (strpos($directoryName, 'driver-tools') === false && strpos($directoryName, 'trip-management') === false) { ?>
     <footer class="footer" id="footer" style="font-size: 14px;">
-        <span>&copy; 2023 <a class="text-mron" href="https://mron.dev/">MRon Development</a> &#8212; Developed by Ron Bodnar</span>
+        <span>&copy; 2023 <a class="text-mron" href="https://ronbodnar.com/">Ron Bodnar</a></span>
     </footer>
 <?php } else { ?>
     <?php
@@ -31,14 +31,15 @@
 <script src="<?php echo getRelativePath(); ?>assets/js/bootstrap.bundle.min.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/bootstrap.bundle.min.js'); ?>"></script>
 
 <!-- Socket.io Library -->
-<script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+<!--<script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>-->
 
 <!-- Custom JavaScript -->
 <script src="<?php echo getRelativePath(); ?>assets/js/popovers.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/popovers.js'); ?>"></script>
 <script src="<?php echo getRelativePath(); ?>assets/js/charts.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/charts.js'); ?>"></script>
 <script src="<?php echo getRelativePath(); ?>assets/js/tables.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/tables.js'); ?>"></script>
+<script src="<?php echo getRelativePath(); ?>assets/js/analytics.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/analytics.js'); ?>"></script>
 <script src="<?php echo getRelativePath(); ?>assets/js/script.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/script.js'); ?>"></script>
-<script src="<?php echo getRelativePath(); ?>assets/js/websocket.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/websocket.js'); ?>"></script>
+<!--<script src="<?php //echo getRelativePath(); ?>assets/js/websocket.js?v=<?php //echo filemtime(getRelativePath() . 'assets/js/websocket.js'); ?>"></script>-->
 
 <?php
 // Include relevant assets based on current page

@@ -904,7 +904,7 @@ if (document.getElementById("waitTimeChart")) {
       labels: lastSevenDays,
       datasets: [
         {
-          label: "Danone",
+          label: "Facility",
           backgroundColor: "#3D68BB",
           borderRadius: 5,
           data: [45, 11, 112, 26, 34, 160, 22],
@@ -934,7 +934,7 @@ if (document.getElementById("waitTimeChart")) {
           },
         },
         {
-          label: "Lineage",
+          label: "Lineage Riverside",
           backgroundColor: "#399D37",
           borderRadius: 5,
           data: [10, 20, 30, 40, 50, 60, 70],
@@ -1017,7 +1017,7 @@ if (document.getElementById("timeCompletingInstructionsChart")) {
       labels: lastSevenDays,
       datasets: [
         {
-          label: "Danone",
+          label: "Facility",
           backgroundColor: "#3D68BB",
           borderRadius: 5,
           data: [15, 21, 19, 25, 8, 10, 13],
@@ -1047,7 +1047,7 @@ if (document.getElementById("timeCompletingInstructionsChart")) {
           },
         },
         {
-          label: "Lineage",
+          label: "Lineage Riverside",
           backgroundColor: "#399D37",
           borderRadius: 5,
           data: [10, 15, 8, 13, 11, 15, 17],
@@ -1130,7 +1130,7 @@ if (document.getElementById("timeWaitingForInstructionsChart")) {
       labels: lastSevenDays,
       datasets: [
         {
-          label: "Danone",
+          label: "Facility",
           backgroundColor: "#3D68BB",
           borderRadius: 5,
           data: [29, 18, 33, 77, 34, 110, 31],
@@ -1160,7 +1160,7 @@ if (document.getElementById("timeWaitingForInstructionsChart")) {
           },
         },
         {
-          label: "Lineage",
+          label: "Lineage Riverside",
           backgroundColor: "#399D37",
           borderRadius: 5,
           data: [5, 11, 18, 8, 33, 9, 15],
@@ -1229,7 +1229,7 @@ if (document.getElementById("facilityChart")) {
   facilityChart = new Chart(ctx, {
     type: "pie",
     data: {
-      labels: ["Americold COI", "Americold Ontario", "Lineage"],
+      labels: ["Americold COI", "Americold Ontario", "Lineage Riverside"],
       datasets: [
         {
           label: "Shipments sent to facility",
@@ -1448,7 +1448,7 @@ if (document.getElementById("waitTimeMinChart")) {
   waitTimeMinChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Danone", "AC COI", "AC ONT", "Lineage"],
+      labels: ["Danone", "Americold COI", "Americold ONT", "Lineage Riverside"],
       datasets: [
         {
           label: "Average wait time",
@@ -2067,7 +2067,7 @@ if (document.getElementById("activeDriverChart")) {
   activeDriverChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Danone", "AC COI", "AC ONT", "Lineage", "Lunch Break"],
+      labels: ["Facility", "Americold", "Lineage", "US Cold Storage", "Lunch Break"],
       datasets: [
         {
           label: "Drivers at Facility",

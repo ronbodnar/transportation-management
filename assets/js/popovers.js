@@ -32,7 +32,7 @@ $(document).ready(function () {
       } else {
         $.ajax({
           type: "GET",
-          url: "api/driver.php",
+          url: "src/requests/driver.php",
           data: "action=get-status&driverId=" + driverAssignment["driverId"],
           dataType: "JSON",
         }).done(function (data) {
@@ -967,7 +967,7 @@ function loadPopoverContinuation(selector) {
 function loadAvailableShipments() {
   $.ajax({
     type: "GET",
-    url: "api/shipment.php",
+    url: "src/requests/shipment.php",
     data: "action=get-ready-shipments",
     dataType: "JSON",
   }).done(function (data) {
@@ -1013,7 +1013,7 @@ function loadAvailableShipments() {
 function loadAvailableDoors() {
   $.ajax({
     type: "GET",
-    url: "api/doors.php",
+    url: "src/requests/doors.php",
     data: "action=availableList",
     dataType: "JSON",
   }).done(function (data) {
@@ -1046,7 +1046,7 @@ function updateShipmentDetails(outbound) {
     $(".popover-body #outbound-shipment-details").show();
     $.ajax({
       type: "GET",
-      url: "/projects/tms/api/shipment.php",
+      url: "/projects/logistics-management/src/requests/shipment.php",
       data: "action=get-shipment&query=" + sessionStorage.getItem("popoverId"),
       dataType: "json",
     }).done(function (data) {
@@ -1099,7 +1099,7 @@ function updateShipmentDetails(outbound) {
     $(".popover-body #inbound-shipment-details").show();
     $.ajax({
       type: "GET",
-      url: "/projects/tms/api/shipment.php",
+      url: "/projects/logistics-management/src/requests/shipment.php",
       data: "action=get-shipment&query=" + sessionStorage.getItem("popoverId"),
       dataType: "json",
     }).done(function (data) {

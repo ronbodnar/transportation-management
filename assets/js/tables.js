@@ -225,7 +225,7 @@ function format2(d) {
     "<td>3:21 PM</td>" +
     "<td>3:29 PM</td>" +
     "<td>3:46 PM</td>" +
-    '<td><a class="text-mron" href="/projects/tms/shipments/details?id=5013841193" target="_blank">5013841193</a></td>' +
+    '<td><a class="text-mron" href="/projects/logistics-management/shipments/details?id=5013841193" target="_blank">5013841193</a></td>' +
     "<td>50191</td>" +
     "<td>43 mins</td>" +
     "</tr>" +
@@ -265,7 +265,7 @@ function format2(d) {
     "<td>11:26 PM</td>" +
     "<td>11:26 PM</td>" +
     "<td>11:45 PM</td>" +
-    ' <td><a class="text-mron" href="/projects/tms/shipments/details?id=5012802619" target="_blank">5012802619</a></td>' +
+    ' <td><a class="text-mron" href="/projects/logistics-management/shipments/details?id=5012802619" target="_blank">5012802619</a></td>' +
     "<td>5001</td>" +
     " <td>1 hr 5 mins</td>" +
     "</tr>" +
@@ -315,7 +315,7 @@ function format3(d) {
     '<td class="text-center">3:03 PM</td>' +
     '<td class="text-center">3:21 PM</td>' +
     '<td class="text-center">3:46 PM</td>' +
-    '<td class="text-center"><a class="text-mron" href="/projects/tms/shipments/details?id=5013841193" target="_blank">5013841193</a></td>' +
+    '<td class="text-center"><a class="text-mron" href="/projects/logistics-management/shipments/details?id=5013841193" target="_blank">5013841193</a></td>' +
     '<td class="text-center">43 mins</td>' +
     "</tr>" +
     "<tr>" +
@@ -347,7 +347,7 @@ function format3(d) {
     '<td class="text-center">10:40 PM</td>' +
     '<td class="text-center">11:26 PM</td>' +
     '<td class="text-center">11:45 PM</td>' +
-    ' <td class="text-center"><a class="text-mron" href="/projects/tms/shipments/details?id=5012802619" target="_blank">5012802619</a></td>' +
+    ' <td class="text-center"><a class="text-mron" href="/projects/logistics-management/shipments/details?id=5012802619" target="_blank">5012802619</a></td>' +
     ' <td class="text-center">1 hr 5 mins</td>' +
     "</tr>" +
     "<tr>" +
@@ -374,7 +374,7 @@ $(document).ready(function () {
     paging: false,
     searching: false,
     info: false,
-    ajax: fileLocation + "../../../api/driver.php?action=list",
+    ajax: fileLocation + "../../../src/requests/driver.php?action=list",
     columns: [{ data: "name" }],
     columnDefs: [
       {
@@ -396,7 +396,7 @@ $(document).ready(function () {
     paging: false,
     searching: false,
     info: false,
-    ajax: fileLocation + "../../../api/driver.php?action=activeList",
+    ajax: fileLocation + "../../../src/requests/driver.php?action=activeList",
     columns: [
       {
         className: "dt-control",
@@ -434,7 +434,7 @@ $(document).ready(function () {
     searching: false,
     info: false,
     ordering: false,
-    ajax: fileLocation + "../../api/driver.php?action=availableList",
+    ajax: fileLocation + "../../src/requests/driver.php?action=availableList",
     columns: [
       {
         className: "",
@@ -488,7 +488,7 @@ $(document).ready(function () {
   });
 
   var flaggedActivityLogsTable = $("#flaggedActivityLogsTable").DataTable({
-    ajax: fileLocation + "../../../api/logs.php?action=get-all-flagged",
+    ajax: fileLocation + "../../../src/requests/logs.php?action=get-all-flagged",
     responsive: true,
     columns: [
       { data: "date" },
@@ -662,7 +662,7 @@ $(document).ready(function () {
   var driverPersonalActivityLogTable = $(
     "#driverPersonalActivityLogTable"
   ).DataTable({
-    //ajax: fileLocation + "../../../api/logs.php?action=get&id=" + urlParams.get("id"),
+    //ajax: fileLocation + "../../../src/requests/logs.php?action=get&id=" + urlParams.get("id"),
     ajax: fileLocation + "../../../test/logs.txt",
     autoWidth: false,
     responsive: true,
@@ -720,7 +720,7 @@ $(document).ready(function () {
   ).DataTable({
     ajax:
       fileLocation +
-      "../../../api/logs.php?action=get-flagged&id=" +
+      "../../../src/requests/logs.php?action=get-flagged&id=" +
       urlParams.get("id"),
     autoWidth: false,
     responsive: true,
@@ -887,7 +887,7 @@ $(document).ready(function () {
   ).DataTable({
     ajax:
       fileLocation +
-      "../../../api/shipment.php?action=get-driver-shipments&id=" +
+      "../../../src/requests/shipment.php?action=get-driver-shipments&id=" +
       urlParams.get("id"),
     autoWidth: false,
     responsive: true,
@@ -982,7 +982,7 @@ $(document).ready(function () {
     searching: false,
     info: false,
     ordering: false,
-    ajax: fileLocation + "../../api/doors.php?action=southList",
+    ajax: fileLocation + "../../src/requests/doors.php?action=southList",
     columns: [
       { data: "door" },
       { data: "carrier" },
@@ -1024,7 +1024,7 @@ $(document).ready(function () {
     searching: false,
     info: false,
     ordering: false,
-    ajax: fileLocation + "../../api/doors.php?action=northList",
+    ajax: fileLocation + "../../src/requests/doors.php?action=northList",
     columns: [
       { data: "door" },
       { data: "carrier" },
@@ -1065,7 +1065,7 @@ $(document).ready(function () {
     searching: false,
     info: false,
     ordering: false,
-    ajax: fileLocation + "../../api/yard.php?action=trailerList",
+    ajax: fileLocation + "../../src/requests/yard.php?action=trailerList",
     columns: [
       { data: "carrier", width: "45%" },
       { data: "trailer", width: "35%" },
@@ -1103,7 +1103,7 @@ $(document).ready(function () {
     .replace(/script\.js.*$/, "");
   var allShipmentsTable = $("#allShipmentsTable").DataTable({
     ajax:
-      fileLocation + "../../api/shipment.php?action=get-shipments&query=ALL",
+      fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=ALL",
     responsive: true,
     pageLength: 25,
     scrollY: "55vh",
@@ -1149,7 +1149,7 @@ $(document).ready(function () {
   });
 
   var completedShipmentsTable = $("#completedShipmentsTable").DataTable({
-    ajax: fileLocation + "../../api/shipment.php?action=get-shipments&query=5",
+    ajax: fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=5",
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1196,7 +1196,7 @@ $(document).ready(function () {
   });
 
   var forfeitedShipmentsTable = $("#forfeitedShipmentsTable").DataTable({
-    ajax: fileLocation + "../../api/shipment.php?action=get-shipments&query=6",
+    ajax: fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=6",
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1243,7 +1243,7 @@ $(document).ready(function () {
   });
 
   var awaitingShipmentTable = $("#awaitingShipmentTable").DataTable({
-    ajax: fileLocation + "../../api/shipment.php?action=get-shipments&query=3",
+    ajax: fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=3",
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1292,7 +1292,7 @@ $(document).ready(function () {
   ).DataTable({
     ajax:
       fileLocation +
-      "../../api/shipment.php?action=get-inbound-shipments&query=1",
+      "../../src/requests/shipment.php?action=get-inbound-shipments&query=1",
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1354,7 +1354,7 @@ $(document).ready(function () {
   ).DataTable({
     ajax:
       fileLocation +
-      "../../api/shipment.php?action=get-inbound-shipments&query=2",
+      "../../src/requests/shipment.php?action=get-inbound-shipments&query=2",
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1400,7 +1400,7 @@ $(document).ready(function () {
   });
 
   var claimableShipmentsTable = $("#claimableShipmentsTable").DataTable({
-    ajax: fileLocation + "../../api/shipment.php?action=get-shipments&query=6",
+    ajax: fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=6",
     responsive: true,
     paging: false,
     searching: false,
@@ -1414,24 +1414,6 @@ $(document).ready(function () {
     ],
     order: [[0, "asc"]],
   });
-
-  if ($("#claimsTable")) {
-    $("#claimsTable").DataTable({
-      responsive: true,
-      pageLength: 10,
-      language: {
-        paginate: {
-          next: "<i class='bi bi-arrow-right'></i>",
-          previous: "<i class='bi bi-arrow-left'></i>",
-        },
-      },
-      columnDefs: [
-        {
-          visible: false,
-        },
-      ],
-    });
-  }
 
   // Warehouses
   var inboundShipmentsTable = $("#inboundShipmentsTable").DataTable({
