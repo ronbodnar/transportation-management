@@ -12,12 +12,12 @@
 
                 <div class="form-group">
                     <label for="username" style="margin-left: 1px;">Username</label>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="demo" required autofocus>
                 </div>
 
                 <div class="form-group">
                     <label class="mt-3" for="password" style="margin-left: 1px;">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" value="demo" required>
                 </div>
 
                 <button class="btn btn-mron mt-5" type="submit">Log in</button>

@@ -374,7 +374,7 @@ $(document).ready(function () {
     paging: false,
     searching: false,
     info: false,
-    ajax: fileLocation + "../../../src/requests/driver.php?action=list",
+    ajax: fileLocation + "../../../../../src/requests/driver.php?action=list",
     columns: [{ data: "name" }],
     columnDefs: [
       {
@@ -396,7 +396,7 @@ $(document).ready(function () {
     paging: false,
     searching: false,
     info: false,
-    ajax: fileLocation + "../../../src/requests/driver.php?action=activeList",
+    ajax: fileLocation + "../../../../../src/requests/driver.php?action=activeList",
     columns: [
       {
         className: "dt-control",
@@ -488,7 +488,7 @@ $(document).ready(function () {
   });
 
   var flaggedActivityLogsTable = $("#flaggedActivityLogsTable").DataTable({
-    ajax: fileLocation + "../../../src/requests/logs.php?action=get-all-flagged",
+    ajax: fileLocation + "../../../../../src/requests/logs.php?action=get-all-flagged",
     responsive: true,
     columns: [
       { data: "date" },
@@ -633,7 +633,7 @@ $(document).ready(function () {
   });
 
   var shipmentProductListTable = $("#shipmentProductListTable").DataTable({
-    ajax: fileLocation + "../../../test/products.txt",
+    ajax: fileLocation + "../../../../../config/products.txt",
     autoWidth: false,
     responsive: true,
     paging: false,
@@ -662,23 +662,12 @@ $(document).ready(function () {
   var driverPersonalActivityLogTable = $(
     "#driverPersonalActivityLogTable"
   ).DataTable({
-    //ajax: fileLocation + "../../../src/requests/logs.php?action=get&id=" + urlParams.get("id"),
-    ajax: fileLocation + "../../../test/logs.txt",
+    ajax: fileLocation + "../../../../../config/logs.txt",
     autoWidth: false,
     responsive: true,
     pageLength: 25,
     scrollY: "35vh",
     columns: [
-      /*{ data: "date", width: "8%" },
-      { data: "facility", width: "10%" },
-      { data: "arrivalTime", width: "10%" },
-      { data: "instructionsReceived", width: "15%" },
-      { data: "instructionsAccepted", width: "15%" },
-      { data: "departureTime", width: "10%" },
-      { data: "reason", width: "12%" },
-      { data: "trailerId", width: "10%" },
-      { data: "yardMoves", width: "10%" },*/
-
       {
         className: "dt-control",
         orderable: false,
@@ -720,7 +709,7 @@ $(document).ready(function () {
   ).DataTable({
     ajax:
       fileLocation +
-      "../../../src/requests/logs.php?action=get-flagged&id=" +
+      "../../../../../src/requests/logs.php?action=get-flagged&id=" +
       urlParams.get("id"),
     autoWidth: false,
     responsive: true,
@@ -887,7 +876,7 @@ $(document).ready(function () {
   ).DataTable({
     ajax:
       fileLocation +
-      "../../../src/requests/shipment.php?action=get-driver-shipments&id=" +
+      "../../../../../src/requests/shipment.php?action=get-driver-shipments&id=" +
       urlParams.get("id"),
     autoWidth: false,
     responsive: true,
@@ -1098,9 +1087,8 @@ $(document).ready(function () {
     },
   });
 
-  var fileLocation = $("script[src*=script]")
-    .attr("src")
-    .replace(/script\.js.*$/, "");
+  var fileLocation = $("script[src*=script]").attr("src").replace(/script\.js.*$/, "");
+  
   var allShipmentsTable = $("#allShipmentsTable").DataTable({
     ajax:
       fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=ALL",

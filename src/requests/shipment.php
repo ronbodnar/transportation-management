@@ -42,7 +42,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
 
             $date = date("n/j/Y", strtotime($timestamp));
             $time = date("g:i a", strtotime($timestamp));
-            $id = '<a class="text-mron" href="https://ronbodnar.com/projects/logistics-management/src/modules/shipments/details?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
+            $id = '<a class="text-mron" href="https://ronbodnar.com/projects/logistics-management/src/views/shipments/details?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
             $orderNumber = $shipment->getOrderNumber();
             $pallets = $shipment->getPalletCount();
             $netWeight = number_format($shipment->getNetWeight());
@@ -99,7 +99,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
 
             $date = date("n/j/Y", strtotime($timestamp));
             $time = date("g:i a", strtotime($timestamp));
-            $id = '<a class="text-mron" href="https://ronbodnar.com/projects/logistics-management/src/modules/shipments/details?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
+            $id = '<a class="text-mron" href="https://ronbodnar.com/projects/logistics-management/src/views/shipments/details?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
             $orderNumber = $shipment->getOrderNumber();
             $pallets = $shipment->getPalletCount();
             $netWeight = number_format($shipment->getNetWeight());
@@ -156,7 +156,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
 
             $date = date("n/j/Y", strtotime($timestamp));
             $time = date("g:i a", strtotime($timestamp));
-            $id = '<a class="text-mron" href="https://ronbodnar.com/projects/logistics-management/src/modules/shipments/details?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
+            $id = '<a class="text-mron" href="https://ronbodnar.com/projects/logistics-management/src/views/shipments/details?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
             $orderNumber = $shipment->getOrderNumber();
             $pallets = $shipment->getPalletCount();
             $netWeight = number_format($shipment->getNetWeight());

@@ -1,8 +1,8 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL & ~E_NOTICE);
 
 ini_set('session.cookie_lifetime', 120 * 60);
 ini_set('session.gc_maxlifetime', 120 * 60); // expires in 120 minutes
@@ -30,26 +30,27 @@ $database = new Database();
 $user = isset($_SESSION['id']) ? $database->getUserData($_SESSION['id']) : null;
 
 $formattedPageNames = array(
-    'logistics-management' => 'Dashboard',
+    'index' => 'Dashboard',
     'trip-management' => 'Trip Management',
     'logs' => 'Logs',
     'analytics' => 'Analytics',
     'drivers' => 'Drivers',
     'shipments' => 'Shipments',
-    'facility-map' => 'Facility Map',
-    'admin' => 'Administration'
+    'settings' => 'Settings'
 );
 
-$directoryName = end(explode('/', basename(getcwd())));
+$cwd = explode('/', $_SERVER["SCRIPT_FILENAME"]);
+$dir = str_replace('.php', '', $cwd);
+$directoryName = end($dir);
 
 $pageTitle = $formattedPageNames[$directoryName];
 
 // Redirecting
 $adminPages = array(
-    'logistics-management', 'admin', 'analytics', 'drivers', 'facility-map', 'logs', 'shipments'
+    'index', 'settings', 'analytics', 'drivers', 'logs', 'shipments'
 );
 if ($user === null) {
-    if (strcmp($directoryName, 'logistics-management') === false) {
+    if (strcmp($directoryName, 'index') === false) {
         $redirectUrl = 'https://ronbodnar.com/projects/logistics-management/';
         header('Location: ' . $redirectUrl);
         die();
@@ -92,18 +93,16 @@ if ($user === null) {
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link href="<?php echo getRelativePath(); ?>assets/css/style.css?v=<?php echo filemtime(getRelativePath() . 'assets/css/style.css'); ?>" rel="stylesheet">
 
-    <link rel="icon" href="/assets/img/favicon.png?v=<?php echo filemtime('/assets/img/favicon.png'); ?>">
+    <link rel="icon" href="<?php echo getRelativePath(); ?>assets/img/favicon.png?v=<?php echo filemtime(getRelativePath() . 'assets/img/favicon.png'); ?>">
 
     <meta name="theme-color" content="#7952b3">
 </head>
 
-<body class="body" id="body-pd">
+<body class="body body-pd" id="body-pd">
     <?php if (isLoggedIn()) { ?>
         <!-- Top Navbar -->
-        <header class="header top-bar" id="header">
-            <div class="header-toggle">
-                <i class="bx bx-menu" id="header-toggle"></i>
-            </div>
+        <header class="header top-bar body-pd" id="header">
+            <div class="header-toggle"></div>
 
             <div class="d-flex justify-content-center align-items-center">
 
@@ -130,17 +129,14 @@ if ($user === null) {
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="<?php echo getRelativePath(); ?>login.php" id="signOut">Sign out</a></li>
+                        <li><a class="dropdown-item" href="<?php echo getRelativePath(); ?>src/login.php" id="signOut">Sign out</a></li>
                     </ul>
                 </div>
             </div>
         </header>
 
         <!-- Sidebar -->
-        <div class="l-navbar" id="nav-bar">
-            <div class="header-toggle-mobile">
-                <i class="bx bx-x" id="header-toggle-mobile"></i>
-            </div>
+        <div class="l-navbar show" id="nav-bar">
             <nav class="sidebar">
                 <div>
                     <div class="nav_logo">
@@ -150,68 +146,65 @@ if ($user === null) {
                     </div>
 
                     <div class="nav_list">
-                        <?php if ($user->isAdmin()) { ?>
-                            <a href="<?php echo getRelativePath(); ?>" class="nav_link<?php echo ($directoryName === 'logistics-management' ? ' active' : '') ?>">
-                                <i class="bi bi-grid"></i>
-                                <span class="nav_name">Dashboard</span>
-                            </a>
+                        <a href="<?php echo getRelativePath(); ?>" id="nav_dashboard" class="nav_link<?php echo ($directoryName === 'logistics-management' ? ' active' : '') ?>">
+                            <i class="bi bi-grid"></i>
+                            <span class="nav_name">Dashboard</span>
+                        </a>
 
-                            <a class="nav_link submenu<?php echo (($directoryName === 'analytics') ? ' active' : '') ?>" data-bs-toggle="collapse" href="#analyticsCollapse" role="button" aria-expanded="false" aria-controls="analyticsCollapse">
-                                <i class="bi bi-graph-up-arrow"></i>
-                                <span class="nav_name">Analytics <i class="bi bi-chevron-right<?php echo ($directoryName === 'analytics' ? ' rotate-chevron' : ''); ?>" style="position: absolute; right: 15px;"></i></span>
-                            </a>
-                            <div class="collapse<?php echo ($directoryName === 'analytics' ? ' show' : ''); ?>" id="analyticsCollapse">
-                                <div class="submenu-items">
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/analytics/" class="nav_link">
-                                        <span class="nav_name">Overview</span>
-                                    </a>
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/analytics/compare" class="nav_link">
-                                        <span class="nav_name">Comparisons</span>
-                                    </a>
-                                </div>
+                        <a class="nav_link submenu<?php echo (($directoryName === 'analytics') ? ' active' : '') ?>" data-bs-toggle="collapse" href="#analyticsCollapse" role="button" aria-expanded="false" aria-controls="analyticsCollapse">
+                            <i class="bi bi-graph-up-arrow"></i>
+                            <span class="nav_name">Analytics <i class="bi bi-chevron-right<?php echo ($directoryName === 'analytics' ? ' rotate-chevron' : ''); ?>" style="position: absolute; right: 15px;"></i></span>
+                        </a>
+                        <div class="collapse<?php echo ($directoryName === 'analytics' ? ' show' : ''); ?>" id="analyticsCollapse">
+                            <div class="submenu-items">
+                                <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/views/analytics/" class="nav_link">
+                                    <span class="nav_name">Overview</span>
+                                </a>
+                                <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/views/analytics/compare" class="nav_link">
+                                    <span class="nav_name">Comparisons</span>
+                                </a>
                             </div>
+                        </div>
 
-                            <a class="nav_link submenu<?php echo ($directoryName === 'logs' ? ' active' : '') ?>" data-bs-toggle="collapse" href="#logsCollapse" role="button" aria-expanded="false" aria-controls="logsCollapse">
-                                <i class="bi bi-person"></i>
-                                <span class="nav_name">Activity Logs <i class="bi bi-chevron-right<?php echo ($directoryName === 'logs' ? ' rotate-chevron' : ''); ?>" style="position: absolute; right: 15px;"></i></span>
-                            </a>
-                            <div class="collapse<?php echo ($directoryName === 'logs' ? ' show' : ''); ?>" id="logsCollapse">
-                                <div class="submenu-items">
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/logs/daily-activity-logs" class="nav_link">
-                                        <span class="nav_name">Daily Activity Logs</span>
-                                    </a>
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/logs/flagged-activity-logs" class="nav_link">
-                                        <span class="nav_name">Flagged Activity Logs</span>
-                                    </a>
-                                </div>
+                        <a class="nav_link submenu<?php echo ($directoryName === 'logs' ? ' active' : '') ?>" data-bs-toggle="collapse" href="#logsCollapse" role="button" aria-expanded="false" aria-controls="logsCollapse">
+                            <i class="bi bi-person"></i>
+                            <span class="nav_name">Activity Logs <i class="bi bi-chevron-right<?php echo ($directoryName === 'logs' ? ' rotate-chevron' : ''); ?>" style="position: absolute; right: 15px;"></i></span>
+                        </a>
+                        <div class="collapse<?php echo ($directoryName === 'logs' ? ' show' : ''); ?>" id="logsCollapse">
+                            <div class="submenu-items">
+                                <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/views/logs/daily-activity-logs" class="nav_link">
+                                    <span class="nav_name">Daily Activity Logs</span>
+                                </a>
+                                <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/views/logs/flagged-activity-logs" class="nav_link">
+                                    <span class="nav_name">Flagged Activity Logs</span>
+                                </a>
                             </div>
+                        </div>
 
-                            <a href="<?php echo getRelativePath(); ?>src/modules/drivers" class="nav_link<?php echo ($directoryName === 'drivers' ? ' active' : '') ?>">
-                                <i class="bi bi-person"></i>
-                                <span class="nav_name">Drivers</span>
-                            </a>
+                        <a href="<?php echo getRelativePath(); ?>src/views/drivers" class="nav_link<?php echo ($directoryName === 'drivers' ? ' active' : '') ?>">
+                            <i class="bi bi-person"></i>
+                            <span class="nav_name">Drivers</span>
+                        </a>
 
-                            <a class="nav_link submenu<?php echo ($directoryName === 'shipments' ? ' active' : '') ?>" data-bs-toggle="collapse" href="#shipmentsCollapse" role="button" aria-expanded="false" aria-controls="shipmentsCollapse">
-                                <i class="bi bi-truck"></i>
-                                <span class="nav_name">Shipments <i class="bi bi-chevron-right<?php echo ($directoryName === 'shipments' ? ' rotate-chevron' : ''); ?>" style="position: absolute; right: 15px;"></i></span>
-                            </a>
-                            <div class="collapse<?php echo ($directoryName === 'shipments' ? ' show' : ''); ?>" id="shipmentsCollapse">
-                                <div class="submenu-items">
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/shipments/inbound" class="nav_link">
-                                        <span class="nav_name">Inbound</span>
-                                    </a>
-                                    <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/modules/shipments/outbound" class="nav_link">
-                                        <span class="nav_name">Outbound</span>
-                                    </a>
-                                </div>
+                        <a class="nav_link submenu<?php echo ($directoryName === 'shipments' ? ' active' : '') ?>" data-bs-toggle="collapse" href="#shipmentsCollapse" role="button" aria-expanded="false" aria-controls="shipmentsCollapse">
+                            <i class="bi bi-truck"></i>
+                            <span class="nav_name">Shipments <i class="bi bi-chevron-right<?php echo ($directoryName === 'shipments' ? ' rotate-chevron' : ''); ?>" style="position: absolute; right: 15px;"></i></span>
+                        </a>
+                        <div class="collapse<?php echo ($directoryName === 'shipments' ? ' show' : ''); ?>" id="shipmentsCollapse">
+                            <div class="submenu-items">
+                                <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/views/shipments/inbound" class="nav_link">
+                                    <span class="nav_name">Inbound</span>
+                                </a>
+                                <a class="nav_link submenu-item" href="<?php echo getRelativePath(); ?>src/views/shipments/outbound" class="nav_link">
+                                    <span class="nav_name">Outbound</span>
+                                </a>
                             </div>
+                        </div>
 
-                            <a href="<?php echo getRelativePath(); ?>src/modules/settings" class="nav_link<?php echo ($directoryName === 'admin' ? ' active' : '') ?>">
-                                <i class="bi bi-sliders"></i>
-                                <span class="nav_name">Settings</span>
-                            </a>
-
-                        <?php } ?>
+                        <a href="<?php echo getRelativePath(); ?>src/views/settings" class="nav_link<?php echo ($directoryName === 'admin' ? ' active' : '') ?>">
+                            <i class="bi bi-sliders"></i>
+                            <span class="nav_name">Settings</span>
+                        </a>
                     </div>
                 </div>
             </nav>

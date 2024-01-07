@@ -1,11 +1,10 @@
 $(document).ready(function () {
   initializeTooltips();
 
-  /*var myModal = new bootstrap.Modal(
-    document.getElementById("assignDriverModal"),
-    {}
-  );
-  myModal.show();*/
+  $("#nav_dashboard").click(function () {
+    toggleShipmentsChart();
+    updateChartColors();
+  });
 
   $("#testSocket").click(function () {
     socketTest();
@@ -263,78 +262,7 @@ if (!theme || theme === "light") {
   updateChartColors();
 }
 
-//TODO: Rewrite this function
 document.addEventListener("DOMContentLoaded", function (event) {
-  const showNavbar = (
-    toggleId,
-    mobileToggleId,
-    navId,
-    bodyId,
-    headerId,
-    footerId
-  ) => {
-    const toggle = document.getElementById(toggleId),
-      mobileToggle = document.getElementById(mobileToggleId),
-      nav = document.getElementById(navId),
-      bodypd = document.getElementById(bodyId),
-      headerpd = document.getElementById(headerId),
-      footerpd = document.getElementById(footerId);
-
-    if (toggle && mobileToggle && nav && bodypd && headerpd) {
-      if (
-        $(window).width() >= 768 &&
-        (!localStorage.getItem("showSidebar") ||
-          localStorage.getItem("showSidebar") === "true")
-      ) {
-        nav.classList.toggle("show");
-        //toggle.classList.toggle("bx-x");
-        bodypd.classList.toggle("body-pd");
-        headerpd.classList.toggle("body-pd");
-        footerpd.classList.toggle("body-pd");
-        localStorage.setItem("showSidebar", "true");
-      }
-      if ($(window).width() < 768) {
-        mobileToggle.classList.toggle("show");
-      }
-
-      mobileToggle.addEventListener("click", () => {
-        //mobileToggle.classList.toggle("show");
-        nav.classList.toggle("show");
-        bodypd.classList.toggle("body-pd");
-        // add padding to header
-        headerpd.classList.toggle("body-pd");
-        footerpd.classList.toggle("body-pd");
-      });
-
-      toggle.addEventListener("click", () => {
-        // show navbar
-        nav.classList.toggle("show");
-        mobileToggle.classList.toggle("show");
-        // change icon
-        //toggle.classList.toggle("bx-x");
-        // add padding to body
-        bodypd.classList.toggle("body-pd");
-        // add padding to header
-        headerpd.classList.toggle("body-pd");
-        if (footerpd) footerpd.classList.toggle("body-pd");
-        var showSidebar = localStorage.getItem("showSidebar");
-        localStorage.setItem(
-          "showSidebar",
-          showSidebar === "true" ? "false" : "true"
-        );
-      });
-    }
-  };
-
-  showNavbar(
-    "header-toggle",
-    "header-toggle-mobile",
-    "nav-bar",
-    "body-pd",
-    "header",
-    "footer"
-  );
-
   // Style the active link
   const linkColor = document.querySelectorAll(".nav_link");
 

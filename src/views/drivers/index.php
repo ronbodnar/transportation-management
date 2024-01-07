@@ -1,6 +1,6 @@
 <?php
 
-require '../../header.php';
+require '../../../header.php';
 
 ?>
 
@@ -254,4 +254,4 @@ require '../../header.php';
     include '../login-form.php';
 } ?>
 
-    <?php include '../../footer.php'; ?>
+    <?php include '../../../footer.php'; ?>

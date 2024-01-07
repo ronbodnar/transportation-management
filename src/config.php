@@ -29,12 +29,12 @@ function saveConfig()
     echo '<pre>';
     print_r(json_encode($config));
     echo '</pre>';
-    file_put_contents("config.json", json_encode($config)) or print_r(error_get_last());
+    file_put_contents(__DIR__ . "/../config/targets.json", json_encode($config)) or print_r(error_get_last());
 }
 
 function loadConfig()
 {
     global $config;
-    $contents = file_get_contents("config.json");
+    $contents = file_get_contents(__DIR__ . "/../config/targets.json");
     $config = json_decode($contents, true);
 }

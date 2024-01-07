@@ -1,6 +1,6 @@
 <?php
 
-require 'header.php';
+require '../../header.php';
 
 ?>
 
@@ -18,10 +18,6 @@ require 'header.php';
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-body">
-
-                                <div id="socketResponse"></div>
-                                <button type="button" class="btn btn-mron" id="testSocket">Test Socket</button>
-                                
                                 <h5 class="text-start fw-bold">General</h5>
                                 <fieldset class="row mb-3">
                                     <legend class="col-form-label col-sm-4 pt-0">Allow Drivers to drop in open doors when arriving?</legend>
@@ -72,4 +68,4 @@ require 'header.php';
     include 'login-form.php';
 } ?>
 
-<?php include 'footer.php'; ?>
+<?php include '../../footer.php'; ?>

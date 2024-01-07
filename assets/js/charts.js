@@ -1544,7 +1544,7 @@ function getTargetData(facility) {
     type: "POST",
     dataType: "json",
     data: "action=get",
-    url: "config.php",
+    url: "src/config.php",
   }).done(function (data) {
     setData(facility, data);
   });

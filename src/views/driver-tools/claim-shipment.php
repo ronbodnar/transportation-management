@@ -1,6 +1,6 @@
 <?php
 
-require '../header.php';
+require '../../../header.php';
 
 if (!isLoggedIn()) {
     include '../login-form.php';
@@ -38,4 +38,4 @@ if (!isLoggedIn()) {
 
 <?php
 }
-include '../footer.php'; ?>
+include '../../../footer.php'; ?>

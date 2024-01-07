@@ -31,7 +31,7 @@
 <script src="<?php echo getRelativePath(); ?>assets/js/bootstrap.bundle.min.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/bootstrap.bundle.min.js'); ?>"></script>
 
 <!-- Socket.io Library -->
-<!--<script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>-->
+<script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
 
 <!-- Custom JavaScript -->
 <script src="<?php echo getRelativePath(); ?>assets/js/popovers.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/popovers.js'); ?>"></script>
@@ -39,7 +39,7 @@
 <script src="<?php echo getRelativePath(); ?>assets/js/tables.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/tables.js'); ?>"></script>
 <script src="<?php echo getRelativePath(); ?>assets/js/analytics.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/analytics.js'); ?>"></script>
 <script src="<?php echo getRelativePath(); ?>assets/js/script.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/script.js'); ?>"></script>
-<!--<script src="<?php //echo getRelativePath(); ?>assets/js/websocket.js?v=<?php //echo filemtime(getRelativePath() . 'assets/js/websocket.js'); ?>"></script>-->
+<script src="<?php echo getRelativePath(); ?>assets/js/websocket.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/websocket.js'); ?>"></script>
 
 <?php
 // Include relevant assets based on current page

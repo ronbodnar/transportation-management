@@ -1,6 +1,6 @@
 <?php
 
-require '../../../header.php';
+require '../../../../header.php';
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
@@ -56,7 +56,7 @@ if (isset($_POST['status'])) {
 }
 
 if (!isLoggedIn()) {
-    include '../../../modules/login-form.php';
+    include '../../../views/login-form.php';
 } else { ?>
     <div class="container-fluid pt-4">
         <div class="overlay-inner">
@@ -213,4 +213,4 @@ if (!isLoggedIn()) {
 
 <?php
 }
-include '../../../footer.php'; ?>
+include '../../../../footer.php'; ?>

@@ -1,16 +1,16 @@
 <?php
 
-require '../../header.php';
+require '../../../header.php';
 
 ?>
 
 <?php if (isLoggedIn()) { ?>
     <div class="container-fluid pt-3">
         <div class="overlay-inner">
-            <h3 class="text-light align-self-left fw-bold">Flagged Activity Logs</h3>
+            <h3 class="text-light align-self-left fw-bold">Driver Activity Logs</h3>
         </div>
         <div class="row d-flex justify-content-center">
-            <!--<div class="col-md-3">
+            <div class="col-md-3">
                 <div class="card content">
                     <div class="card-header">
                         Driver Select
@@ -22,17 +22,14 @@ require '../../header.php';
                             </button>
 
                             <ul class="dropdown-menu" id="allDriversDropdown">
-                                <li>
-                                    <button type="button" class="dropdown-item" id="all">All Drivers</button>
-                                </li>
                                 <?php
-                                /*$allDrivers = $database->getAllDrivers();
+                                $allDrivers = $database->getAllDrivers();
 
                                 foreach ($allDrivers as $driver) {
                                     echo '<li><button type="button" class="dropdown-item" id="' . $driver->getFullName() . '">';
                                     echo $driver->getFullName();
                                     echo '</button></li>';
-                                }*/
+                                }
                                 ?>
                             </ul>
                         </div>
@@ -42,7 +39,7 @@ require '../../header.php';
             <div id="driverAverages" class="col-md-8" style="display: none;">
                 <div class="card content">
                     <div class="card-header">
-                        Flagged Log Statistics
+                        Driver Daily Averages
                     </div>
                     <div class="card-body" style="min-height: 100px;">
                         <div class="row pt-2">
@@ -52,8 +49,8 @@ require '../../header.php';
                             <div class="col-md-2 text-center" id="averageShiftTime">0</div>
                             <div class="col-md-2 text-center" id="averageInstructionTime">0</div>
                             <div class="col-md-2 text-center" id="averageUnplannedStops">0</div>
-                            <div class="col-md-2 text-center pt-2 fw-bold">Total Flagged Logs</div>
-                            <div class="col-md-2 text-center pt-2 fw-bold">Daily Flagged Logs</div>
+                            <div class="col-md-2 text-center pt-2 fw-bold">Shipments</div>
+                            <div class="col-md-2 text-center pt-2 fw-bold">Backhauls</div>
                             <div class="col-md-2 text-center pt-2 fw-bold">Yard Moves</div>
                             <div class="col-md-2 text-center pt-2 fw-bold">Shift Time</div>
                             <div class="col-md-2 text-center pt-2 fw-bold">Instruction Time</div>
@@ -61,25 +58,26 @@ require '../../header.php';
                         </div>
                     </div>
                 </div>
-            </div>-->
+            </div>
             <div class="col-md-11" id="driverActivityLogs">
                 <div class="card content">
                     <div class="card-header">
+                        Activity Logs <span id="activityLogDriverName"></span>
                         <span class="card-header-options"></span>
                     </div>
                     <div class="card-body table-responsive">
-                        <table class="table table-striped" id="flaggedActivityLogsTable" class="display" style="width:100%">
+                        <table class="table table-striped" id="driverActivityLogTable" class="display" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Date</th>
-                                    <th>Driver</th>
-                                    <th>Location</th>
-                                    <th>Reason</th>
-                                    <th>Arrival Time</th>
-                                    <th>Instructions Received</th>
-                                    <th>Instructions Accepted</th>
-                                    <th>Departure Time</th>
+                                    <th class="text-center">Schedule</th>
+                                    <th class="text-center">Clock-in Time</th>
+                                    <th class="text-center">Clock-out Time</th>
+                                    <th class="text-center">Shipments</th>
+                                    <th class="text-center">Backhauls</th>
                                     <th class="text-center">Yard Moves</th>
+                                    <th class="text-center">Unplanned Stops</th>
                                 </tr>
                             </thead>
                         </table>
@@ -92,4 +90,4 @@ require '../../header.php';
     include '../login-form.php';
 } ?>
 
-<?php include '../../footer.php'; ?>
+<?php include '../../../footer.php'; ?>
