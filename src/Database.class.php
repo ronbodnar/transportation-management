@@ -1,14 +1,10 @@
 <?php
 
-require 'vendor/autoload.php';
-require 'User.class.php';
-require 'Door.class.php';
-require 'Shipment.class.php';
+require_once 'User.class.php';
+require_once 'Door.class.php';
+require_once 'Shipment.class.php';
 
 date_default_timezone_set('America/Los_Angeles');
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__  . '/../');
-$dotenv->load();
 
 class Database
 {
@@ -18,14 +14,20 @@ class Database
     function __construct()
     {
         try {
-            $host     = $_ENV['DB_HOST'];
+            // Sqlite3 Configuration
+            $this->connection = new PDO('sqlite:'.__DIR__.'/../database.db');
+
+            /*
+             * MySQL Configuration. DotEnv by vlucas required.
+             */
+            /*$host     = $_ENV['DB_HOST'];
             $database = $_ENV['DB_DATABASE'];
             $username = $_ENV['DB_USERNAME'];
             $password = $_ENV['DB_PASSWORD'];
             $this->connection = new PDO('mysql:host=' . $host . ';dbname=' . $database, $username, $password, array(
                 PDO::ATTR_PERSISTENT => true
             ));
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);*/
         } catch (PDOException $e) {
             echo '<strong>PDO MySQL Error: ' . $e->getMessage() . '</strong><br />';
         }
@@ -86,7 +88,7 @@ class Database
             $statement->execute(array('id' => $id));
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetch();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             if ($print) {
@@ -190,7 +192,7 @@ class Database
                 print_r($result);
                 echo '</pre>';
             }
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             $results = array();
@@ -256,7 +258,7 @@ class Database
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetchAll();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             if ($print) {
@@ -311,7 +313,7 @@ class Database
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetchAll();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             $results = array();
@@ -428,7 +430,7 @@ class Database
             $statement->execute(array(':driver_id' => $id));
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetchAll();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             $results = array();
@@ -494,10 +496,10 @@ class Database
                      LEFT JOIN facilities ON (driver_activity_logs.facility_id = facilities.id) 
                      WHERE `driver_id` = :driver_id AND `flagged` = 1')
             );
-            $statement->execute(array(':driver_id' => $id));
+            $statement->execute($id == 0 ? array() : array(':driver_id' => $id));
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetchAll();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             $results = array();
@@ -548,7 +550,7 @@ class Database
             echo '<strong>PDO MySQL Error:</strong><br /> ' . $e->getMessage() . '<br />';
         }
     }
-    function getOutboundShipments($status, $print = false)
+    function getOutboundShipments($status)
     {
         try {
             $statement = $this->connection->prepare(
@@ -577,12 +579,6 @@ class Database
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetchAll();
 
-            if ($print) {
-                echo '<pre>';
-                print_r($result);
-                echo '</pre>';
-            }
-
             $shipments = array();
             foreach ($result as $row) {
                 $driverData = array(
@@ -601,7 +597,7 @@ class Database
                     'orderNumber' => $row['purchase_order'],
                     'palletCount' => $row['pallets'],
                     'netWeight' => $row['net_weight'],
-                    'dropLocation' => $result['drop_location'],
+                    'dropLocation' => $row['drop_location'],
                     'facility' => $row['facility'],
                     'status' => $row['status']
                 );
@@ -972,7 +968,7 @@ class Database
                     'id' => $row['reference'],
                     'orderNumber' => $row['purchase_order'],
                     'palletCount' => $row['pallets'],
-                    'dropLocation' => $result['drop_location'],
+                    'dropLocation' => $row['drop_location'],
                     'netWeight' => $row['net_weight'],
                     'status' => $row['status'],
                     'carrier' => $row['carrier']

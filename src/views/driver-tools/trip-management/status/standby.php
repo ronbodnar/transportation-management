@@ -1,7 +1,7 @@
 <div>
     <div id="waiting" class="text-center">
         <h5 class="fw-bold text-center pb-4" style="font-size: 1.5rem;">Awaiting Instructions</h5>
-        <p class="pb-3">The Danone Lead has been informed of your arrival and you will receive instructions soon. Hang tight.</p>
+        <p class="pb-3">The Plant Lead has been informed of your arrival and you will receive instructions soon. Hang tight.</p>
         <div class="spinner-border text-mron" style="width: 3rem; height: 3rem;" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>

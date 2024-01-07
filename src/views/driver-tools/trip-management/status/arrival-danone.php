@@ -1,5 +1,5 @@
-<form class="form-arrival" id="arrivalFormDanone" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" novalidate>
-    <div id="danoneArrival">
+<form class="form-arrival" id="arrivalFormPlant" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" novalidate>
+    <div id="plantArrival">
         <label for="arrivalStatus" class="form-label fw-bold">What did you arrive with?</label>
         <select class="form-select select-caret" id="arrivalStatus" name="arrivalStatus">
             <option selected disabled value="">Select...</option>

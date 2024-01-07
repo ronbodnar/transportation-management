@@ -3,11 +3,10 @@
     <label for="facilityName" class="form-label mt-3">Which facility are you at?</label>
     <select class="form-select" id="facilityName" name="facilityName">
         <option selected disabled value="">Select Facility...</option>
-        <option value="accoi">Americold - COI</option>
-        <option value="acont">Americold - ONT</option>
-        <option value="danone">Danone Plant - COI</option>
-        <option value="lineage">Lineage - Riverside</option>
-        <option value="northern">Northern Yard - ONT</option>
+        <option value="coi">Coldstore - COI</option>
+        <option value="ontario">Coldstore - ONT</option>
+        <option value="plant">Plant - COI</option>
+        <option value="riverside">Coldstore - Riverside</option>
         <option value="flyers" disabled>Flyers</option>
         <option value="scfuels" disabled>SC Fuels</option>
     </select>
@@ -62,7 +61,7 @@
 
         <button type="submit" class="btn btn-mron mt-3">Submit</button>
     </div>
-    <div id="danoneArrival" hidden>
+    <div id="plantArrival" hidden>
         <label for="arrivalStatus" class="form-label mt-3">What did you arrive with?</label>
         <select class="form-select" id="arrivalStatus" name="arrivalStatus">
             <option selected disabled value="">Select...</option>

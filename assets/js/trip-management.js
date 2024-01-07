@@ -3,7 +3,7 @@
  */
 function toggleVisibility(visible) {
   var options = [
-    "danoneArrival",
+    "plantArrival",
     "normalArrival",
     "bobtailArrival",
     "backhaulArrival",
@@ -12,24 +12,24 @@ function toggleVisibility(visible) {
     "refusedLoadArrival",
     "northernArrival",
     "fuelArrival",
-  ];
-  var danoneOptions = [
+  ]
+  var plantOptions = [
     "bobtailArrival",
     "backhaulArrival",
     "emptyArrival",
     "palletsOrSamples",
     "refusedLoadArrival",
-  ];
+  ]
   for (var i = 0; i < options.length; i++) {
-    if (options[i] === visible) continue;
+    if (options[i] === visible) continue
     if (
-      Object.values(danoneOptions).includes(visible) &&
-      options[i] === "danoneArrival"
+      Object.values(plantOptions).includes(visible) &&
+      options[i] === "plantArrival"
     )
-      continue;
-    $("#" + options[i]).attr("hidden", true);
+      continue
+    $("#" + options[i]).attr("hidden", true)
   }
-  $("#" + visible).attr("hidden", false);
+  $("#" + visible).attr("hidden", false)
 }
 
 /*
@@ -37,35 +37,30 @@ function toggleVisibility(visible) {
  */
 $(document).ready(function () {
   $("a.toggle").click(function () {
-    $("div#waiting").hide();
-    $("div#instructions").show();
-  });
+    $("div#waiting").hide()
+    $("div#instructions").show()
+  })
 
   $("a.toggle-check-in").click(function () {
-    $("#distance-acceptable").hide();
-    $("#facility-instructions").show();
-  });
+    $("#distance-acceptable").hide()
+    $("#facility-instructions").show()
+  })
 
   $("#startOfDayForm").submit(function (e) {
-    var form = $(this);
+    var form = $(this)
 
-    var valid = true;
+    var valid = true
 
-    var fields = [
-      "loadNumber",
-      "startTime",
-      "startLocation",
-      "startingMileage",
-    ];
+    var fields = ["loadNumber", "startTime", "startLocation", "startingMileage"]
 
     for (var i = 0; i < fields.length; i++) {
       if (!isValid(fields[i])) {
-        valid = false;
+        valid = false
       }
     }
     if (!valid) {
-      e.preventDefault();
-      e.stopPropagation();
+      e.preventDefault()
+      e.stopPropagation()
     }
 
     $.ajax({
@@ -73,43 +68,43 @@ $(document).ready(function () {
       url: form.attr("action"),
       data: form.serialize(),
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
   $("#ready").submit(function (e) {
-    var form = $(this);
+    var form = $(this)
     $.ajax({
       type: "POST",
       url: form.attr("action"),
       data: "status=READY",
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
   $("#accept-instructions").click(function (e) {
-    $(".refuse-instructions").hide();
-    $("#accept-instructions-prompt").hide();
-    $("#accepted-instructions").show();
-    window.scrollTo(0, document.body.scrollHeight);
-  });
+    $(".refuse-instructions").hide()
+    $("#accept-instructions-prompt").hide()
+    $("#accepted-instructions").show()
+    window.scrollTo(0, document.body.scrollHeight)
+  })
 
   $("#refuse-instructions").click(function (e) {
-    $("#refuse-instructions").attr("disabled", "true");
-    $(".refuse-instructions").show();
-    window.scrollTo(0, document.body.scrollHeight);
-  });
+    $("#refuse-instructions").attr("disabled", "true")
+    $(".refuse-instructions").show()
+    window.scrollTo(0, document.body.scrollHeight)
+  })
 
   $("#ready-to-go").click(function (e) {
     $.ajax({
       type: "POST",
       url: ".",
-      data: "status=LEFT_DANONE",
+      data: "status=LEFT_PLANT",
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
   $("#leaving-facility").click(function (e) {
     $.ajax({
@@ -117,19 +112,19 @@ $(document).ready(function () {
       url: ".",
       data: "status=LEFT_FACILITY",
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
-  $("#arrived-at-danone").click(function (e) {
+  $("#arrived-at-plant").click(function (e) {
     $.ajax({
       type: "POST",
       url: ".",
-      data: "status=ARRIVED_AT_DANONE",
+      data: "status=ARRIVED_AT_PLANT",
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
   $("#arrived-at-facility").click(function (e) {
     $.ajax({
@@ -137,23 +132,23 @@ $(document).ready(function () {
       url: ".",
       data: "status=ARRIVED_AT_FACILITY",
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
   $("#arrived-at-facilityy").click(function (e) {
-    $("#distance-not-acceptable").hide();
-    $("#distance-acceptable").show();
-  });
+    $("#distance-not-acceptable").hide()
+    $("#distance-acceptable").show()
+  })
 
-  $("#arrivalFormDanone").submit(function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    var form = $(this);
-    var valid = true;
+  $("#arrivalFormPlant").submit(function (e) {
+    e.preventDefault()
+    e.stopPropagation()
+    var form = $(this)
+    var valid = true
 
-    var reason = $("#arrivalStatus").val();
-    if (!reason) valid = false;
+    var reason = $("#arrivalStatus").val()
+    if (!reason) valid = false
 
     if (reason == "backhaul") {
       var fields = [
@@ -162,11 +157,11 @@ $(document).ready(function () {
         "palletsBackhaul",
         "weightBackhaul",
         "trailerNumberBackhaul",
-      ];
+      ]
 
       for (var i = 0; i < fields.length; i++) {
         if (!isValid(fields[i])) {
-          valid = false;
+          valid = false
         }
       }
     }
@@ -175,28 +170,32 @@ $(document).ready(function () {
       if ($("#trailerNumberEmpty").val().length < 4) {
         document
           .querySelector("#trailerNumberEmpty")
-          .classList.add("is-invalid");
-        valid = false;
+          .classList.add("is-invalid")
+        valid = false
       }
 
-      if (!$("#yCheck").prop("checked") && !$("#nCheck").prop("checked") && !$("#n2Check").prop("checked")) {
-        $("#yesLabel").addClass("invalid");
-        $("#yesCheck").addClass("invalid");
-        $("#noLabel").addClass("invalid");
-        $("#noCheck").addClass("invalid");
-        $("#no2Label").addClass("invalid");
-        $("#no2Check").addClass("invalid");
+      if (
+        !$("#yCheck").prop("checked") &&
+        !$("#nCheck").prop("checked") &&
+        !$("#n2Check").prop("checked")
+      ) {
+        $("#yesLabel").addClass("invalid")
+        $("#yesCheck").addClass("invalid")
+        $("#noLabel").addClass("invalid")
+        $("#noCheck").addClass("invalid")
+        $("#no2Label").addClass("invalid")
+        $("#no2Check").addClass("invalid")
         //$("#noLabel").addClass("is-invalid");
-        valid = false;
+        valid = false
       }
     }
 
     if (reason == "samples" || reason == "chepPallets") {
-      var fields = ["palletsSamples", "trailerNumberSamples"];
+      var fields = ["palletsSamples", "trailerNumberSamples"]
 
       for (var i = 0; i < fields.length; i++) {
         if (!isValid(fields[i])) {
-          valid = false;
+          valid = false
         }
       }
     }
@@ -208,19 +207,19 @@ $(document).ready(function () {
         "palletsRefused",
         "weightRefused",
         "trailerNumberRefused",
-      ];
+      ]
 
       for (var i = 0; i < fields.length; i++) {
         if (!isValid(fields[i])) {
-          valid = false;
+          valid = false
         }
       }
     }
 
     if (!valid) {
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
+      e.preventDefault()
+      e.stopPropagation()
+      return false
     }
 
     $.ajax({
@@ -228,26 +227,26 @@ $(document).ready(function () {
       url: form.attr("action"),
       data: "status=READY",
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
   $("#arrivalForm").submit(function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    var form = $(this);
-    var valid = true;
+    e.preventDefault()
+    e.stopPropagation()
+    var form = $(this)
+    var valid = true
 
-    var facility = $("#facilityName").val();
+    var facility = $("#facilityName").val()
 
     if (!facility) {
-      document.querySelector("#facilityName").classList.add("is-invalid");
-      valid = false;
+      document.querySelector("#facilityName").classList.add("is-invalid")
+      valid = false
     }
 
-    if (facility == "danone") {
-      var reason = $("#arrivalStatus").val();
-      if (!reason) valid = false;
+    if (facility == "plant") {
+      var reason = $("#arrivalStatus").val()
+      if (!reason) valid = false
 
       if (reason == "backhaul") {
         var fields = [
@@ -256,11 +255,11 @@ $(document).ready(function () {
           "palletsBackhaul",
           "weightBackhaul",
           "trailerNumberBackhaul",
-        ];
+        ]
 
         for (var i = 0; i < fields.length; i++) {
           if (!isValid(fields[i])) {
-            valid = false;
+            valid = false
           }
         }
       }
@@ -271,16 +270,16 @@ $(document).ready(function () {
       ) {
         document
           .querySelector("#trailerNumberEmpty")
-          .classList.add("is-invalid");
-        valid = false;
+          .classList.add("is-invalid")
+        valid = false
       }
 
       if (reason == "samples" || reason == "chepPallets") {
-        var fields = ["palletsSamples", "trailerNumberSamples"];
+        var fields = ["palletsSamples", "trailerNumberSamples"]
 
         for (var i = 0; i < fields.length; i++) {
           if (!isValid(fields[i])) {
-            valid = false;
+            valid = false
           }
         }
       }
@@ -292,41 +291,41 @@ $(document).ready(function () {
           "palletsRefused",
           "weightRefused",
           "trailerNumberRefused",
-        ];
+        ]
 
         for (var i = 0; i < fields.length; i++) {
           if (!isValid(fields[i])) {
-            valid = false;
+            valid = false
           }
         }
       }
     }
 
-    if (facility == "accoi" || facility == "acont" || facility == "lineage") {
+    if (facility == "coi" || facility == "ontario" || facility == "riverside") {
       var fields = [
         "orderNumber",
         "referenceNumber",
         "pallets",
         "weight",
         "trailer",
-      ];
+      ]
 
       for (var i = 0; i < fields.length; i++) {
         if (!isValid(fields[i])) {
-          valid = false;
+          valid = false
         }
       }
     }
 
     if (facility == "northern") {
       if (!$("#reason").val()) {
-        document.querySelector("#reason").classList.add("is-invalid");
-        valid = false;
+        document.querySelector("#reason").classList.add("is-invalid")
+        valid = false
       } else {
-        document.querySelector("#reason").classList.remove("is-invalid");
+        document.querySelector("#reason").classList.remove("is-invalid")
       }
       if ($("#reason").val() == "other" && !isValid("otherReason")) {
-        valid = false;
+        valid = false
       }
     }
 
@@ -334,9 +333,9 @@ $(document).ready(function () {
     }
 
     if (!valid) {
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
+      e.preventDefault()
+      e.stopPropagation()
+      return false
     }
 
     $.ajax({
@@ -344,36 +343,36 @@ $(document).ready(function () {
       url: form.attr("action"),
       data: form.serialize(),
       dataType: "text",
-    }).done(function (data) {});
-  });
+    }).done(function (data) {})
+  })
 
   $("#facilityName").change(function () {
-    var selection = $(this).val();
+    var selection = $(this).val()
 
-    if (selection == "danone") {
-      $("select#arrivalStatus").prop("selectedIndex", 0);
-      toggleVisibility("danoneArrival");
+    if (selection == "plant") {
+      $("select#arrivalStatus").prop("selectedIndex", 0)
+      toggleVisibility("plantArrival")
     } else if (
-      selection == "accoi" ||
-      selection == "acont" ||
-      selection == "lineage"
+      selection == "coi" ||
+      selection == "ontario" ||
+      selection == "riverside"
     ) {
-      toggleVisibility("normalArrival");
+      toggleVisibility("normalArrival")
     } else if (selection == "northern") {
-      toggleVisibility("northernArrival");
+      toggleVisibility("northernArrival")
     } else if (selection == "fuel") {
-      toggleVisibility("fuelArrival");
+      toggleVisibility("fuelArrival")
     }
-  });
+  })
 
   $("#reason").change(function () {
-    var selection = $(this).val();
+    var selection = $(this).val()
     if (selection == "other") {
-      $("#other").attr("hidden", false);
+      $("#other").attr("hidden", false)
     } else {
-      $("#other").attr("hidden", true);
+      $("#other").attr("hidden", true)
     }
-  });
+  })
 
   $("#forfeit-shipment-button").click(function () {
     $.ajax({
@@ -381,47 +380,47 @@ $(document).ready(function () {
       url: ".",
       data: "status=FORFEIT_SHIPMENT",
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
   $("#arrivalStatus").change(function () {
-    var selection = $(this).val();
+    var selection = $(this).val()
     if (selection == "bobtail") {
-      toggleVisibility("bobtailArrival");
+      toggleVisibility("bobtailArrival")
     } else if (selection == "backhaul") {
-      toggleVisibility("backhaulArrival");
+      toggleVisibility("backhaulArrival")
     } else if (selection == "emptyTrailer") {
-      toggleVisibility("emptyArrival");
+      toggleVisibility("emptyArrival")
     } else if (selection == "samples" || selection == "chepPallets") {
-      toggleVisibility("palletsOrSamples");
+      toggleVisibility("palletsOrSamples")
     } else if (selection == "refusedLoad") {
-      toggleVisibility("refusedLoadArrival");
+      toggleVisibility("refusedLoadArrival")
     }
-  });
+  })
 
   $("#refuse-instructions-form").submit(function (e) {
-    var valid = true;
+    var valid = true
 
     if (!$("#refusal-reason").val()) {
-      $("#refusal-reason").addClass("is-invalid");
-      valid = false;
+      $("#refusal-reason").addClass("is-invalid")
+      valid = false
     } else {
-      $("#refusal-reason").removeClass("is-invalid");
+      $("#refusal-reason").removeClass("is-invalid")
     }
     if ($("#refusal-reason").val().includes("other")) {
       if (!isValid("refusal-other", 10)) {
-        $("#refusal-other").addClass("is-invalid");
-        valid = false;
+        $("#refusal-other").addClass("is-invalid")
+        valid = false
       } else {
-        $("#refusal-other").removeClass("is-invalid");
+        $("#refusal-other").removeClass("is-invalid")
       }
     }
 
     if (!valid) {
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
+      e.preventDefault()
+      e.stopPropagation()
+      return false
     }
 
     $.ajax({
@@ -429,38 +428,38 @@ $(document).ready(function () {
       url: ".",
       data: "status=INSTRUCTIONS_REFUSED",
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
   $("#refusal-reason").change(function () {
-    var selection = $(this).val();
+    var selection = $(this).val()
     if (selection == "other") {
-      $("#other-refusal").show();
-      window.scrollTo(0, document.body.scrollHeight);
+      $("#other-refusal").show()
+      window.scrollTo(0, document.body.scrollHeight)
     } else if (selection === "trailer") {
-      $(".trailer-reason").show();
-      $("#other-refusal").hide();
-      window.scrollTo(0, document.body.scrollHeight);
+      $(".trailer-reason").show()
+      $("#other-refusal").hide()
+      window.scrollTo(0, document.body.scrollHeight)
     } else {
-      $("#other-refusal").hide();
-      $(".trailer-reason").hide();
+      $("#other-refusal").hide()
+      $(".trailer-reason").hide()
     }
-    $("#send-refusal").removeClass("disabled");
-    $("#refusal-reason").removeClass("is-invalid");
-    $("#refusal-other").removeClass("is-invalid");
-  });
+    $("#send-refusal").removeClass("disabled")
+    $("#refusal-reason").removeClass("is-invalid")
+    $("#refusal-other").removeClass("is-invalid")
+  })
 
   $("#trailer-reason").change(function () {
-    var selection = $(this).val();
+    var selection = $(this).val()
     if (selection === "other") {
-      $("#other-trailer").show();
-      window.scrollTo(0, document.body.scrollHeight);
+      $("#other-trailer").show()
+      window.scrollTo(0, document.body.scrollHeight)
     } else {
-      $("#other-trailer").hide();
+      $("#other-trailer").hide()
     }
-    $("#trailer-oos-prompt").show();
-  });
+    $("#trailer-oos-prompt").show()
+  })
 
   $("#finished-refusal, #return-to-work").click(function () {
     $.ajax({
@@ -468,110 +467,110 @@ $(document).ready(function () {
       url: ".",
       data: "status=READY",
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
+      window.location.reload()
+    })
+  })
 
   $("#driver-unavailable").click(function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $("#main").hide();
-    $("#issuePrompt").show();
-  });
+    e.preventDefault()
+    e.stopPropagation()
+    $("#main").hide()
+    $("#issuePrompt").show()
+  })
 
   $("#canDriveToShop").change(function () {
-    var selection = $(this).val();
+    var selection = $(this).val()
     if (selection === "no") {
-      $("#mechanical-issue-rescue-prompt").show();
+      $("#mechanical-issue-rescue-prompt").show()
     }
-    $("#mechanicalDescription").show();
-  });
+    $("#mechanicalDescription").show()
+  })
 
   $("#unavailable-reason").change(function () {
-    var selection = $(this).val();
+    var selection = $(this).val()
     if (selection == "other") {
-      $("#stop-locations-prompt").hide();
-      $("#fuel-stations-prompt").hide();
-      $("#other-unavailable").show();
-      $("#mechanicalDescription").hide();
-      $("#mechanical-issue-prompt").hide();
-      $("#mechanical-issue-rescue-prompt").hide();
-      window.scrollTo(0, document.body.scrollHeight);
+      $("#stop-locations-prompt").hide()
+      $("#fuel-stations-prompt").hide()
+      $("#other-unavailable").show()
+      $("#mechanicalDescription").hide()
+      $("#mechanical-issue-prompt").hide()
+      $("#mechanical-issue-rescue-prompt").hide()
+      window.scrollTo(0, document.body.scrollHeight)
     } else if (selection === "stop") {
-      $("#other-unavailable").hide();
-      $("#stop-locations-prompt").show();
-      $("#fuel-stations-prompt").hide();
-      $("#mechanicalDescription").hide();
-      $("#mechanical-issue-prompt").hide();
-      $("#mechanical-issue-rescue-prompt").hide();
+      $("#other-unavailable").hide()
+      $("#stop-locations-prompt").show()
+      $("#fuel-stations-prompt").hide()
+      $("#mechanicalDescription").hide()
+      $("#mechanical-issue-prompt").hide()
+      $("#mechanical-issue-rescue-prompt").hide()
     } else if (selection === "mechanical") {
-      $("#other-unavailable").hide();
-      $("#stop-locations-prompt").hide();
-      $("#fuel-stations-prompt").hide();
-      $("#mechanical-issue-prompt").show();
-      $("#mechanicalDescription").hide();
+      $("#other-unavailable").hide()
+      $("#stop-locations-prompt").hide()
+      $("#fuel-stations-prompt").hide()
+      $("#mechanical-issue-prompt").show()
+      $("#mechanicalDescription").hide()
     } else {
-      $("#stop-locations-prompt").hide();
-      $("#fuel-stations-prompt").hide();
-      $("#other-unavailable").hide();
-      $("#mechanicalDescription").hide();
-      $("#mechanical-issue-prompt").hide();
-      $("#mechanical-issue-rescue-prompt").hide();
+      $("#stop-locations-prompt").hide()
+      $("#fuel-stations-prompt").hide()
+      $("#other-unavailable").hide()
+      $("#mechanicalDescription").hide()
+      $("#mechanical-issue-prompt").hide()
+      $("#mechanical-issue-rescue-prompt").hide()
     }
-    $("#sendIssueForm").removeClass("disabled");
-    $("#unavailable-reason").removeClass("is-invalid");
-    $("#unavailable-other").removeClass("is-invalid");
-  });
+    $("#sendIssueForm").removeClass("disabled")
+    $("#unavailable-reason").removeClass("is-invalid")
+    $("#unavailable-other").removeClass("is-invalid")
+  })
 
   $("#stop-locations").change(function () {
-    var selection = $(this).val();
+    var selection = $(this).val()
     if (selection == "fuel") {
-      $("#other-unavailable").hide();
-      $("#fuel-stations-prompt").show();
-      $("#nrtYardReason").hide();
-    } else if (selection === "nrt") {
-      $("#other-unavailable").hide();
-      $("#fuel-stations-prompt").hide();
-      $("#nrtYardReason").show();
+      $("#other-unavailable").hide()
+      $("#fuel-stations-prompt").show()
+      $("#satelliteYardReason").hide()
+    } else if (selection === "satellite") {
+      $("#other-unavailable").hide()
+      $("#fuel-stations-prompt").hide()
+      $("#satelliteYardReason").show()
     } else {
-      $("#other-unavailable").hide();
-      $("#fuel-stations-prompt").hide();
-      $("#nrtYardReason").hide();
+      $("#other-unavailable").hide()
+      $("#fuel-stations-prompt").hide()
+      $("#satelliteYardReason").hide()
     }
-    $("#sendIssueForm").removeClass("disabled");
-    $("#unavailable-reason").removeClass("is-invalid");
-    $("#unavailable-other").removeClass("is-invalid");
-  });
+    $("#sendIssueForm").removeClass("disabled")
+    $("#unavailable-reason").removeClass("is-invalid")
+    $("#unavailable-other").removeClass("is-invalid")
+  })
 
   $("#rescue-needed").change(function () {
-    var selection = $(this).val();
+    var selection = $(this).val()
     if (selection === "yes") {
-      $("#other-unavailable").hide();
-      $("#fuel-stations-prompt").show();
+      $("#other-unavailable").hide()
+      $("#fuel-stations-prompt").show()
     } else {
-      $("#other-unavailable").hide();
+      $("#other-unavailable").hide()
     }
-    $("#sendIssueForm").removeClass("disabled");
-    $("#unavailable-reason").removeClass("is-invalid");
-    $("#unavailable-other").removeClass("is-invalid");
-  });
+    $("#sendIssueForm").removeClass("disabled")
+    $("#unavailable-reason").removeClass("is-invalid")
+    $("#unavailable-other").removeClass("is-invalid")
+  })
 
   $("#unavailable-form").submit(function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+    e.preventDefault()
+    e.stopPropagation()
 
-    var unavailableReason = "Unhandled: " + $("#unavailable-reason").val();
+    var unavailableReason = "Unhandled: " + $("#unavailable-reason").val()
     if ($("#unavailable-reason").val() == "lunch") {
-      unavailableReason = "Lunch Break";
+      unavailableReason = "Lunch Break"
     } else if ($("#unavailable-reason").val() == "mechanical") {
-      unavailableReason = "Mechanical Issue";
+      unavailableReason = "Mechanical Issue"
     } else if ($("#unavailable-reason").val() == "stop") {
       if ($("#stop-locations").val() === "fuel") {
-        unavailableReason = "Fuel Station";
+        unavailableReason = "Fuel Station"
       } else if ($("#stop-locations").val() === "wash") {
-        unavailableReason = "Truck Wash";
+        unavailableReason = "Truck Wash"
       } else {
-        unavailableReason = "Northern Yard";
+        unavailableReason = "Satellite Yard"
       }
     }
 
@@ -580,17 +579,17 @@ $(document).ready(function () {
       url: ".",
       data: "status=DRIVER_UNAVAILABLE&reason=" + unavailableReason,
     }).done(function (data) {
-      window.location.reload();
-    });
-  });
-});
+      window.location.reload()
+    })
+  })
+})
 
 function getFormattedTime(time) {
-  let hrs = Math.floor(time / 3600);
-  let mins = Math.floor(time / 60);
-  let secs = time - mins * 60;
-  if (hrs < 10) hrs = "0" + hrs;
-  if (mins < 10) mins = "0" + mins;
-  if (secs < 10) secs = "0" + secs;
-  return hrs > 0 ? `${hrs}:${mins}:${secs}` : `${mins}:${secs}`;
+  let hrs = Math.floor(time / 3600)
+  let mins = Math.floor(time / 60)
+  let secs = time - mins * 60
+  if (hrs < 10) hrs = "0" + hrs
+  if (mins < 10) mins = "0" + mins
+  if (secs < 10) secs = "0" + secs
+  return hrs > 0 ? `${hrs}:${mins}:${secs}` : `${mins}:${secs}`
 }

@@ -26,8 +26,8 @@
     <label for="startLocation" class="form-label mt-3">Starting Location</label>
     <select class="form-control form-select select-caret" id="startLocation" name="startLocation" required>
         <option selected disabled value="">Select starting location...</option>
-        <option value="danone">Danone Plant</option>
-        <option value="ontario">Northern Yard</option>
+        <option value="plant">Plant</option>
+        <option value="ontario">Satellite Yard</option>
     </select>
     <div class="invalid-feedback">
         Please select your starting location

@@ -16,7 +16,7 @@ if (strcmp($action, 'list') === 0) {
     foreach ($shipments as $shipment) {
         $data = array(
             'id' => $shipment->getId(),
-            'name' => '<a href="/projects/logistics-management/src/modules/drivers?id=' . $shipment->getId() . '" class="text-mron">' . $shipment->getFullName() . '</a>',
+            'name' => '<a href="/projects/logistics-management/src/views/drivers?id=' . $shipment->getId() . '" class="text-mron">' . $shipment->getFullName() . '</a>',
         );
 
         array_push($output, $data);
@@ -34,7 +34,7 @@ if (strcmp($action, 'list') === 0) {
         $data = array(
             'id' => $shipment['id'],
             'carrierId' => $shipment['carrierId'],
-            'name' => '<a href="/projects/logistics-management/src/modules/drivers?id=' . $shipment['id'] . '" class="text-mron">' . $shipment['fullName'] . '</a>',
+            'name' => '<a href="/projects/logistics-management/src/views/drivers?id=' . $shipment['id'] . '" class="text-mron">' . $shipment['fullName'] . '</a>',
             'startTime' => $shipment['startTime'],
             'location' => $shipment['location'],
             'shipment' => (strpos($shipment['shipmentId'], '-') !== false ? '-' : '<a href="" class="text-mron" data-type="outbound-shipment-details" data-toggle="popover-assign" data-bs-placement="left" data-index="' . $shipment['shipmentId'] . '">' . $shipment['shipmentId'] . '</a>'),
@@ -63,7 +63,7 @@ if (strcmp($action, 'list') === 0) {
             'order' => $index++,
             'id' => $shipment['id'],
             'carrierId' => $shipment['carrierId'],
-            'name' => '<a href="/projects/logistics-management/src/modules/drivers?id=' . $shipment['id'] . '" class="text-mron">' . $shipment['fullName'] . '</a>',
+            'name' => '<a href="/projects/logistics-management/src/views/drivers?id=' . $shipment['id'] . '" class="text-mron">' . $shipment['fullName'] . '</a>',
             'startTime' => $shipment['startTime'],
             'startingLocation' => $shipment['startingLocation'],
             'status' => ucwords($status, "-"),

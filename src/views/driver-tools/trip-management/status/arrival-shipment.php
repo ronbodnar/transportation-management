@@ -1,13 +1,13 @@
 <div class="text-center" id="distance-not-acceptable" style="display: block;">
     <div class="text-center"><i class="bi bi-patch-exclamation-fill text-danger" style="font-size: 5rem;"></i></div>
-    <p style="font-size: 1.3rem;">You are <span class="text-danger">1.5 miles</span> away from the facility. You must be at <strong>Americold COI</strong> to check in.</p>
+    <p style="font-size: 1.3rem;">You are <span class="text-danger">1.5 miles</span> away from the facility. You must be at <strong>Coldstore COI</strong> to check in.</p>
     <p class="small pt-3">When you have arrived, <strong>tap the button below</strong> to continue the check-in process.</p>
     <button class="btn btn-mron-fw mt-3" id="arrived-at-facilityy">I've arrived</button>
 </div>
 
 <div class="text-center" id="distance-acceptable" style="display: none;">
     <div class="text-center"><i class="bi bi-patch-check-fill text-mron" style="font-size: 5rem;"></i></div>
-    <p style="font-size: 1.3rem;">Arrived at <strong>Americold COI</strong></p>
+    <p style="font-size: 1.3rem;">Arrived at <strong>Coldstore COI</strong></p>
 
     <p class="small pt-2 pb-3">You will receive your instructions as soon as they have been assigned to you by office staff. Hang tight.</p>
     <div class="spinner-border text-mron" style="width: 3rem; height: 3rem;" role="status">

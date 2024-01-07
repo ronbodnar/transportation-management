@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 require '../../header.php';
+=======
+require '../../../header.php';
+>>>>>>> 6f52858 (Updated compatability for PHP 8.1. Structuring.)
 
 ?>
 
@@ -13,7 +17,7 @@ require '../../header.php';
             <div class="col-md-10">
                 <div class="card content">
                     <div class="card-header">
-                        Active Drivers (<?php echo $database->getActiveDriverCount(); ?>)
+                        Active Drivers (<?php echo $database->driverRepository->getActiveDriverCount(); ?>)
                         <span class="card-header-options"></span>
                     </div>
                     <div class="card-body table-responsive">
@@ -40,4 +44,8 @@ require '../../header.php';
     include '../login-form.php';
 } ?>
 
+<<<<<<< HEAD
 <?php include '../../footer.php'; ?>
+=======
+<?php include '../../../footer.php'; ?>
+>>>>>>> 6f52858 (Updated compatability for PHP 8.1. Structuring.)

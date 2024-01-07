@@ -1,141 +1,141 @@
 {
   "data": [
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"
     },
     {
-      "productCode": "136972",
-      "description": "HO ORG UP MILK 2% 64OZ 6CT CA",
+      "productCode": "003231",
+      "description": "PG UP DAIRY 2% 64OZ 6CT",
       "quantity": "80",
       "batch": "2022.08.14",
       "expiration": "08/14/2022"

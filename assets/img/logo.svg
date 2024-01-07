@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#43b581"/>
+      <stop offset="100%" stop-color="#359067"/>
+    </linearGradient>
+    <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#43b581"/>
+      <stop offset="100%" stop-color="#2e7b55"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="200" rx="20" fill="url(#bgGrad)"/>
+
+  <!-- Hubs / Warehouses -->
+  <g fill="#2e7b55" stroke="#1f593f" stroke-width="2">
+    <rect x="30" y="30" width="40" height="40" rx="4"/>
+    <rect x="130" y="30" width="40" height="40" rx="4"/>
+    <rect x="30" y="130" width="40" height="40" rx="4"/>
+    <rect x="130" y="130" width="40" height="40" rx="4"/>
+  </g>
+
+  <!-- Doors on the buildings -->
+  <g fill="#66c79b">
+    <rect x="45" y="55" width="10" height="15" rx="2"/>
+    <rect x="145" y="55" width="10" height="15" rx="2"/>
+    <rect x="45" y="155" width="10" height="15" rx="2"/>
+    <rect x="145" y="155" width="10" height="15" rx="2"/>
+  </g>
+
+  <!-- Delivery checkpoints -->
+  <g fill="#1f593f">
+    <circle cx="100" cy="50" r="5"/>
+    <circle cx="150" cy="100" r="5"/>
+    <circle cx="100" cy="150" r="5"/>
+    <circle cx="50" cy="100" r="5"/>
+  </g>
+
+  <!-- Dashed Routes / Lines connecting the checkpoints -->
+  <g fill="none" stroke="url(#routeGrad)" stroke-width="2" stroke-dasharray="6,4">
+    <line x1="100" y1="50" x2="150" y2="100"/>
+    <line x1="150" y1="100" x2="100" y2="150"/>
+    <line x1="100" y1="150" x2="50" y2="100"/>
+    <line x1="50" y1="100" x2="100" y2="50"/>
+  </g>
+</svg>

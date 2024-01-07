@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 require '../../header.php';
+=======
+require '../../../header.php';
+>>>>>>> 6f52858 (Updated compatability for PHP 8.1. Structuring.)
 
 ?>
 
@@ -23,7 +27,7 @@ require '../../header.php';
                         </div>
                         <div class="card-body justify-content-center table-responsive">
                             <?php
-                            $shipment = $database->getShipment($_GET['shipment']);
+                            $shipment = $database->shipmentRepository->getShipment($_GET['shipment']);
                             if (!$shipment || $shipment == null) {
                                 echo 'No shipment found';
                             } else {
@@ -49,7 +53,7 @@ require '../../header.php';
                                     <tbody>
                                         <tr>
                                             <?php
-                                            $shipment = $database->getShipment($_GET['shipment']);
+                                            $shipment = $database->shipmentRepository->getShipment($_GET['shipment']);
                                             $timestamp = $shipment->getTimestamp();
 
                                             $backgroundColor = '#276E05';
@@ -165,7 +169,7 @@ require '../../header.php';
                                 </div>
                                 <div class="card-body justify-content-center table-responsive">
                                     <?php
-                                    $shipments = $database->getOutboundShipments('ALL');
+                                    $shipments = $database->shipmentRepository->getOutboundShipments('ALL');
                                     if (!$shipments || $shipments == null) {
                                         echo 'No shipments found';
                                     } else {
@@ -210,7 +214,7 @@ require '../../header.php';
                                 </div>
                                 <div class="card-body justify-content-center table-responsive">
                                     <?php
-                                    $shipments = $database->getOutboundShipments(3);
+                                    $shipments = $database->shipmentRepository->getOutboundShipments(3);
                                     if (!$shipments || $shipments == null) {
                                         echo 'No shipments found';
                                     } else {
@@ -253,7 +257,7 @@ require '../../header.php';
                                 </div>
                                 <div class="card-body justify-content-center table-responsive">
                                     <?php
-                                    $shipments = $database->getOutboundShipments(6);
+                                    $shipments = $database->shipmentRepository->getOutboundShipments(6);
                                     if (!$shipments || $shipments == null) {
                                         echo 'No shipments found';
                                     } else {
@@ -298,7 +302,7 @@ require '../../header.php';
                                 </div>
                                 <div class="card-body justify-content-center table-responsive">
                                     <?php
-                                    $shipments = $database->getOutboundShipments(5);
+                                    $shipments = $database->shipmentRepository->getOutboundShipments(5);
                                     if (!$shipments || $shipments == null) {
                                         echo 'No shipments found';
                                     } else {
@@ -336,4 +340,8 @@ require '../../header.php';
 } ?>
 </div>
 
+<<<<<<< HEAD
 <?php include '../../footer.php'; ?>
+=======
+<?php include '../../../footer.php'; ?>
+>>>>>>> 6f52858 (Updated compatability for PHP 8.1. Structuring.)

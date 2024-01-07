@@ -1,6 +1,6 @@
 <?php
 
-require '../Database.class.php';
+require '../database/Database.php';
 
 $database = new Database();
 
@@ -16,7 +16,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
             die('shipment id not provided');
         }
         $query = $_GET['query'];
-        $shipment = $database->getShipment($query);
+        $shipment = $database->shipmentRepository->getShipment($query);
         if (!$shipment) {
             die('Shipment not found');
         }
@@ -27,7 +27,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
         }
         $query = $_GET['query'];
         $output = array();
-        $shipments = $database->getOutboundShipments($query);
+        $shipments = $database->shipmentRepository->getOutboundShipments($query);
         foreach ($shipments as $shipment) {
             $timestamp = $shipment->getTimestamp();
 
@@ -42,7 +42,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
 
             $date = date("n/j/Y", strtotime($timestamp));
             $time = date("g:i a", strtotime($timestamp));
-            $id = '<a class="text-mron" href="/projects/logistics-management/src/views/shipments/details.php?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
+            $id = '<a class="text-mron" href="/src/views/shipments/details.php?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
             $orderNumber = $shipment->getOrderNumber();
             $pallets = $shipment->getPalletCount();
             $netWeight = number_format($shipment->getNetWeight());
@@ -51,7 +51,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
             $driver = ($shipment->getDriver() === null  ? '-' : $shipment->getDriver()->getFullName());
             $facility = $shipment->getFacility();
             $trailer = $shipment->getTrailerId();
-            $images = '<a class="text-mron" href="/assets/warehouses/bol-1.png" target="_blank">1</a> | <a class="text-mron" href="../warehouses/bol-2.png" target="_blank">2</a>';
+            $images = '<em>Unavailable</em>';
             $status = '<span class="badge rounded-pill" style="background-color: ' . $backgroundColor . '">' . $shipment->getStatus(true) . '</span>';
             $assign = '<a class="text-mron" href="">Assign</a>';
             $action = '<a class="text-mron" href="#">Claim</a>';
@@ -84,7 +84,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
         }
         $query = $_GET['id'];
         $output = array();
-        $shipments = $database->getOutboundShipmentsByDriverId($query);
+        $shipments = $database->shipmentRepository->getOutboundShipmentsByDriverId($query);
         foreach ($shipments as $shipment) {
             $timestamp = $shipment->getTimestamp();
 
@@ -99,7 +99,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
 
             $date = date("n/j/Y", strtotime($timestamp));
             $time = date("g:i a", strtotime($timestamp));
-            $id = '<a class="text-mron" href="/projects/logistics-management/src/views/shipments/details.php?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
+            $id = '<a class="text-mron" href="/src/views/shipments/details.php?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
             $orderNumber = $shipment->getOrderNumber();
             $pallets = $shipment->getPalletCount();
             $netWeight = number_format($shipment->getNetWeight());
@@ -108,7 +108,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
             $driver = ($shipment->getDriver() === null  ? '-' : $shipment->getDriver()->getFullName());
             $facility = $shipment->getFacility();
             $trailer = $shipment->getTrailerId();
-            $images = '<a class="text-mron" href="../warehouses/bol-1.png" target="_blank">1</a> | <a class="text-mron" href="../warehouses/bol-2.png" target="_blank">2</a>';
+            $images = '<em>Unavailable</em>';
             $status = '<span class="badge rounded-pill" style="background-color: ' . $backgroundColor . '">' . $shipment->getStatus(true) . '</span>';
             $assign = '<a class="text-mron" href="">Assign</a>';
             $action = '<a class="text-mron" href="#">Claim</a>';
@@ -141,7 +141,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
         }
         $query = $_GET['query'];
         $output = array();
-        $shipments = $database->getInboundShipments($query);
+        $shipments = $database->shipmentRepository->getInboundShipments($query);
         foreach ($shipments as $shipment) {
             $timestamp = $shipment->getTimestamp();
 
@@ -156,7 +156,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
 
             $date = date("n/j/Y", strtotime($timestamp));
             $time = date("g:i a", strtotime($timestamp));
-            $id = '<a class="text-mron" href="/projects/logistics-management/src/views/shipments/details.php?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
+            $id = '<a class="text-mron" href="/src/views/shipments/details.php?id=' . $shipment->getId() . '" target="_blank">' . $shipment->getId() . '</a>';
             $orderNumber = $shipment->getOrderNumber();
             $pallets = $shipment->getPalletCount();
             $netWeight = number_format($shipment->getNetWeight());
@@ -165,7 +165,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
             $driver = ($shipment->getDriver() === null  ? '-' : $shipment->getDriver()->getFullName());
             $trailer = $shipment->getTrailerId();
             $carrier = $shipment->getCarrier();
-            $images = '<a class="text-mron" href="../warehouses/bol-1.png" target="_blank">1</a> | <a class="text-mron" href="../warehouses/bol-2.png" target="_blank">2</a>';
+            $images = '<em>Unavailable</em>';
             $status = '<span class="badge rounded-pill" style="background-color: ' . $backgroundColor . '">' . $shipment->getStatus(true) . '</span>';
             $assign = '<a class="text-mron" href="">Assign</a>';
             $action = '<a class="text-mron" href="#">Claim</a>';
@@ -194,7 +194,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
         echo json_encode(array('draw' => 1, 'recordsTotal' => count($output), 'recordsFiltered' => count($output), 'data' => $output));
     } else if (strcmp($action, 'get-ready-shipments') === 0) {
         $output = array();
-        $shipments = $database->getOutboundShipments(3);
+        $shipments = $database->shipmentRepository->getOutboundShipments(3);
         foreach ($shipments as $shipment) {
             $id = $shipment->getId();
             $location = $shipment->getLocation();
@@ -219,7 +219,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
     if (strcmp($action, 'assign-shipment') === 0) {
         if (isset($_POST['id']) && isset($_POST['driverId'])) {
-            $database->assignShipment($_POST['id'], $_POST['driverId']);
+            $database->shipmentRepository->assignShipment($_POST['id'], $_POST['driverId']);
         } else {
             die('Missing required parameters: id, driverId');
         }

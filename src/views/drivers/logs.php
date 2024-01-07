@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 require '../../header.php';
+=======
+require '../../../header.php';
+>>>>>>> 6f52858 (Updated compatability for PHP 8.1. Structuring.)
 
 ?>
 
@@ -23,7 +27,7 @@ require '../../header.php';
 
                             <ul class="dropdown-menu" id="allDriversDropdown">
                                 <?php
-                                $allDrivers = $database->getAllDrivers();
+                                $allDrivers = $database->driverRepository->getAllDrivers();
 
                                 foreach ($allDrivers as $driver) {
                                     echo '<li><button type="button" class="dropdown-item" id="' . $driver->getFullName() . '">';
@@ -90,4 +94,8 @@ require '../../header.php';
     include '../login-form.php';
 } ?>
 
+<<<<<<< HEAD
 <?php include '../../footer.php'; ?>
+=======
+<?php include '../../../footer.php'; ?>
+>>>>>>> 6f52858 (Updated compatability for PHP 8.1. Structuring.)

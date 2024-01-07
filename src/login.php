@@ -1,12 +1,16 @@
 <?php
-ini_set('session.gc_maxlifetime', 30*60); // expires in 30 minutes
+/*
+ * 
+ * Removed for demo
+ini_set('session.gc_maxlifetime', 30 * 60); // expires in 30 minutes
 session_start();
 
-require 'Database.class.php';
+require 'database/Database.php';
 
 $database = new Database();
 
-if (!isset($_SESSION['CREATED'])) {
+
+ if (!isset($_SESSION['CREATED'])) {
     $_SESSION['CREATED'] = time();
 } else if (time() - $_SESSION['CREATED'] > 1800) { // session started more than 30 minutes ago
     session_unset();
@@ -28,4 +32,4 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     session_destroy();
     die();
 }
-?>
+    */
