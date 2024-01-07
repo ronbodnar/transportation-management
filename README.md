@@ -19,8 +19,8 @@ A comprehensive logistics and warehouse management system tailored for interacti
 
 ## Technologies Used
 
-- Frontend: HTML, CSS, JavaScript, Bootstrap, jQuery, Chart.js
-- Backend: PHP, Node.js, Express.js, Socket.io
+- Frontend: HTML, CSS, JavaScript, Bootstrap, jQuery, Chart.js, DataTables
+- Backend: PHP, Node.js, Express.js, Socket.io, Moment.js
 - Database: MySQL
 
 ## License
