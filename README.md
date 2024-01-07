@@ -1,6 +1,6 @@
-# Northern Refrigerated Logistics Management System
+# Logistics Management System
 
-A comprehensive logistics and warehouse management system tailored for interactions between Northern Refrigerated and a dedicated client to improve workflow, accountability for drivers, and facilitate effective communication.
+A comprehensive logistics and warehouse management system tailored for interactions between a logistics company and dedicated transportation carriers and to improve workflow, accountability for drivers, and facilitate effective communication.
 
 ## Features
 
