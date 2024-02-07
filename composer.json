@@ -1,6 +1,0 @@
-{
-    "name": "root/logistics-management",
-    "require": {
-        "vlucas/phpdotenv": "^5.6"
-    }
-}

@@ -1,14 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
 require_once 'User.class.php';
 require_once 'Door.class.php';
 require_once 'Shipment.class.php';
 
 date_default_timezone_set('America/Los_Angeles');
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
 
 class Database
 {
@@ -18,14 +14,20 @@ class Database
     function __construct()
     {
         try {
-            $host     = $_ENV['DB_HOST'];
+            // Sqlite3 Configuration
+            $this->connection = new PDO('sqlite:'.__DIR__.'/../database.db');
+
+            /*
+             * MySQL Configuration. DotEnv by vlucas required.
+             */
+            /*$host     = $_ENV['DB_HOST'];
             $database = $_ENV['DB_DATABASE'];
             $username = $_ENV['DB_USERNAME'];
             $password = $_ENV['DB_PASSWORD'];
             $this->connection = new PDO('mysql:host=' . $host . ';dbname=' . $database, $username, $password, array(
                 PDO::ATTR_PERSISTENT => true
             ));
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);*/
         } catch (PDOException $e) {
             echo '<strong>PDO MySQL Error: ' . $e->getMessage() . '</strong><br />';
         }
@@ -86,7 +88,7 @@ class Database
             $statement->execute(array('id' => $id));
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetch();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             if ($print) {
@@ -190,7 +192,7 @@ class Database
                 print_r($result);
                 echo '</pre>';
             }
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             $results = array();
@@ -256,7 +258,7 @@ class Database
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetchAll();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             if ($print) {
@@ -311,7 +313,7 @@ class Database
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetchAll();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             $results = array();
@@ -428,7 +430,7 @@ class Database
             $statement->execute(array(':driver_id' => $id));
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetchAll();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             $results = array();
@@ -497,7 +499,7 @@ class Database
             $statement->execute($id == 0 ? array() : array(':driver_id' => $id));
             $statement->setFetchMode(PDO::FETCH_NAMED);
             $result = $statement->fetchAll();
-            if ($statement->rowCount() === 0) {
+            if (!$result || !count($result)) {
                 return null;
             }
             $results = array();
