@@ -1,0 +1,6 @@
+.vscode/
+
+.env
+
+# Double check for secrets before including in the repo.
+database.db
