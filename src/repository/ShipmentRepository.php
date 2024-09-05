@@ -296,7 +296,7 @@ class ShipmentRepository
                     'id' => ($inboundShipment ? $row['reference'] : $row['id'][0]),
                     'orderNumber' => $row['purchase_order'],
                     'palletCount' => $row['pallets'],
-                    'dropLocation' => 'N/A', //$result['drop_location'],
+                    'dropLocation' => $result['drop_location'],
                     'netWeight' => $row['net_weight'],
                     'facility' => ($inboundShipment ? 'Danone COI' : $row['facility']),
                     'status' => $row['status']

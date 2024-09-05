@@ -31,19 +31,35 @@ $database = new Database();
 $user = $database->userRepository->getUserData($database->userRepository->getUserId("demo"));
 
 $formattedPageNames = array(
-    'index' => 'Dashboard',
-    'trip-management' => 'Trip Management',
-    'logs' => 'Logs',
-    'analytics' => 'Analytics',
-    'drivers' => 'Drivers',
-    'shipments' => 'Shipments',
-    'settings' => 'Settings'
+    'analytics/index.php' => 'Analytics',
+    'analytics/compare.php' => 'Compare Analytics',
+    'logs/daily-activity-logs.php' => 'Daily Activity Logs for Drivers',
+    'logs/flagged-activity-logs.php' => 'Flagged Activity Logs for Drivers',
+
+    'shipments/inbound.php' => 'Inbound Shipments',
+    'shipments/outbound.php' => 'Outbound Shipments',
+    'shipments/create.php' => 'Create a Shipment',
+    'shipments/details.php' => 'Shipment Details',
+    'shipments/edit.php' => 'Edit Shipment Details',
+
+    'drivers/index.php' => 'Driver Management',
+    'drivers/details.php' => 'Driver Details',
+
+    'settings/index.php' => 'Settings',
+
+    'logistics-management/index.php' => 'Dashboard'
 );
 
 $cwd = explode('/', $_SERVER["SCRIPT_FILENAME"]);
 $directoryName = $cwd[sizeof($cwd) - 2];
+$scriptName = end($cwd);
+$pageIdentifier = $directoryName . '/' . $scriptName;
 
-$pageTitle = $formattedPageNames[$directoryName];
+if (array_key_exists($pageIdentifier, $formattedPageNames)) {
+    $pageTitle = $formattedPageNames[$pageIdentifier];
+} else {
+    $pageTitle = ucfirst($directoryName);
+}
 
 /*
  This was the default auth redirection logic, removed to bypass login for demo.
@@ -95,15 +111,15 @@ if ($user === null) {
         if (localStorage.theme) document.documentElement.setAttribute("data-theme", localStorage.theme);
     </script>
 
-    <link href="<?php echo getRelativePath(); ?>assets/css/bootstrap.min.css?v=<?php echo filemtime(getRelativePath() . 'assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo getRelativePath(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <link href="<?php echo getRelativePath(); ?>assets/css/style.css?v=<?php echo filemtime(getRelativePath() . 'assets/css/style.css'); ?>" rel="stylesheet">
+    <link href="<?php echo getRelativePath(); ?>assets/css/style.css" rel="stylesheet">
 
-    <link rel="icon" href="<?php echo getRelativePath(); ?>assets/img/favicon-32x32.png?v=<?php echo filemtime(getRelativePath() . 'assets/img/favicon-32x32.png'); ?>">
+    <link rel="icon" href="<?php echo getRelativePath(); ?>assets/img/favicon.png">
 
     <meta name="theme-color" content="#7952b3">
 </head>
@@ -124,7 +140,7 @@ if ($user === null) {
 
                 <div class="dropdown">
                     <a href="#" class="text-mron d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="<?php echo getRelativePath(); ?>assets/img/favicon-32x32.png" alt="MR" width="32" height="32" class="rounded-circle">
+                        <img src="<?php echo getRelativePath(); ?>assets/img/profile.png" alt="MR" width="32" height="32" class="rounded-circle">
                         <span class="d-none d-sm-inline mx-1"><?php echo $user->getFullName(); ?></span>
                     </a>
                     <ul class="dropdown-menu text-small shadow">

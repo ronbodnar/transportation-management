@@ -28,25 +28,22 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
 
 <!-- Bootstrap Plugins -->
-<script src="<?php echo getRelativePath(); ?>assets/js/bootstrap.bundle.min.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/bootstrap.bundle.min.js'); ?>"></script>
+<script src="<?php echo getRelativePath(); ?>assets/js/bootstrap.bundle.min.js"></script>
 
 <!-- Socket.io Library -->
 <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
 
 <!-- Custom JavaScript -->
-<script src="<?php echo getRelativePath(); ?>assets/js/popovers.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/popovers.js'); ?>"></script>
-<script src="<?php echo getRelativePath(); ?>assets/js/charts.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/charts.js'); ?>"></script>
-<script src="<?php echo getRelativePath(); ?>assets/js/tables.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/tables.js'); ?>"></script>
-<script src="<?php echo getRelativePath(); ?>assets/js/analytics.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/analytics.js'); ?>"></script>
-<script src="<?php echo getRelativePath(); ?>assets/js/script.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/script.js'); ?>"></script>
-<script src="<?php echo getRelativePath(); ?>assets/js/websocket.js?v=<?php echo filemtime(getRelativePath() . 'assets/js/websocket.js'); ?>"></script>
+<script src="<?php echo getRelativePath(); ?>assets/js/popovers.js"></script>
+<script src="<?php echo getRelativePath(); ?>assets/js/charts.js"></script>
+<script src="<?php echo getRelativePath(); ?>assets/js/tables.js"></script>
+<script src="<?php echo getRelativePath(); ?>assets/js/analytics.js"></script>
+<script src="<?php echo getRelativePath(); ?>assets/js/script.js"></script>
 
 <?php
 // Include relevant assets based on current page
-if ($directoryName === 'osd' || $directoryName === 'backend') {
-    echo '<script src="' . getRelativePath() . 'assets/js/osd.js?v=' . filemtime(getRelativePath() . "assets/js/osd.js") . '"></script>';
-} else if ($directoryName == 'trip-management') {
-    echo '<script src="' . getRelativePath() . 'assets/js/trip-management.js?v=' . filemtime(getRelativePath() . "assets/js/trip-management.js") . '"></script>';
+if ($directoryName == 'trip-management') {
+    echo '<script src="' . getRelativePath() . 'assets/js/trip-management.js"></script>';
 }
 ?>
 </body>

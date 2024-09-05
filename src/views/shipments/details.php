@@ -95,7 +95,7 @@ require '../../header.php';
                                         <div class="col-md-3 offset-md-1 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Driver</div>
                                         <div class="col-md-3 offset-md-1 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Carrier</div>
                                         <div class="col-md-3 offset-md-1 pb-2" id="averageShiftTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $shipment->getTrailerId(); ?></div>
-                                        <div class="col-md-3 offset-md-1 pb-2" id="averageInstructionTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo (strlen($shipment->getDriver()->getFullName()) <= 1 ? 'Unassigned' : '<a href="/projects/logistics-management/src/views/drivers/?id=' . $shipment->getDriver()->getId() . '" class="text-mron">' . $shipment->getDriver()->getFullName() . '</a>'); ?></div>
+                                        <div class="col-md-3 offset-md-1 pb-2" id="averageInstructionTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo (strlen($shipment->getDriver()->getFullName()) <= 1 ? 'Unassigned' : '<a href="/projects/logistics-management/src/views/drivers/details.php?id=' . $shipment->getDriver()->getId() . '" class="text-mron">' . $shipment->getDriver()->getFullName() . '</a>'); ?></div>
                                         <div class="col-md-3 offset-md-1 pb-2" id="averageInstructionTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $shipment->getCarrier(); ?></div>
                                     </div>
                                 </div>

@@ -77,7 +77,7 @@
                 <div class="card-body chart-container justify-content-center">
                     <div class="row pt-2">
                         <div class="col-sm-12 text-center d-flex justify-content-around px-4">
-                            <p class="fs-3 fw-bold">Americold COI</p>
+                            <p class="fs-4 fw-bold">Americold COI</p>
                             <div><span id="accoi-target" class="fw-bold" style="color: #E69322;"><?php echo $config['targets']['accoi']; ?></span><br />Target</div>
                             <div><span id="accoi-sent" class="fw-bold" style="color: #E69322;">26</span><br />Shipped</div>
                             <div><span id="accoi-remaining" class="fw-bold" style="color: #E69322;"><?php echo ($config['targets']['accoi'] - 26); ?></span><br />Remaining</div>
@@ -102,7 +102,7 @@
                 <div class="card-body chart-container justify-content-center">
                     <div class="row pt-2">
                         <div class="col-sm-12 text-center d-flex justify-content-around px-4">
-                            <p class="fs-3 fw-bold">Americold Ontario</p>
+                            <p class="fs-4 fw-bold">Americold Ontario</p>
                             <div><span id="acont-target" class="fw-bold" style="color: #218B94;"><?php echo $config['targets']['acont']; ?></span><br />Target</div>
                             <div><span id="acont-sent" class="fw-bold" style="color: #218B94;">22</span><br />Shipped</div>
                             <div><span id="acont-remaining" class="fw-bold" style="color: #218B94;"><?php echo ($config['targets']['acont'] - 22); ?></span><br />Remaining</div>
@@ -127,7 +127,7 @@
                 <div class="card-body chart-container justify-content-center">
                     <div class="row pt-2">
                         <div class="col-sm-12 text-center d-flex justify-content-around px-4">
-                            <p class="fs-3 fw-bold">Lineage Riverside</p>
+                            <p class="fs-4 fw-bold">Lineage Riverside</p>
                             <div><span id="lineage-target" class="fw-bold" style="color: #399D37;"><?php echo $config['targets']['lineage']; ?></span><br />Target</div>
                             <div><span id="lineage-sent" class="fw-bold" style="color: #399D37;">4</span><br />Shipped</div>
                             <div><span id="lineage-remaining" class="fw-bold" style="color: #399D37;"><?php echo ($config['targets']['lineage'] - 4); ?></span><br />Remaining</div>
@@ -313,7 +313,7 @@
                 <div class="row d-flex align-items-center justify-content-center" style="height: 70px;" id="assign-move-1">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label for="trailerNumber" style="margin-left: 1px;">Trailer / Door</label>
+                            <label for="trailerNumber-1" style="margin-left: 1px;">Trailer / Door</label>
                             <input type="text" name="trailerNumber" id="trailerNumber-1" class="form-control" placeholder="" autocomplete="off" required>
                         </div>
                     </div>
@@ -324,7 +324,7 @@
 
                     <div class="col-sm-4">
                         <div class="form-group inline-form">
-                            <label for="location" style="margin-left: 1px;">Location</label>
+                            <label for="location-1" style="margin-left: 1px;">Location</label>
                             <input type="text" name="location" id="location-1" class="form-control" placeholder="" autocomplete="off" required>
                         </div>
                     </div>
@@ -358,7 +358,7 @@
                     <div class="row d-flex align-items-center justify-content-center" style="height: 70px;" id="assign-cordova-move-0">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="trailerNumber" style="margin-left: 1px;">Trailer / Door #</label>
+                                <label for="trailerNumber-0" style="margin-left: 1px;">Trailer / Door #</label>
                                 <input type="text" name="trailerNumber" id="trailerNumber-0" class="form-control" placeholder="" autocomplete="off" required>
                             </div>
                         </div>
@@ -369,7 +369,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group inline-form">
-                                <label for="location" style="margin-left: 1px;">Location</label>
+                                <label for="location-0" style="margin-left: 1px;">Location</label>
                                 <input type="text" name="location" id="location-0" class="form-control" placeholder="" autocomplete="off" required>
                             </div>
                         </div>
@@ -381,14 +381,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="dropLocation" style="margin-left: 1px;">Drop Trailer:</label>
-                            <input type="text" name="dropLocation" id="dropLocation-1" class="form-control" placeholder="Door # or fence" autocomplete="off" required>
+                            <input type="text" name="dropLocation" id="dropLocation" class="form-control" placeholder="Door # or fence" autocomplete="off" required>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group inline-form">
                             <label for="takeTrailer" style="margin-left: 1px;">Take Trailer:</label>
-                            <input type="text" name="takeTrailer" id="takeTrailer-1" class="form-control" placeholder="Door # or Fence" autocomplete="off" required>
+                            <input type="text" name="takeTrailer" id="takeTrailer" class="form-control" placeholder="Door # or Fence" autocomplete="off" required>
                         </div>
                     </div>
                 </div>

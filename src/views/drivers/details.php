@@ -4,21 +4,19 @@ require '../../header.php';
 
 ?>
 
-<?php if (isLoggedIn()) { ?>
-    <?php
+<?php if (isLoggedIn()) {
     if (isset($_GET['id'])) {
         $driver = $database->userRepository->getUserData($_GET['id']);
-    ?>
+?>
         <div class="container-fluid pt-3">
             <div class="overlay-inner">
                 <h3 class="text-light align-self-left fw-bold pt-3">Driver Details</h3>
             </div>
             <div class="card content mt-5">
                 <div class="card-body table-responsive">
-
                     <div class="pt-2">
                         <div class="row g-0">
-                            <div class="col-sm-1 text-center"><i class="bi bi-person-circle" style="font-size: 3rem;"></i></div>
+                            <div class="col-sm-1 text-center"><i class="bi bi-person" style="font-size: 3rem;"></i></div>
                             <div class="col-sm-2">
                                 <h4 class="fw-bold"><?php echo $driver->getFullName(); ?></h4>
                                 <p style="font-size: 1rem;"><?php echo $driver->getAccessRole(); ?></p>
@@ -26,7 +24,7 @@ require '../../header.php';
                         </div>
                     </div>
 
-                    <div class="row d-flex justify-content-between align-items-center pt-4">
+                    <div class="row d-flex justify-content-between align-items-center pt-1">
                         <div class="col text-center" style="font-size: 0.9rem;">Status</div>
                         <div class="col text-center" style="font-size: 0.9rem;">Phone #</div>
                         <div class="col text-center" style="font-size: 0.9rem;">Company</div>
@@ -35,7 +33,7 @@ require '../../header.php';
                     <div class="row d-flex justify-content-between align-items-center pb-4" style="border-bottom: 1px solid var(--separator-line-color);">
                         <div class="col text-center text-success"><span class="badge rounded-pill bg-success">Available</span></div>
                         <div class="col text-center"><?php echo $driver->getPhoneNumber(); ?></div>
-                        <div class="col text-center"><a href="" class="text-mron">Northern Refrigerated Transportation</a></div>
+                        <div class="col text-center"><?php echo $driver->getCarrier(); ?></div>
                     </div>
 
                     <div class="pt-3 pb-3">
@@ -59,12 +57,12 @@ require '../../header.php';
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                             <div class="row pt-2">
                                 <?php
-                                $shipmentCount       = $database->shipmentRepository->getOutboundShipmentCountByDriverId($driver->getId());
-                                $backhaulCount       = rand(10, 25);
-                                $yardMoveCount       = $database->driverRepository->getYardMovesByDriverId($driver->getId());
-                                $flaggedLogCount     = $database->driverRepository->getFlaggedActivityLogsByDriverId($driver->getId());
-                                $unplannedStopCount  = rand(15, 50);
-                                $truckBreakdownCount = rand(15, 50);
+                                $shipmentCount       = ($driver->getId() > 20000 ? $database->shipmentRepository->getOutboundShipmentCountByDriverId($driver->getId()) : 0);
+                                $backhaulCount       = ($driver->getId() > 20000 ? rand(10, 25) : 0);
+                                $yardMoveCount       = ($driver->getId() > 20000 ? $database->driverRepository->getYardMovesByDriverId($driver->getId()) : 0);
+                                $flaggedLogCount     = ($driver->getId() > 20000 ? $database->driverRepository->getFlaggedActivityLogsByDriverId($driver->getId()) : 0);
+                                $unplannedStopCount  = ($driver->getId() > 20000 ? rand(15, 50) : 0);
+                                $truckBreakdownCount = ($driver->getId() > 20000 ? rand(15, 50) : 0);
                                 ?>
                                 <div class="col-md-6" style="border-right: 2px solid var(--separator-line-color);">
                                     <p class="fw-bold fs-5 text-center">Daily Averages</p>
@@ -77,11 +75,11 @@ require '../../header.php';
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Yard Moves</div>
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Active Hours</div>
                                         <div class="col-md-5 pb-3" id="averageYardMoves" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo number_format(($yardMoveCount / 16), 2); ?></div>
-                                        <div class="col-md-5 pb-3" id="averageShiftTime" style="border-bottom: 1px solid var(--separator-line-color);">11h <?php echo rand(1, 59); ?>m</div>
+                                        <div class="col-md-5 pb-3" id="averageShiftTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo ($driver->getId() > 20000 ? '11h ' . rand(1, 59) . 'm' : '0'); ?></div>
 
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Time Completing Instructions</div>
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Unplanned Stops</div>
-                                        <div class="col-md-5 pb-3" id="averageInstructionTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo rand(15, 59); ?>m</div>
+                                        <div class="col-md-5 pb-3" id="averageInstructionTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo ($driver->getId() > 20000 ? rand(15, 59) . 'm' : '0'); ?></div>
                                         <div class="col-md-5 pb-3" id="averageUnplannedStops" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo number_format(($unplannedStopCount / 16), 2); ?></div>
                                     </div>
                                 </div>
@@ -90,18 +88,18 @@ require '../../header.php';
                                     <div class="row pt-2 d-flex justify-content-center">
                                         <div class="col-md-5 pt-2 pb-2 fw-bold" style="font-size: 0.9rem;">Shipments</div>
                                         <div class="col-md-5 pt-2 pb-2 fw-bold" style="font-size: 0.9rem;">Backhauls</div>
-                                        <div class="col-md-5 pb-3" id="averageShipments" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $database->shipmentRepository->getOutboundShipmentCountByDriverId($driver->getId()); ?></div>
-                                        <div class="col-md-5 pb-3" id="averageBackhauls" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo rand(10, 25); ?></div>
+                                        <div class="col-md-5 pb-3" id="averageShipments" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $shipmentCount; ?></div>
+                                        <div class="col-md-5 pb-3" id="averageBackhauls" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $backhaulCount; ?></div>
 
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Yard Moves</div>
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Flagged Logs</div>
-                                        <div class="col-md-5 pb-3" id="averageYardMoves" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $database->driverRepository->getYardMovesByDriverId($driver->getId()); ?></div>
-                                        <div class="col-md-5 pb-3" id="averageShiftTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $database->driverRepository->getFlaggedActivityLogsByDriverId($driver->getId()); ?></div>
+                                        <div class="col-md-5 pb-3" id="averageYardMoves" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $yardMoveCount; ?></div>
+                                        <div class="col-md-5 pb-3" id="averageShiftTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $flaggedLogCount; ?></div>
 
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Unplanned Stops</div>
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Truck Breakdowns</div>
-                                        <div class="col-md-5 pb-3" id="averageInstructionTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo rand(15, 50); ?></div>
-                                        <div class="col-md-5 pb-3" id="averageUnplannedStops" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo rand(1, 10); ?></div>
+                                        <div class="col-md-5 pb-3" id="averageInstructionTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $unplannedStopCount; ?></div>
+                                        <div class="col-md-5 pb-3" id="averageUnplannedStops" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $truckBreakdownCount; ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -110,18 +108,18 @@ require '../../header.php';
                             <div class="table-responsive">
                                 <table class="table table-sm table-striped" id="driverPersonalActivityLogTable" class="display" style="width:100%">
                                     <thead>
-                                        <!--<tr>
-                                    <th></th>
-                                    <th>Date</th>
-                                    <th class="text-center">Schedule</th>
-                                    <th class="text-center">Clock-in Time</th>
-                                    <th class="text-center">Clock-out Time</th>
-                                    <th class="text-center">Shipments</th>
-                                    <th class="text-center">Backhauls</th>
-                                    <th class="text-center">Yard Moves</th>
-                                    <th class="text-center">Unplanned Stops</th>
-                                </tr>-->
                                         <tr>
+                                            <th></th>
+                                            <th>Date</th>
+                                            <th>Schedule</th>
+                                            <th>Clock-in Time</th>
+                                            <th>Clock-out Time</th>
+                                            <th>Shipments</th>
+                                            <th>Backhauls</th>
+                                            <th>Yard Moves</th>
+                                            <th>Unplanned Stops</th>
+                                        </tr>
+                                        <!-- <tr>
                                             <th>Date</th>
                                             <th>Location</th>
                                             <th>Arrival Time</th>
@@ -131,7 +129,7 @@ require '../../header.php';
                                             <th>Reason</th>
                                             <th>Trailer</th>
                                             <th>Yard Moves</th>
-                                        </tr>
+                                        </tr>-->
                                     </thead>
                                 </table>
                             </div>
@@ -178,7 +176,6 @@ require '../../header.php';
                     </div>
                 </div>
             </div>
-        <?php } else { ?>
     <?php }
 } else {
     include '../login-form.php';

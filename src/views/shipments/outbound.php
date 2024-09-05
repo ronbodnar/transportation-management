@@ -8,7 +8,7 @@ require '../../header.php';
     <div class="container-fluid pt-3">
         <div class="overlay-inner">
             <h3 class="text-light align-self-left fw-bold">Outbound Shipments</h3>
-            <a class="btn create-shipment-button" href="create">Create Shipment</a>
+            <a class="btn create-shipment-button" href="create.php">Create Shipment</a>
         </div>
 
         <div class="shipment-tabs rowz d-flexz justify-content-centerz">

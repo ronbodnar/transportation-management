@@ -11,7 +11,7 @@
   --header-height-mobile: 3.5rem;
   --header-height: 2.5rem;
   --nav-width: 0px;
-  --normal-font-size: 1rem;
+  --normal-font-size: 14px;
   --z-fixed: 100;
   color-scheme: dark light;
 }
@@ -40,8 +40,9 @@ html[data-theme="dark"] {
   --radio-outline-color: #323a49;
   --card-border-color: #343434;
   --light-text-color: #cccccc;
-  --background-color: #252526;
-  --secondary-background-color: #1e1e1e;
+  /* --background-color: #252526; */
+  --background-color: #06080a;
+  --secondary-background-color: #0d1117;
   --input-background-color: #323a49;
   --box-shadow-color: #0d1117;
   --separator-text-color: #565656;
@@ -55,8 +56,8 @@ html[data-theme="dark"] {
     --radio-outline-color: #323a49;
     --card-border-color: #343434;
     --light-text-color: #cccccc;
-    --background-color: #252526;
-    --secondary-background-color: #1e1e1e;
+    --background-color: #06080a;
+    --secondary-background-color: #0d1117;
     --input-background-color: #323a49;
     --box-shadow-color: #0d1117;
     --separator-text-color: #565656;
@@ -576,7 +577,7 @@ a.text-mron:hover {
   top: 0;
   left: -30%;
   width: var(--nav-width);
-  height: 100vh;
+  height: 100%;
   padding: 0.5rem 1rem 0 0;
   transition: 0.5s;
   z-index: var(--z-fixed);
@@ -586,7 +587,7 @@ a.text-mron:hover {
 .l-navbar.show {
   left: 0;
   padding: 0 0 0 0;
-  width: 100%;
+  width: calc(var(--nav-width) + 230px);
 }
 
 .sidebar {
@@ -789,9 +790,9 @@ a.text-mron:hover {
 /*
  * DataTables styles
  */
- .flagged-background {
+.flagged-background {
   background-color: red;
- }
+}
 
 .page-item.active .page-link {
   font-weight: bold;
@@ -1261,10 +1262,6 @@ input[type="file"],
 
   .header-toggle-mobile i {
     font-size: 2rem;
-  }
-
-  .l-navbar.show {
-    width: calc(var(--nav-width) + 230px);
   }
 
   .nav_logo {

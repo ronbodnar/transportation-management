@@ -2,7 +2,7 @@
     <div class="row d-flex flex-column flex-sm-row justify-content-center align-items-center">
         <div class="col-md-8 login-form">
             <div class="login-form-logo">
-                <img src="<?php echo getRelativePath(); ?>assets/img/header.png?v=<?php filemtime(getRelativePath() . 'assets/img/header.png'); ?>" />
+                <img src="<?php echo getRelativePath(); ?>assets/img/header.png" />
             </div>
 
             <form class="form-signin" id="loginForm" action="<?php echo getRelativePath(); ?>src/login.php" method="POST" novalidate>
