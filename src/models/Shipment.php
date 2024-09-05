@@ -83,7 +83,8 @@ class Shipment
         return $this->driver;
     }
 
-    public function getCarrier() {
+    public function getCarrier()
+    {
         return $this->carrier;
     }
 
@@ -97,11 +98,13 @@ class Shipment
         return $pretty ? ucwords(strtolower(str_replace("_", "-", $this->status))) : $this->status;
     }
 
-    public function getLocation() {
+    public function getLocation()
+    {
         return $this->location;
     }
 
-    public function getDropLocation() {
+    public function getDropLocation()
+    {
         return $this->dropLocation;
     }
 

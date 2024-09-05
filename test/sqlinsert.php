@@ -1,13 +1,13 @@
 <?php
 
-require '../Database.class.php';
+require '../database/Database.php';
 
 $database = new Database();
 
 addInboundShipments();
 
 //for ($i = 0; $i < 20; $i++) {
-    //addActivityLogs();
+//addActivityLogs();
 //}
 
 function randomDateInRange(DateTime $start, DateTime $end)
@@ -46,12 +46,30 @@ function addActivityLogs()
     global $database;
 
     $reasons = array(
-        'Shipment', 'Shipment', 'Shipment', 'Shipment', 'Shipment', 'Shipment', 'Shipment',
-        'Shipment', 'Shipment', 'Shipment', 'Shipment',
-        "Returning Empty", "Returning Empty", "Returning Empty", "Returning Empty", "Returning Empty",
-        "Returning Empty", "Returning Empty",
-        'Pickup Empty', 'Pickup Backhaul', 'Backhaul', 'Backhaul',
-        'Backhaul', 'Yard Moves'
+        'Shipment',
+        'Shipment',
+        'Shipment',
+        'Shipment',
+        'Shipment',
+        'Shipment',
+        'Shipment',
+        'Shipment',
+        'Shipment',
+        'Shipment',
+        'Shipment',
+        "Returning Empty",
+        "Returning Empty",
+        "Returning Empty",
+        "Returning Empty",
+        "Returning Empty",
+        "Returning Empty",
+        "Returning Empty",
+        'Pickup Empty',
+        'Pickup Backhaul',
+        'Backhaul',
+        'Backhaul',
+        'Backhaul',
+        'Yard Moves'
     );
 
     $start = new DateTime("2022-08-01 01:30:33");
@@ -76,7 +94,7 @@ function addActivityLogs()
 
     $driverId = 21149 + rand(0, 10);
 
-    $shipment = $database->getRandomShipmentId();
+    $shipment = $database->shipmentRepository->getRandomShipmentId();
 
     $reason = ($reason === "Shipment" ? $shipment['id'] : $reason);
 
@@ -108,7 +126,7 @@ function addActivityLogs()
         }
     }
 
-    $database->addDriverActivityLog($logDate, $driverId, $facilityId, $arrivalDT, $receivedDT, $acceptedDT, $departureDT, $reason, $trailerId, $yardMoves, $flagged);
+    $database->driverRepository->addDriverActivityLog($logDate, $driverId, $facilityId, $arrivalDT, $receivedDT, $acceptedDT, $departureDT, $reason, $trailerId, $yardMoves, $flagged);
 
     echo '<pre>';
     print_r(get_defined_vars());
@@ -135,7 +153,7 @@ function addOutboundShipments()
         $facility = rand(2, 4);
         $weight = rand(27000, 46300);
         $pallets = (rand(0, 2) == 0 ? 24 : (rand(0, 3) == 1 ? 18 : 20));
-        $database->addInboundShipment($rand->format('Y-m-d H:i:s'), $reference, $order, $pallets, $weight, $facility, $trailer, $status, $driver);
+        $database->shipmentRepository->addInboundShipment($rand->format('Y-m-d H:i:s'), $reference, $order, $pallets, $weight, $facility, $trailer, $status, $driver);
         //echo 'INSERT INTO shipments (`timestamp`, `reference`, `purchase_order`, `pallets`, `net_weight`, `facility_id`, `trailer_id`, `status_id`, `driver_id` VALUES();';
     }
 }
@@ -158,7 +176,7 @@ function addInboundShipments()
         $trailer = 0;
         $weight = rand(17000, 36300);
         $pallets = (rand(0, 2) == 0 ? 24 : (rand(0, 3) == 1 ? 18 : 20));
-        $database->addInboundShipment($rand->format('Y-m-d H:i:s'), $reference, $order, $pallets, $weight, $trailer, $status, 2, $driver);
+        $database->shipmentRepository->addInboundShipment($rand->format('Y-m-d H:i:s'), $reference, $order, $pallets, $weight, $trailer, $status, 2, $driver);
         //echo 'INSERT INTO shipments (`timestamp`, `reference`, `purchase_order`, `pallets`, `net_weight`, `facility_id`, `trailer_id`, `status_id`, `driver_id` VALUES();';
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-require '../Database.class.php';
+require '../database/Database.php';
 
 $database = new Database();
 
@@ -15,7 +15,7 @@ if (strcmp($action, 'get') === 0) {
         die('missing id');
     }
     $output = array();
-    $logs = $database->getDriverActivityLogs($_GET['id']);
+    $logs = $database->driverRepository->getDriverActivityLogs($_GET['id']);
     foreach ($logs as $log) {
         $date = $log['date'];
         $driver = $log['driver'];
@@ -46,13 +46,13 @@ if (strcmp($action, 'get') === 0) {
         array_push($output, $data);
     }
     echo json_encode(array('draw' => 1, 'recordsTotal' => count($output), 'recordsFiltered' => count($output), 'data' => $output));
-// Retrive a list of all flagged logs by ID.
+    // Retrive a list of all flagged logs by ID.
 } else if (strcmp($action, 'get-flagged') === 0) {
     if (!isset($_GET['id']) || strlen($_GET['id'] < 1)) {
         die('missing id');
     }
     $output = array();
-    $logs = $database->getFlaggedActivityLogs($_GET['id']);
+    $logs = $database->driverRepository->getFlaggedActivityLogs($_GET['id']);
     foreach ($logs as $log) {
         $date = $log['date'];
         $driver = $log['driver'];
@@ -83,10 +83,10 @@ if (strcmp($action, 'get') === 0) {
         array_push($output, $data);
     }
     echo json_encode(array('draw' => 1, 'recordsTotal' => count($output), 'recordsFiltered' => count($output), 'data' => $output));
-// Retrive a list of all logs for all drivers.
+    // Retrive a list of all logs for all drivers.
 } else if (strcmp($action, 'get-all') === 0) {
     $output = array();
-    $logs = $database->getDriverActivityLogs();
+    $logs = $database->driverRepository->getDriverActivityLogs();
     foreach ($logs as $log) {
         $date = $log['date'];
         $driver = $log['driver'];
@@ -117,10 +117,10 @@ if (strcmp($action, 'get') === 0) {
         array_push($output, $data);
     }
     echo json_encode(array('draw' => 1, 'recordsTotal' => count($output), 'recordsFiltered' => count($output), 'data' => $output));
-// Retrieve a list of all flagged logs for all drivers.
+    // Retrieve a list of all flagged logs for all drivers.
 } else if (strcmp($action, 'get-all-flagged') === 0) {
     $output = array();
-    $logs = $database->getFlaggedActivityLogs();
+    $logs = $database->driverRepository->getFlaggedActivityLogs();
     foreach ($logs as $log) {
         $date = $log['date'];
         $driver = $log['driver'];

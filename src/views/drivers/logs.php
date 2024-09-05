@@ -23,7 +23,7 @@ require '../../header.php';
 
                             <ul class="dropdown-menu" id="allDriversDropdown">
                                 <?php
-                                $allDrivers = $database->getAllDrivers();
+                                $allDrivers = $database->driverRepository->getAllDrivers();
 
                                 foreach ($allDrivers as $driver) {
                                     echo '<li><button type="button" class="dropdown-item" id="' . $driver->getFullName() . '">';

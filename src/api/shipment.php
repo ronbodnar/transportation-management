@@ -1,6 +1,6 @@
 <?php
 
-require '../Database.class.php';
+require '../database/Database.php';
 
 $database = new Database();
 
@@ -16,7 +16,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
             die('shipment id not provided');
         }
         $query = $_GET['query'];
-        $shipment = $database->getShipment($query);
+        $shipment = $database->shipmentRepository->getShipment($query);
         if (!$shipment) {
             die('Shipment not found');
         }
@@ -27,7 +27,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
         }
         $query = $_GET['query'];
         $output = array();
-        $shipments = $database->getOutboundShipments($query);
+        $shipments = $database->shipmentRepository->getOutboundShipments($query);
         foreach ($shipments as $shipment) {
             $timestamp = $shipment->getTimestamp();
 
@@ -84,7 +84,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
         }
         $query = $_GET['id'];
         $output = array();
-        $shipments = $database->getOutboundShipmentsByDriverId($query);
+        $shipments = $database->shipmentRepository->getOutboundShipmentsByDriverId($query);
         foreach ($shipments as $shipment) {
             $timestamp = $shipment->getTimestamp();
 
@@ -141,7 +141,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
         }
         $query = $_GET['query'];
         $output = array();
-        $shipments = $database->getInboundShipments($query);
+        $shipments = $database->shipmentRepository->getInboundShipments($query);
         foreach ($shipments as $shipment) {
             $timestamp = $shipment->getTimestamp();
 
@@ -194,7 +194,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
         echo json_encode(array('draw' => 1, 'recordsTotal' => count($output), 'recordsFiltered' => count($output), 'data' => $output));
     } else if (strcmp($action, 'get-ready-shipments') === 0) {
         $output = array();
-        $shipments = $database->getOutboundShipments(3);
+        $shipments = $database->shipmentRepository->getOutboundShipments(3);
         foreach ($shipments as $shipment) {
             $id = $shipment->getId();
             $location = $shipment->getLocation();
@@ -219,7 +219,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
     if (strcmp($action, 'assign-shipment') === 0) {
         if (isset($_POST['id']) && isset($_POST['driverId'])) {
-            $database->assignShipment($_POST['id'], $_POST['driverId']);
+            $database->shipmentRepository->assignShipment($_POST['id'], $_POST['driverId']);
         } else {
             die('Missing required parameters: id, driverId');
         }

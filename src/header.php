@@ -4,31 +4,31 @@ ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(E_ALL & ~E_NOTICE);
 
-ini_set('session.cookie_lifetime', 120 * 60);
+/* ini_set('session.cookie_lifetime', 120 * 60);
 ini_set('session.gc_maxlifetime', 120 * 60);
 
 session_set_cookie_params(120 * 60);
 
-session_start();
+session_start(); */
 
 /*
- * Sessions should expire after 120 minutes
+ * Sessions should expire after 120 minutes (removed for demo)
  */
-if (!isset($_SESSION['CREATED'])) {
+/* if (!isset($_SESSION['CREATED'])) {
     $_SESSION['CREATED'] = time();
 } else if (time() - $_SESSION['CREATED'] > 7200) {
     session_unset();
     session_destroy();
-}
+} */
 
-require 'functions.php';
-require 'Database.class.php';
+require __DIR__ . '/functions.php';
+require __DIR__ . '/database/Database.php';
 
 $database = new Database();
 
 // Commented to set the default user for the demo.
 //$user = isset($_SESSION['id']) ? $database->getUserData($_SESSION['id']) : null;
-$user = $database->getUserData($database->getUserId("demo"));
+$user = $database->userRepository->getUserData($database->userRepository->getUserId("demo"));
 
 $formattedPageNames = array(
     'index' => 'Dashboard',
@@ -41,8 +41,7 @@ $formattedPageNames = array(
 );
 
 $cwd = explode('/', $_SERVER["SCRIPT_FILENAME"]);
-$dir = str_replace('.php', '', $cwd);
-$directoryName = end($dir);
+$directoryName = $cwd[sizeof($cwd) - 2];
 
 $pageTitle = $formattedPageNames[$directoryName];
 
@@ -140,7 +139,8 @@ if ($user === null) {
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="<?php echo getRelativePath(); ?>src/login.php" id="signOut">Sign out</a></li>
+                        <li><a class="dropdown-item" href="<?php //echo getRelativePath() . 'src/login.php'; 
+                                                            ?>#" id="signOut">Sign out</a></li>
                     </ul>
                 </div>
             </div>

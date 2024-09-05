@@ -1,6 +1,6 @@
 <?php
 
-require '../Database.class.php';
+require '../database/Database.php';
 
 $database = new Database();
 
@@ -19,7 +19,7 @@ if (strcmp($action, 'yardMove') === 0) {
     if (!isset($source) || !isset($destination) || !isset($sourceType) || !isset($destinationType) || !isset($driverId)) {
         die('missing parameters, required: source, destination, sourceType, destinationType, driverId');
     }
-    $database->assignYardMove($source, $sourceType, $destination, $destinationType, $driverId);
+    $database->yardRepository->assignYardMove($source, $sourceType, $destination, $destinationType, $driverId);
 } else if (strcmp($action, 'availableList') === 0) {
 } else {
     die('Invalid action: ' . $action);

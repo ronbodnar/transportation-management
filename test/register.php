@@ -3,12 +3,12 @@
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
 
-require '../Database.class.php';
+require '../database/Database.php';
 
 $database = new Database();
 
 echo '<pre>';
-print_r($database->getUserData(1));
+print_r($database->userRepository->getUserData(1));
 echo '</pre>';
 
 function checkDirectories()

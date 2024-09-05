@@ -38,7 +38,7 @@ require '../../header.php';
                             </div>
                             <div class="card-body justify-content-center table-responsive">
                                 <?php
-                                $shipments = $database->getInboundShipments(1);
+                                $shipments = $database->shipmentRepository->getInboundShipments(1);
                                 if (!$shipments || $shipments == null) {
                                     echo 'No shipments found';
                                 } else {
@@ -82,7 +82,7 @@ require '../../header.php';
                             </div>
                             <div class="card-body justify-content-center table-responsive">
                                 <?php
-                                $shipments = $database->getInboundShipments(2);
+                                $shipments = $database->shipmentRepository->getInboundShipments(2);
                                 if (!$shipments || $shipments == null) {
                                     echo 'No shipments found';
                                 } else {

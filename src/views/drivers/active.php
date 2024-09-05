@@ -13,7 +13,7 @@ require '../../header.php';
             <div class="col-md-10">
                 <div class="card content">
                     <div class="card-header">
-                        Active Drivers (<?php echo $database->getActiveDriverCount(); ?>)
+                        Active Drivers (<?php echo $database->driverRepository->getActiveDriverCount(); ?>)
                         <span class="card-header-options"></span>
                     </div>
                     <div class="card-body table-responsive">

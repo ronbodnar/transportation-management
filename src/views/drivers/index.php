@@ -6,7 +6,7 @@ require '../../header.php';
 
 <?php if (isLoggedIn()) {
     if (isset($_GET['id'])) {
-        $driver = $database->getUserData($_GET['id']);
+        $driver = $database->userRepository->getUserData($_GET['id']);
 ?>
         <div class="container-fluid pt-3">
             <div class="overlay-inner">
@@ -57,10 +57,10 @@ require '../../header.php';
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                             <div class="row pt-2">
                                 <?php
-                                $shipmentCount       = ($driver->getId() > 20000 ? $database->getOutboundShipmentCountByDriverId($driver->getId()) : 0);
+                                $shipmentCount       = ($driver->getId() > 20000 ? $database->shipmentRepository->getOutboundShipmentCountByDriverId($driver->getId()) : 0);
                                 $backhaulCount       = ($driver->getId() > 20000 ? rand(10, 25) : 0);
-                                $yardMoveCount       = ($driver->getId() > 20000 ? $database->getYardMovesByDriverId($driver->getId()) : 0);
-                                $flaggedLogCount     = ($driver->getId() > 20000 ? $database->getFlaggedActivityLogsByDriverId($driver->getId()) : 0);
+                                $yardMoveCount       = ($driver->getId() > 20000 ? $database->driverRepository->getYardMovesByDriverId($driver->getId()) : 0);
+                                $flaggedLogCount     = ($driver->getId() > 20000 ? $database->driverRepository->getFlaggedActivityLogsByDriverId($driver->getId()) : 0);
                                 $unplannedStopCount  = ($driver->getId() > 20000 ? rand(15, 50) : 0);
                                 $truckBreakdownCount = ($driver->getId() > 20000 ? rand(15, 50) : 0);
                                 ?>
@@ -203,7 +203,7 @@ require '../../header.php';
                                     </div>
                                     <div class="card-body justify-content-center table-responsive">
                                         <?php
-                                        $shipments = $database->getInboundShipments(1);
+                                        $shipments = $database->shipmentRepository->getInboundShipments(1);
                                         if (!$shipments || $shipments == null) {
                                             echo 'No shipments found';
                                         } else {
@@ -226,7 +226,7 @@ require '../../header.php';
                             <div class="col-md-12">
                                 <div class="card content d-flex">
                                     <div class="card-header">
-                                        Active Drivers (<?php echo $database->getActiveDriverCount(); ?>)
+                                        Active Drivers (<?php echo $database->driverRepository->getActiveDriverCount(); ?>)
                                     </div>
                                     <div class="card-body table-responsive">
                                         <table class="table table-striped" id="activeDriverTable" class="display" style="width:100%">

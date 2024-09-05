@@ -78,7 +78,7 @@ require '../../header.php';
                         <select class="form-select" id="door-or-trailer" name="door-or-trailer" style="width: 40%;">
                             <option selected disabled value="">Select a door...</option>
                             <?php
-                            $availableDoors = $database->getDoorsWithEmptyTrailer();
+                            $availableDoors = $database->dockDoorRepository->getDoorsWithEmptyTrailer();
 
                             echo 'erere<pre>';
                             print_r($availableDoors);

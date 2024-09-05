@@ -5,9 +5,9 @@ require '../../header.php';
 ?>
 
 <?php if (isLoggedIn()) {
-    $shipment = $database->getShipment($_GET['id']);
+    $shipment = $database->shipmentRepository->getShipment($_GET['id']);
     if ($shipment == null || !$shipment) {
-        $shipment = $database->getInboundShipment($_GET['id']);
+        $shipment = $database->shipmentRepository->getInboundShipment($_GET['id']);
     }
 ?>
     <div class="container-fluid pt-3">
@@ -17,7 +17,7 @@ require '../../header.php';
 
         <div class="card content mt-5">
             <div class="card-header-options-no-header">
-                <a href="/projects/logistics-management/shipments/edit.php?id=<?php echo $shipment->getId(); ?>" class="btn btn-sm btn-secondary mt-2"><i class="bi bi-pencil"></i> Edit Shipment</a>
+                <a href="/projects/logistics-management/src/views/shipments/edit.php?id=<?php echo $shipment->getId(); ?>" class="btn btn-sm btn-secondary mt-2"><i class="bi bi-pencil"></i> Edit Shipment</a>
             </div>
 
             <div class="card-body table-responsive">

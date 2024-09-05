@@ -6,7 +6,7 @@ require '../../header.php';
 
 <?php if (isLoggedIn()) {
     if (isset($_GET['id'])) {
-        $driver = $database->getUserData($_GET['id']);
+        $driver = $database->userRepository->getUserData($_GET['id']);
 ?>
         <div class="container-fluid pt-3">
             <div class="overlay-inner">
@@ -58,10 +58,10 @@ require '../../header.php';
                         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                             <div class="row pt-2">
                                 <?php
-                                $shipmentCount       = $database->getOutboundShipmentCountByDriverId($driver->getId());
+                                $shipmentCount       = $database->shipmentRepository->getOutboundShipmentCountByDriverId($driver->getId());
                                 $backhaulCount       = rand(10, 25);
-                                $yardMoveCount       = $database->getYardMovesByDriverId($driver->getId());
-                                $flaggedLogCount     = $database->getFlaggedActivityLogsByDriverId($driver->getId());
+                                $yardMoveCount       = $database->driverRepository->getYardMovesByDriverId($driver->getId());
+                                $flaggedLogCount     = $database->driverRepository->getFlaggedActivityLogsByDriverId($driver->getId());
                                 $unplannedStopCount  = rand(15, 50);
                                 $truckBreakdownCount = rand(15, 50);
                                 ?>
@@ -89,13 +89,13 @@ require '../../header.php';
                                     <div class="row pt-2 d-flex justify-content-center">
                                         <div class="col-md-5 pt-2 pb-2 fw-bold" style="font-size: 0.9rem;">Shipments</div>
                                         <div class="col-md-5 pt-2 pb-2 fw-bold" style="font-size: 0.9rem;">Backhauls</div>
-                                        <div class="col-md-5 pb-3" id="averageShipments" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $database->getOutboundShipmentCountByDriverId($driver->getId()); ?></div>
+                                        <div class="col-md-5 pb-3" id="averageShipments" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $database->shipmentRepository->getOutboundShipmentCountByDriverId($driver->getId()); ?></div>
                                         <div class="col-md-5 pb-3" id="averageBackhauls" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo rand(10, 25); ?></div>
 
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Yard Moves</div>
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Flagged Logs</div>
-                                        <div class="col-md-5 pb-3" id="averageYardMoves" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $database->getYardMovesByDriverId($driver->getId()); ?></div>
-                                        <div class="col-md-5 pb-3" id="averageShiftTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $database->getFlaggedActivityLogsByDriverId($driver->getId()); ?></div>
+                                        <div class="col-md-5 pb-3" id="averageYardMoves" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $database->driverRepository->getYardMovesByDriverId($driver->getId()); ?></div>
+                                        <div class="col-md-5 pb-3" id="averageShiftTime" style="border-bottom: 1px solid var(--separator-line-color);"><?php echo $database->driverRepository->getFlaggedActivityLogsByDriverId($driver->getId()); ?></div>
 
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Unplanned Stops</div>
                                         <div class="col-md-5 fw-bold pb-2 pt-2" style="font-size: 0.9rem;">Truck Breakdowns</div>
@@ -204,7 +204,7 @@ require '../../header.php';
                                     </div>
                                     <div class="card-body justify-content-center table-responsive">
                                         <?php
-                                        $shipments = $database->getInboundShipments(1);
+                                        $shipments = $database->shipmentRepository->getInboundShipments(1);
                                         if (!$shipments || $shipments == null) {
                                             echo 'No shipments found';
                                         } else {
@@ -227,7 +227,7 @@ require '../../header.php';
                             <div class="col-md-12">
                                 <div class="card content d-flex">
                                     <div class="card-header">
-                                        Active Drivers (<?php echo $database->getActiveDriverCount(); ?>)
+                                        Active Drivers (<?php echo $database->driverRepository->getActiveDriverCount(); ?>)
                                     </div>
                                     <div class="card-body table-responsive">
                                         <table class="table table-striped" id="activeDriverTable" class="display" style="width:100%">

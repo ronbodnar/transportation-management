@@ -1,6 +1,6 @@
 <?php
 
-require '../Database.class.php';
+require '../database/Database.php';
 
 $database = new Database();
 
@@ -13,7 +13,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
     $action = isset($_GET['action']) ? $_GET['action'] : '';
 
     if (strcmp($action, 'trailerList') === 0) {
-        $doors = $database->getYardData();
+        $doors = $database->yardRepository->getYardData();
 
         $output = array();
         foreach ($doors as $key => $value) {
@@ -54,7 +54,7 @@ if (strcmp($requestMethod, 'GET') === 0) {
         }
         echo json_encode(array('draw' => 1, 'recordsTotal' => count($output), 'recordsFiltered' => count($output), 'data' => $output));
     } else if (strcmp($action, 'count') === 0) {
-        echo $database->countTrailersInYard();
+        echo $database->yardRepository->countTrailersInYard();
     } else {
         die('Invalid action: ' . $action);
     }
@@ -65,13 +65,13 @@ if (strcmp($requestMethod, 'GET') === 0) {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
     if (strcmp($action, 'add') === 0) {
         if (isset($_POST['driverId'])) {
-            $database->addToYard($_POST['driverId']);
+            $database->yardRepository->addToYard($_POST['driverId']);
         } else {
             die('Missing required parameters: trailerId, driverId');
         }
     } else if (strcmp($action, 'remove') === 0) {
         if (isset($_POST['trailerId'])) {
-            $database->removeFromYard($_POST['trailerId']);
+            $database->yardRepository->removeFromYard($_POST['trailerId']);
         } else {
             die('Missing required parameters: trailerId');
         }

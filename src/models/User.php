@@ -57,11 +57,13 @@ class User
         return $this->firstName . ' ' . $this->lastName;
     }
 
-    public function getPhoneNumber() {
+    public function getPhoneNumber()
+    {
         return $this->phoneNumber;
     }
 
-    public function getCarrier() {
+    public function getCarrier()
+    {
         return $this->carrier;
     }
 
@@ -86,7 +88,5 @@ class User
         foreach ($data as $key => $value) $this->{$key} = $value;
     }
 
-    public function toJson()
-    {
-    }
+    public function toJson() {}
 }

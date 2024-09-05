@@ -1,6 +1,6 @@
 <?php
 
-require '../Database.class.php';
+require_once '../database/Database.php';
 
 $database = new Database();
 
@@ -12,7 +12,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 // Populate a list of all drivers assigned to the account
 if (strcmp($action, 'list') === 0) {
     $output = array();
-    $shipments = $database->getAllDrivers(false);
+    $shipments = $database->driverRepository->getAllDrivers(false);
     foreach ($shipments as $shipment) {
         $data = array(
             'id' => $shipment->getId(),
@@ -25,7 +25,7 @@ if (strcmp($action, 'list') === 0) {
     // Populate a list of drivers that are currently active (on-duty).
 } else if (strcmp($action, 'activeList') === 0) {
     $output = array();
-    $shipments = $database->getActiveDrivers();
+    $shipments = $database->driverRepository->getActiveDrivers();
     foreach ($shipments as $shipment) {
         $lastUpdate = new DateTime($shipment['lastUpdate']);
         $lastUpdate = $lastUpdate->format('g:i A');
@@ -48,7 +48,7 @@ if (strcmp($action, 'list') === 0) {
     // Populate a list of drivers that are available (at the facility and not tied to a shipment).
 } else if (strcmp($action, 'availableList') === 0) {
     $output = array();
-    $shipments = $database->getAvailableDrivers();
+    $shipments = $database->driverRepository->getAvailableDrivers();
     $index = 1;
     foreach ($shipments as $shipment) {
         $lastUpdate = new DateTime($shipment['lastUpdate']);
@@ -80,13 +80,13 @@ if (strcmp($action, 'list') === 0) {
     echo json_encode(array('draw' => 1, 'recordsTotal' => count($output), 'recordsFiltered' => count($output), 'data' => $output));
     // Retrieve the number of available drivers
 } else if (strcmp($action, 'availableCount') === 0) {
-    echo $database->getAvailableDriverCount();
+    echo $database->driverRepository->getAvailableDriverCount();
     // Retrieve the specified driver's status
 } else if (strcmp($action, 'get-status') == 0) {
     if (!isset($_GET['driverId'])) {
         die('Missing driver id');
     }
-    $status = $database->getDriverStatus($_GET['driverId']);
+    $status = $database->driverRepository->getDriverStatus($_GET['driverId']);
 
     $output = array('status' => $status);
 
@@ -96,7 +96,7 @@ if (strcmp($action, 'list') === 0) {
     if (!isset($_GET['driverId'])) {
         die('Missing driverId');
     }
-    $database->updateDriverStatus($_GET['driverId'], 9);
+    $database->driverRepository->updateDriverStatus($_GET['driverId'], 9);
 } else {
     die('Invalid action: ' . $action);
 }

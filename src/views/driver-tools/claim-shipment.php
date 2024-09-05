@@ -14,7 +14,7 @@ if (!isLoggedIn()) {
                 <div class="card content d-flex">
                     <div class="card-body chart-container justify-content-center table-responsive">
                         <?php
-                        $shipments = $database->getOutboundShipments(6);
+                        $shipments = $database->shipmentRepository->getOutboundShipments(6);
                         if (!$shipments || $shipments == null) {
                             echo 'No shipments found';
                         } else {

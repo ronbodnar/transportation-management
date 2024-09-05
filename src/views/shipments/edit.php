@@ -5,9 +5,9 @@ require '../../header.php';
 ?>
 
 <?php if (isLoggedIn()) {
-    $shipment = $database->getShipment($_GET['id']);
+    $shipment = $database->shipmentRepository->getShipment($_GET['id']);
     if ($shipment == null || !$shipment) {
-        $shipment = $database->getInboundShipment($_GET['id']);
+        $shipment = $database->shipmentRepository->getInboundShipment($_GET['id']);
     }
 ?>
     <div class="container-fluid pt-3">
