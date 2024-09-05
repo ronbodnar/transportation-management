@@ -189,7 +189,11 @@ function format(d) {
     "</tr>" +
     "</tbody>" +
     "</table></div></div></div></div>"
+<<<<<<< HEAD
   )
+=======
+  );
+>>>>>>> origin/master
 }
 
 function format2(d) {
@@ -225,7 +229,11 @@ function format2(d) {
     "<td>3:21 PM</td>" +
     "<td>3:29 PM</td>" +
     "<td>3:46 PM</td>" +
+<<<<<<< HEAD
     '<td><a class="text-mron" href="/projects/logistics-management/shipments/details.php?id=5013841193" target="_blank">5013841193</a></td>' +
+=======
+    '<td><a class="text-mron" href="/projects/logistics-management/shipments/details?id=5013841193" target="_blank">5013841193</a></td>' +
+>>>>>>> origin/master
     "<td>50191</td>" +
     "<td>43 mins</td>" +
     "</tr>" +
@@ -265,7 +273,11 @@ function format2(d) {
     "<td>11:26 PM</td>" +
     "<td>11:26 PM</td>" +
     "<td>11:45 PM</td>" +
+<<<<<<< HEAD
     ' <td><a class="text-mron" href="/projects/logistics-management/shipments/details.php?id=5012802619" target="_blank">5012802619</a></td>' +
+=======
+    ' <td><a class="text-mron" href="/projects/logistics-management/shipments/details?id=5012802619" target="_blank">5012802619</a></td>' +
+>>>>>>> origin/master
     "<td>5001</td>" +
     " <td>1 hr 5 mins</td>" +
     "</tr>" +
@@ -282,7 +294,11 @@ function format2(d) {
     "<tr>" +
     "</tbody>" +
     "</table></div></div></div></div>"
+<<<<<<< HEAD
   )
+=======
+  );
+>>>>>>> origin/master
 }
 
 function format3(d) {
@@ -315,7 +331,11 @@ function format3(d) {
     '<td class="text-center">3:03 PM</td>' +
     '<td class="text-center">3:21 PM</td>' +
     '<td class="text-center">3:46 PM</td>' +
+<<<<<<< HEAD
     '<td class="text-center"><a class="text-mron" href="/projects/logistics-management/shipments/details.php?id=5013841193" target="_blank">5013841193</a></td>' +
+=======
+    '<td class="text-center"><a class="text-mron" href="/projects/logistics-management/shipments/details?id=5013841193" target="_blank">5013841193</a></td>' +
+>>>>>>> origin/master
     '<td class="text-center">43 mins</td>' +
     "</tr>" +
     "<tr>" +
@@ -347,7 +367,11 @@ function format3(d) {
     '<td class="text-center">10:40 PM</td>' +
     '<td class="text-center">11:26 PM</td>' +
     '<td class="text-center">11:45 PM</td>' +
+<<<<<<< HEAD
     ' <td class="text-center"><a class="text-mron" href="/projects/logistics-management/shipments/details.php?id=5012802619" target="_blank">5012802619</a></td>' +
+=======
+    ' <td class="text-center"><a class="text-mron" href="/projects/logistics-management/shipments/details?id=5012802619" target="_blank">5012802619</a></td>' +
+>>>>>>> origin/master
     ' <td class="text-center">1 hr 5 mins</td>' +
     "</tr>" +
     "<tr>" +
@@ -361,6 +385,7 @@ function format3(d) {
     "<tr>" +
     "</tbody>" +
     "</table></div></div></div></div>"
+<<<<<<< HEAD
   )
 }
 
@@ -368,35 +393,65 @@ var dataIndex = 0
 
 $(document).ready(function () {
   $.fn.dataTable.moment("l")
+=======
+  );
+}
+
+var dataIndex = 0;
+
+$(document).ready(function () {
+  $.fn.dataTable.moment("l");
+>>>>>>> origin/master
 
   var allDriverTable = $("#allDriverTable").DataTable({
     responsive: true,
     paging: false,
     searching: false,
     info: false,
+<<<<<<< HEAD
     ajax: fileLocation + "../../../../../src/api/driver.php?action=list",
+=======
+    ajax: fileLocation + "../../../../../src/requests/driver.php?action=list",
+>>>>>>> origin/master
     columns: [{ data: "name" }],
     columnDefs: [
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Daily Activity Log")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Daily Activity Log");
+>>>>>>> origin/master
         },
       },
     ],
     drawCallback: function (data) {
+<<<<<<< HEAD
       initializePopovers()
     },
   })
+=======
+      initializePopovers();
+    },
+  });
+>>>>>>> origin/master
   var activeDriverTable = $("#activeDriverTable").DataTable({
     responsive: true,
     paging: false,
     searching: false,
     info: false,
+<<<<<<< HEAD
     ajax: fileLocation + "../../../../../src/api/driver.php?action=activeList",
+=======
+    ajax: fileLocation + "../../../../../src/requests/driver.php?action=activeList",
+>>>>>>> origin/master
     columns: [
       {
         className: "dt-control",
@@ -415,18 +470,31 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Daily Activity Log")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Daily Activity Log");
+>>>>>>> origin/master
         },
       },
     ],
     order: [[2, "asc"]],
     drawCallback: function (data) {
+<<<<<<< HEAD
       initializePopovers()
     },
   })
+=======
+      initializePopovers();
+    },
+  });
+>>>>>>> origin/master
 
   var availableDriversTable = $("#availableDriversTable").DataTable({
     responsive: true,
@@ -434,7 +502,11 @@ $(document).ready(function () {
     searching: false,
     info: false,
     ordering: false,
+<<<<<<< HEAD
     ajax: fileLocation + "../../src/api/driver.php?action=availableList",
+=======
+    ajax: fileLocation + "../../src/requests/driver.php?action=availableList",
+>>>>>>> origin/master
     columns: [
       {
         className: "",
@@ -443,15 +515,24 @@ $(document).ready(function () {
         defaultContent: "",
         width: "1%",
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           var content = row.carrierId === "1" ? "N" : "C"
           var color = content === "N" ? "#00ADEF" : "#B60002"
+=======
+          var content = row.carrierId === "1" ? "N" : "C";
+          var color = content === "N" ? "#00ADEF" : "#B60002";
+>>>>>>> origin/master
           return (
             '<span class="dt-nrt" data-terminal="' +
             content +
             '" style="--text-color: ' +
             color +
             ';"></span>'
+<<<<<<< HEAD
           )
+=======
+          );
+>>>>>>> origin/master
         },
       },
       { data: "name" },
@@ -464,6 +545,7 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
@@ -475,6 +557,19 @@ $(document).ready(function () {
             $(td).attr("title", "Northern Yard")
           } else {
             $(td).attr("title", "Danone Plant")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+
+          var location = rowData.startingLocation;
+          if (location === "Cordova") {
+            $(td).attr("title", rowData.startingLocation + " Driver");
+          } else if (location === "Northern") {
+            $(td).attr("title", "Northern Yard");
+          } else {
+            $(td).attr("title", "Danone Plant");
+>>>>>>> origin/master
           }
         },
       },
@@ -483,6 +578,7 @@ $(document).ready(function () {
       emptyTable: "<em>There are currently no available drivers</em>",
     },
     drawCallback: function (data) {
+<<<<<<< HEAD
       initializePopovers()
     },
   })
@@ -490,6 +586,14 @@ $(document).ready(function () {
   var flaggedActivityLogsTable = $("#flaggedActivityLogsTable").DataTable({
     ajax:
       fileLocation + "../../../../../src/api/logs.php?action=get-all-flagged",
+=======
+      initializePopovers();
+    },
+  });
+
+  var flaggedActivityLogsTable = $("#flaggedActivityLogsTable").DataTable({
+    ajax: fileLocation + "../../../../../src/requests/logs.php?action=get-all-flagged",
+>>>>>>> origin/master
     responsive: true,
     columns: [
       { data: "date" },
@@ -506,6 +610,7 @@ $(document).ready(function () {
       {
         target: [4],
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           return data === null ? "- - - - - -" : moment(data).format("LT")
         },
         createdCell: function (td, cellData, rowData, row, col) {
@@ -513,6 +618,15 @@ $(document).ready(function () {
           var departureTime = moment(rowData.depatureTime)
           var instructionsReceived = moment(rowData.instructionsReceived)
           var instructionsAccepted = moment(rowData.instructionsAccepted)
+=======
+          return data === null ? "- - - - - -" : moment(data).format("LT");
+        },
+        createdCell: function (td, cellData, rowData, row, col) {
+          var arrivalTime = moment(rowData.arrivalTime);
+          var departureTime = moment(rowData.depatureTime);
+          var instructionsReceived = moment(rowData.instructionsReceived);
+          var instructionsAccepted = moment(rowData.instructionsAccepted);
+>>>>>>> origin/master
 
           if (
             arrivalTime.isValid() &&
@@ -520,10 +634,17 @@ $(document).ready(function () {
             !instructionsReceived.isValid() &&
             !instructionsAccepted.isValid()
           ) {
+<<<<<<< HEAD
             var difference = moment.duration(departureTime.diff(arrivalTime))
             if (difference > 60000 * 30) {
               // 30 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            var difference = moment.duration(departureTime.diff(arrivalTime));
+            if (difference > 60000 * 30) {
+              // 30 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
         },
@@ -532,11 +653,19 @@ $(document).ready(function () {
         // Instructions Received
         target: [5],
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           return data === null ? "- - - - - -" : moment(data).format("LT")
         },
         createdCell: function (td, cellData, rowData, row, col) {
           var instructionsReceived = moment(rowData.instructionsReceived)
           var instructionsAccepted = moment(rowData.instructionsAccepted)
+=======
+          return data === null ? "- - - - - -" : moment(data).format("LT");
+        },
+        createdCell: function (td, cellData, rowData, row, col) {
+          var instructionsReceived = moment(rowData.instructionsReceived);
+          var instructionsAccepted = moment(rowData.instructionsAccepted);
+>>>>>>> origin/master
 
           if (
             instructionsAccepted.isValid() &&
@@ -544,10 +673,17 @@ $(document).ready(function () {
           ) {
             var difference = moment.duration(
               instructionsAccepted.diff(instructionsReceived)
+<<<<<<< HEAD
             )
             if (difference > 60000 * 10) {
               // 10 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            );
+            if (difference > 60000 * 10) {
+              // 10 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
         },
@@ -556,12 +692,21 @@ $(document).ready(function () {
         // Instructions Accepted
         target: [6],
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           return data === null ? "- - - - - -" : moment(data).format("LT")
         },
         createdCell: function (td, cellData, rowData, row, col) {
           var instructionsReceived = moment(rowData.instructionsReceived)
           var instructionsAccepted = moment(rowData.instructionsAccepted)
           var departureTime = moment(rowData.departureTime)
+=======
+          return data === null ? "- - - - - -" : moment(data).format("LT");
+        },
+        createdCell: function (td, cellData, rowData, row, col) {
+          var instructionsReceived = moment(rowData.instructionsReceived);
+          var instructionsAccepted = moment(rowData.instructionsAccepted);
+          var departureTime = moment(rowData.departureTime);
+>>>>>>> origin/master
 
           if (
             instructionsAccepted.isValid() &&
@@ -569,20 +714,34 @@ $(document).ready(function () {
           ) {
             var difference = moment.duration(
               instructionsAccepted.diff(instructionsReceived)
+<<<<<<< HEAD
             )
             if (difference > 60000 * 10) {
               // 10 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            );
+            if (difference > 60000 * 10) {
+              // 10 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
 
           if (instructionsAccepted.isValid() && departureTime.isValid()) {
             var difference = moment.duration(
               departureTime.diff(instructionsAccepted)
+<<<<<<< HEAD
             )
             if (difference > 60000 * (20 + rowData.yardMoves * 7)) {
               // 20 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            );
+            if (difference > 60000 * (20 + rowData.yardMoves * 7)) {
+              // 20 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
         },
@@ -590,6 +749,7 @@ $(document).ready(function () {
       {
         target: [7],
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           return data === null ? "- - - - - -" : moment(data).format("LT")
         },
         createdCell: function (td, cellData, rowData, row, col) {
@@ -597,14 +757,30 @@ $(document).ready(function () {
           var instructionsReceived = moment(rowData.instructionsReceived)
           var instructionsAccepted = moment(rowData.instructionsAccepted)
           var departureTime = moment(rowData.departureTime)
+=======
+          return data === null ? "- - - - - -" : moment(data).format("LT");
+        },
+        createdCell: function (td, cellData, rowData, row, col) {
+          var arrivalTime = moment(rowData.arrivalTime);
+          var instructionsReceived = moment(rowData.instructionsReceived);
+          var instructionsAccepted = moment(rowData.instructionsAccepted);
+          var departureTime = moment(rowData.departureTime);
+>>>>>>> origin/master
 
           if (instructionsAccepted.isValid() && departureTime.isValid()) {
             var difference = moment.duration(
               departureTime.diff(instructionsAccepted)
+<<<<<<< HEAD
             )
             if (difference > 60000 * (20 + rowData.yardMoves * 5)) {
               // 20 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            );
+            if (difference > 60000 * (20 + rowData.yardMoves * 5)) {
+              // 20 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
 
@@ -614,10 +790,17 @@ $(document).ready(function () {
             !instructionsReceived.isValid() &&
             !instructionsAccepted.isValid()
           ) {
+<<<<<<< HEAD
             var difference = moment.duration(departureTime.diff(arrivalTime))
             if (difference > 60000 * 30) {
               // 25 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            var difference = moment.duration(departureTime.diff(arrivalTime));
+            if (difference > 60000 * 30) {
+              // 25 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
         },
@@ -631,7 +814,11 @@ $(document).ready(function () {
     drawCallback: function (data) {
       //initializePopovers2();
     },
+<<<<<<< HEAD
   })
+=======
+  });
+>>>>>>> origin/master
 
   var shipmentProductListTable = $("#shipmentProductListTable").DataTable({
     ajax: fileLocation + "../../../../../config/products.txt",
@@ -656,9 +843,15 @@ $(document).ready(function () {
       { data: "expiration", width: "15%" },
     ],
     order: [[0, "asc"]],
+<<<<<<< HEAD
   })
 
   const urlParams = new URLSearchParams(window.location.search)
+=======
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+>>>>>>> origin/master
 
   var driverPersonalActivityLogTable = $(
     "#driverPersonalActivityLogTable"
@@ -689,10 +882,17 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Daily Activity Log")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Daily Activity Log");
+>>>>>>> origin/master
         },
       },
     ],
@@ -701,16 +901,26 @@ $(document).ready(function () {
     },
     order: [[1, "desc"]],
     drawCallback: function (data) {
+<<<<<<< HEAD
       initializePopovers2()
     },
   })
+=======
+      initializePopovers2();
+    },
+  });
+>>>>>>> origin/master
 
   var driverPersonalFlaggedActivityLogTable = $(
     "#driverPersonalFlaggedActivityLogTable"
   ).DataTable({
     ajax:
       fileLocation +
+<<<<<<< HEAD
       "../../../../../src/api/logs.php?action=get-flagged&id=" +
+=======
+      "../../../../../src/requests/logs.php?action=get-flagged&id=" +
+>>>>>>> origin/master
       urlParams.get("id"),
     autoWidth: false,
     responsive: true,
@@ -731,21 +941,33 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Daily Activity Log")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Daily Activity Log");
+>>>>>>> origin/master
         },
       },
       {
         target: [0],
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           return data === null ? "- - - - - -" : moment(data).format("L")
+=======
+          return data === null ? "- - - - - -" : moment(data).format("L");
+>>>>>>> origin/master
         },
       },
       {
         target: [2],
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           return data === null ? "- - - - - -" : moment(data).format("LT")
         },
         createdCell: function (td, cellData, rowData, row, col) {
@@ -753,6 +975,15 @@ $(document).ready(function () {
           var departureTime = moment(rowData.depatureTime)
           var instructionsReceived = moment(rowData.instructionsReceived)
           var instructionsAccepted = moment(rowData.instructionsAccepted)
+=======
+          return data === null ? "- - - - - -" : moment(data).format("LT");
+        },
+        createdCell: function (td, cellData, rowData, row, col) {
+          var arrivalTime = moment(rowData.arrivalTime);
+          var departureTime = moment(rowData.depatureTime);
+          var instructionsReceived = moment(rowData.instructionsReceived);
+          var instructionsAccepted = moment(rowData.instructionsAccepted);
+>>>>>>> origin/master
 
           if (
             arrivalTime.isValid() &&
@@ -760,10 +991,17 @@ $(document).ready(function () {
             !instructionsReceived.isValid() &&
             !instructionsAccepted.isValid()
           ) {
+<<<<<<< HEAD
             var difference = moment.duration(departureTime.diff(arrivalTime))
             if (difference > 60000 * 30) {
               // 30 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            var difference = moment.duration(departureTime.diff(arrivalTime));
+            if (difference > 60000 * 30) {
+              // 30 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
         },
@@ -772,11 +1010,19 @@ $(document).ready(function () {
         // Instructions Received
         target: [3],
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           return data === null ? "- - - - - -" : moment(data).format("LT")
         },
         createdCell: function (td, cellData, rowData, row, col) {
           var instructionsReceived = moment(rowData.instructionsReceived)
           var instructionsAccepted = moment(rowData.instructionsAccepted)
+=======
+          return data === null ? "- - - - - -" : moment(data).format("LT");
+        },
+        createdCell: function (td, cellData, rowData, row, col) {
+          var instructionsReceived = moment(rowData.instructionsReceived);
+          var instructionsAccepted = moment(rowData.instructionsAccepted);
+>>>>>>> origin/master
 
           if (
             instructionsAccepted.isValid() &&
@@ -784,10 +1030,17 @@ $(document).ready(function () {
           ) {
             var difference = moment.duration(
               instructionsAccepted.diff(instructionsReceived)
+<<<<<<< HEAD
             )
             if (difference > 60000 * 10) {
               // 10 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            );
+            if (difference > 60000 * 10) {
+              // 10 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
         },
@@ -796,12 +1049,21 @@ $(document).ready(function () {
         // Instructions Accepted
         target: [4],
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           return data === null ? "- - - - - -" : moment(data).format("LT")
         },
         createdCell: function (td, cellData, rowData, row, col) {
           var instructionsReceived = moment(rowData.instructionsReceived)
           var instructionsAccepted = moment(rowData.instructionsAccepted)
           var departureTime = moment(rowData.departureTime)
+=======
+          return data === null ? "- - - - - -" : moment(data).format("LT");
+        },
+        createdCell: function (td, cellData, rowData, row, col) {
+          var instructionsReceived = moment(rowData.instructionsReceived);
+          var instructionsAccepted = moment(rowData.instructionsAccepted);
+          var departureTime = moment(rowData.departureTime);
+>>>>>>> origin/master
 
           if (
             instructionsAccepted.isValid() &&
@@ -809,20 +1071,34 @@ $(document).ready(function () {
           ) {
             var difference = moment.duration(
               instructionsAccepted.diff(instructionsReceived)
+<<<<<<< HEAD
             )
             if (difference > 60000 * 10) {
               // 10 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            );
+            if (difference > 60000 * 10) {
+              // 10 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
 
           if (instructionsAccepted.isValid() && departureTime.isValid()) {
             var difference = moment.duration(
               departureTime.diff(instructionsAccepted)
+<<<<<<< HEAD
             )
             if (difference > 60000 * (20 + rowData.yardMoves * 7)) {
               // 20 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            );
+            if (difference > 60000 * (20 + rowData.yardMoves * 7)) {
+              // 20 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
         },
@@ -830,6 +1106,7 @@ $(document).ready(function () {
       {
         target: [5],
         render: function (data, type, row, meta) {
+<<<<<<< HEAD
           return data === null ? "- - - - - -" : moment(data).format("LT")
         },
         createdCell: function (td, cellData, rowData, row, col) {
@@ -837,14 +1114,30 @@ $(document).ready(function () {
           var instructionsReceived = moment(rowData.instructionsReceived)
           var instructionsAccepted = moment(rowData.instructionsAccepted)
           var departureTime = moment(rowData.departureTime)
+=======
+          return data === null ? "- - - - - -" : moment(data).format("LT");
+        },
+        createdCell: function (td, cellData, rowData, row, col) {
+          var arrivalTime = moment(rowData.arrivalTime);
+          var instructionsReceived = moment(rowData.instructionsReceived);
+          var instructionsAccepted = moment(rowData.instructionsAccepted);
+          var departureTime = moment(rowData.departureTime);
+>>>>>>> origin/master
 
           if (instructionsAccepted.isValid() && departureTime.isValid()) {
             var difference = moment.duration(
               departureTime.diff(instructionsAccepted)
+<<<<<<< HEAD
             )
             if (difference > 60000 * (20 + rowData.yardMoves * 5)) {
               // 20 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            );
+            if (difference > 60000 * (20 + rowData.yardMoves * 5)) {
+              // 20 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
 
@@ -854,10 +1147,17 @@ $(document).ready(function () {
             !instructionsReceived.isValid() &&
             !instructionsAccepted.isValid()
           ) {
+<<<<<<< HEAD
             var difference = moment.duration(departureTime.diff(arrivalTime))
             if (difference > 60000 * 30) {
               // 25 minutes
               $(td).css("background-color", "rgba(255, 0, 0, 0.2)")
+=======
+            var difference = moment.duration(departureTime.diff(arrivalTime));
+            if (difference > 60000 * 30) {
+              // 25 minutes
+              $(td).css("background-color", "rgba(255, 0, 0, 0.2)");
+>>>>>>> origin/master
             }
           }
         },
@@ -868,16 +1168,26 @@ $(document).ready(function () {
     },
     order: [[0, "desc"]],
     drawCallback: function (data) {
+<<<<<<< HEAD
       initializePopovers2()
     },
   })
+=======
+      initializePopovers2();
+    },
+  });
+>>>>>>> origin/master
 
   var driverCompletedShipmentsTable = $(
     "#driverCompletedShipmentsTable"
   ).DataTable({
     ajax:
       fileLocation +
+<<<<<<< HEAD
       "../../../../../src/api/shipment.php?action=get-driver-shipments&id=" +
+=======
+      "../../../../../src/requests/shipment.php?action=get-driver-shipments&id=" +
+>>>>>>> origin/master
       urlParams.get("id"),
     autoWidth: false,
     responsive: true,
@@ -913,15 +1223,26 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Product Information")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Product Information");
+>>>>>>> origin/master
         },
       },
     ],
     order: [[1, "desc"]],
+<<<<<<< HEAD
   })
+=======
+  });
+>>>>>>> origin/master
 
   var driverActivityLogTable = $("#driverActivityLogTable").DataTable({
     ajax: "",
@@ -949,10 +1270,17 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Daily Activity Log")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Daily Activity Log");
+>>>>>>> origin/master
         },
       },
     ],
@@ -962,9 +1290,15 @@ $(document).ready(function () {
     },
     order: [[2, "asc"]],
     drawCallback: function (data) {
+<<<<<<< HEAD
       initializePopovers2()
     },
   })
+=======
+      initializePopovers2();
+    },
+  });
+>>>>>>> origin/master
 
   var southernDoorsTable = $("#southernDoorsTable").DataTable({
     responsive: true,
@@ -972,7 +1306,11 @@ $(document).ready(function () {
     searching: false,
     info: false,
     ordering: false,
+<<<<<<< HEAD
     ajax: fileLocation + "../../src/api/doors.php?action=southList",
+=======
+    ajax: fileLocation + "../../src/requests/doors.php?action=southList",
+>>>>>>> origin/master
     columns: [
       { data: "door" },
       { data: "carrier" },
@@ -980,10 +1318,17 @@ $(document).ready(function () {
       { data: "status", className: "text-center" },
     ],
     drawCallback: function (data) {
+<<<<<<< HEAD
       initializeTooltips()
 
       $('[data-toggle="popover-shipment"]').each(function () {
         var id = $(this).attr("data-index")
+=======
+      initializeTooltips();
+
+      $('[data-toggle="popover-shipment"]').each(function () {
+        var id = $(this).attr("data-index");
+>>>>>>> origin/master
         $(this).popover({
           html: true,
           sanitize: false,
@@ -996,6 +1341,7 @@ $(document).ready(function () {
             id +
             '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-green); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
           title: function () {
+<<<<<<< HEAD
             return "Shipment Details"
           },
           content: function () {
@@ -1005,6 +1351,19 @@ $(document).ready(function () {
       })
     },
   })
+=======
+            return "Shipment Details";
+          },
+          content: function () {
+            return $(
+              "#assign-" + $(this).attr("data-type") + "-popover"
+            ).html();
+          },
+        });
+      });
+    },
+  });
+>>>>>>> origin/master
 
   var northernDoorsTable = $("#northernDoorsTable").DataTable({
     responsive: true,
@@ -1012,7 +1371,11 @@ $(document).ready(function () {
     searching: false,
     info: false,
     ordering: false,
+<<<<<<< HEAD
     ajax: fileLocation + "../../src/api/doors.php?action=northList",
+=======
+    ajax: fileLocation + "../../src/requests/doors.php?action=northList",
+>>>>>>> origin/master
     columns: [
       { data: "door" },
       { data: "carrier" },
@@ -1020,9 +1383,15 @@ $(document).ready(function () {
       { data: "status", className: "text-center" },
     ],
     drawCallback: function (data) {
+<<<<<<< HEAD
       initializeTooltips()
       $('[data-toggle="popover-shipment"]').each(function () {
         var id = $(this).attr("data-index")
+=======
+      initializeTooltips();
+      $('[data-toggle="popover-shipment"]').each(function () {
+        var id = $(this).attr("data-index");
+>>>>>>> origin/master
         $(this).popover({
           html: true,
           sanitize: false,
@@ -1035,6 +1404,7 @@ $(document).ready(function () {
             id +
             '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-green); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
           title: function () {
+<<<<<<< HEAD
             return "Shipment Details"
           },
           content: function () {
@@ -1044,6 +1414,19 @@ $(document).ready(function () {
       })
     },
   })
+=======
+            return "Shipment Details";
+          },
+          content: function () {
+            return $(
+              "#assign-" + $(this).attr("data-type") + "-popover"
+            ).html();
+          },
+        });
+      });
+    },
+  });
+>>>>>>> origin/master
 
   var yardTable = $("#yardTable").DataTable({
     responsive: true,
@@ -1051,7 +1434,11 @@ $(document).ready(function () {
     searching: false,
     info: false,
     ordering: false,
+<<<<<<< HEAD
     ajax: fileLocation + "../../src/api/yard.php?action=trailerList",
+=======
+    ajax: fileLocation + "../../src/requests/yard.php?action=trailerList",
+>>>>>>> origin/master
     columns: [
       { data: "carrier", width: "45%" },
       { data: "trailer", width: "35%" },
@@ -1059,7 +1446,11 @@ $(document).ready(function () {
     ],
     drawCallback: function (data) {
       $('[data-toggle="popover-shipment"]').each(function () {
+<<<<<<< HEAD
         var id = $(this).attr("data-index")
+=======
+        var id = $(this).attr("data-index");
+>>>>>>> origin/master
         $(this).popover({
           html: true,
           sanitize: false,
@@ -1072,6 +1463,7 @@ $(document).ready(function () {
             id +
             '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-green); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
           title: function () {
+<<<<<<< HEAD
             return "Shipment Details"
           },
           content: function () {
@@ -1090,6 +1482,25 @@ $(document).ready(function () {
     ajax:
       fileLocation +
       "../../src/api/shipment.php?action=get-shipments&query=ALL",
+=======
+            return "Shipment Details";
+          },
+          content: function () {
+            return $(
+              "#assign-" + $(this).attr("data-type") + "-popover"
+            ).html();
+          },
+        });
+      });
+    },
+  });
+
+  var fileLocation = $("script[src*=script]").attr("src").replace(/script\.js.*$/, "");
+  
+  var allShipmentsTable = $("#allShipmentsTable").DataTable({
+    ajax:
+      fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=ALL",
+>>>>>>> origin/master
     responsive: true,
     pageLength: 25,
     scrollY: "55vh",
@@ -1124,19 +1535,33 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Product Information")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Product Information");
+>>>>>>> origin/master
         },
       },
     ],
     order: [[1, "asc"]],
+<<<<<<< HEAD
   })
 
   var completedShipmentsTable = $("#completedShipmentsTable").DataTable({
     ajax:
       fileLocation + "../../src/api/shipment.php?action=get-shipments&query=5",
+=======
+  });
+
+  var completedShipmentsTable = $("#completedShipmentsTable").DataTable({
+    ajax: fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=5",
+>>>>>>> origin/master
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1172,19 +1597,33 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Product Information")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Product Information");
+>>>>>>> origin/master
         },
       },
     ],
     order: [[1, "asc"]],
+<<<<<<< HEAD
   })
 
   var forfeitedShipmentsTable = $("#forfeitedShipmentsTable").DataTable({
     ajax:
       fileLocation + "../../src/api/shipment.php?action=get-shipments&query=6",
+=======
+  });
+
+  var forfeitedShipmentsTable = $("#forfeitedShipmentsTable").DataTable({
+    ajax: fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=6",
+>>>>>>> origin/master
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1220,19 +1659,33 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Product Information")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Product Information");
+>>>>>>> origin/master
         },
       },
     ],
     order: [[1, "asc"]],
+<<<<<<< HEAD
   })
 
   var awaitingShipmentTable = $("#awaitingShipmentTable").DataTable({
     ajax:
       fileLocation + "../../src/api/shipment.php?action=get-shipments&query=3",
+=======
+  });
+
+  var awaitingShipmentTable = $("#awaitingShipmentTable").DataTable({
+    ajax: fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=3",
+>>>>>>> origin/master
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1266,22 +1719,37 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Product Information")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Product Information");
+>>>>>>> origin/master
         },
       },
     ],
     order: [[1, "asc"]],
+<<<<<<< HEAD
   })
+=======
+  });
+>>>>>>> origin/master
 
   var inTransitInboundShipmentsTable = $(
     "#inTransitInboundShipmentsTable"
   ).DataTable({
     ajax:
       fileLocation +
+<<<<<<< HEAD
       "../../src/api/shipment.php?action=get-inbound-shipments&query=1",
+=======
+      "../../src/requests/shipment.php?action=get-inbound-shipments&query=1",
+>>>>>>> origin/master
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1328,22 +1796,37 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Product Information")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Product Information");
+>>>>>>> origin/master
         },
       },
     ],
     order: [[1, "asc"]],
+<<<<<<< HEAD
   })
+=======
+  });
+>>>>>>> origin/master
 
   var receivedInboundShipmentsTable = $(
     "#receivedInboundShipmentsTable"
   ).DataTable({
     ajax:
       fileLocation +
+<<<<<<< HEAD
       "../../src/api/shipment.php?action=get-inbound-shipments&query=2",
+=======
+      "../../src/requests/shipment.php?action=get-inbound-shipments&query=2",
+>>>>>>> origin/master
     autoWidth: false,
     responsive: true,
     pageLength: 25,
@@ -1378,19 +1861,33 @@ $(document).ready(function () {
       {
         targets: 0,
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Product Information")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Product Information");
+>>>>>>> origin/master
         },
       },
     ],
     order: [[1, "asc"]],
+<<<<<<< HEAD
   })
 
   var claimableShipmentsTable = $("#claimableShipmentsTable").DataTable({
     ajax:
       fileLocation + "../../src/api/shipment.php?action=get-shipments&query=6",
+=======
+  });
+
+  var claimableShipmentsTable = $("#claimableShipmentsTable").DataTable({
+    ajax: fileLocation + "../../src/requests/shipment.php?action=get-shipments&query=6",
+>>>>>>> origin/master
     responsive: true,
     paging: false,
     searching: false,
@@ -1403,7 +1900,11 @@ $(document).ready(function () {
       { data: "action" },
     ],
     order: [[0, "asc"]],
+<<<<<<< HEAD
   })
+=======
+  });
+>>>>>>> origin/master
 
   // Warehouses
   var inboundShipmentsTable = $("#inboundShipmentsTable").DataTable({
@@ -1423,10 +1924,17 @@ $(document).ready(function () {
         data: null,
         defaultContent: "",
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Product Information")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Product Information");
+>>>>>>> origin/master
         },
       },
     ],
@@ -1434,9 +1942,15 @@ $(document).ready(function () {
       emptyTable: "<em>There are currently no inbound shipments</em>",
     },
     drawCallback: function (data) {
+<<<<<<< HEAD
       initializePopovers()
     },
   })
+=======
+      initializePopovers();
+    },
+  });
+>>>>>>> origin/master
   var receivedShipmentsTableV = $("#receivedShipmentsTableV").DataTable({
     responsive: true,
     pageLength: 10,
@@ -1454,16 +1968,24 @@ $(document).ready(function () {
         data: null,
         defaultContent: "",
         createdCell: function (td, cellData, rowData, row, col) {
+<<<<<<< HEAD
           $(td).attr("data-bs-toggle", "tooltip")
           $(td).attr("data-bs-placement", "top")
           $(td).attr("data-bs-html", "true")
           $(td).attr("title", "Toggle Product Information")
+=======
+          $(td).attr("data-bs-toggle", "tooltip");
+          $(td).attr("data-bs-placement", "top");
+          $(td).attr("data-bs-html", "true");
+          $(td).attr("title", "Toggle Product Information");
+>>>>>>> origin/master
         },
       },
     ],
     language: {
       emptyTable: "<em>There are no received shipments available</em>",
     },
+<<<<<<< HEAD
   })
 
   $("#activeDriverTable tbody").on("click", "td.dt-control", function () {
@@ -1491,11 +2013,41 @@ $(document).ready(function () {
       tr.addClass("shown")
     }
   })
+=======
+  });
+
+  $("#activeDriverTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = activeDriverTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format2(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+
+  $("#driverActivityLogTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = driverActivityLogTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format2(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+>>>>>>> origin/master
 
   $("#driverPersonalActivityLogTable tbody").on(
     "click",
     "td.dt-control",
     function () {
+<<<<<<< HEAD
       var tr = $(this).closest("tr")
       var row = driverPersonalActivityLogTable.row(tr)
 
@@ -1621,3 +2173,122 @@ $(document).ready(function () {
     }
   })
 })
+=======
+      var tr = $(this).closest("tr");
+      var row = driverPersonalActivityLogTable.row(tr);
+
+      if (row.child.isShown()) {
+        row.child.hide();
+        tr.removeClass("shown");
+      } else {
+        row.child(format2(row.data())).show();
+        tr.addClass("shown");
+      }
+    }
+  );
+
+  $("#allShipmentsTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = allShipmentsTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+
+  $("#inTransitInboundShipmentsTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = inTransitInboundShipmentsTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+
+  $("#receivedInboundShipmentsTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = receivedInboundShipmentsTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+
+  $("#forfeitedShipmentsTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = forfeitedShipmentsTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+
+  $("#awaitingShipmentTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = awaitingShipmentTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+
+  $("#completedShipmentsTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = completedShipmentsTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+
+  $("#inboundShipmentsTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = inboundShipmentsTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+
+  $("#receivedShipmentsTable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = receivedShipmentsTable.row(tr);
+
+    if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+});
+>>>>>>> origin/master
