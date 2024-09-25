@@ -1,6 +1,6 @@
-# Logistics Management System
+# Transportation Management System
 
-A comprehensive logistics and warehouse management system tailored for interactions between a logistics company and dedicated transportation carriers and to improve workflow, accountability for drivers, and facilitate effective communication.
+A comprehensive transportation management system designed to streamline interactions between the logistics department and dedicated carriers, improve driver workflow and accountability, and facilitate effective communication.
 
 ## Features
 
