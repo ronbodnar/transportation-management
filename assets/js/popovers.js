@@ -899,7 +899,7 @@ function initializePopovers() {
       template:
         '<div class="popover popover-assign-' +
         $(popoverTriggerEl).attr("data-index") +
-        '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-green); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
+        '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-blue); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
       title: function () {
         if ($(this).attr("data-driver-name")) {
           return "Assigning " + $(this).attr("data-driver-name")
@@ -929,7 +929,7 @@ function initializePopovers2() {
       template:
         '<div class="popover popover-assign-' +
         $(popoverTriggerEl).attr("data-index") +
-        '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-green); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+        '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-blue); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
       title: function () {
         return $(this).attr("data-driver-name")
           ? "Assigning " + $(this).attr("data-driver-name")

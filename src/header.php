@@ -101,9 +101,21 @@ if ($user === null) {
     <meta name="description" content="Transportation Management is a mixture of a Logistics Management System and a Warehouse Management System, geared towards streamlining logistics and providing analytics of data collected.">
     <meta name="author" content="Ron Bodnar">
 
-    <title><?php echo $pageTitle; ?> | Transportation Management</title>
+    <title><?php echo $pageTitle; ?> | TMS by Ron Bodnar</title>
 
     <link rel="canonical" href="https://ronbodnar.com/">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tms.ronbodnar.com/" />
+    <meta property="og:title" content="<?php echo $pageTitle; ?> | TMS by Ron Bodnar" />
+    <meta property="og:description" content="A prototype Logistics and Warehouse Management System designed to streamline logistics and provide real-time data analytics." />
+    <meta property="og:image" content="https://tms.ronbodnar.com/assets/img/og-image.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://tms.ronbodnar.com/" />
+    <meta name="twitter:title" content="<?php echo $pageTitle; ?> | TMS by Ron Bodnar" />
+    <meta name="twitter:description" content="Streamlining logistics and warehouse operations with advanced data analytics." />
+    <meta name="twitter:image" content="https://tms.ronbodnar.com/assets/img/og-image.png" />
 
     <script>
         // Render blocking
@@ -118,7 +130,7 @@ if ($user === null) {
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link href="/assets/css/style.css" rel="stylesheet">
 
-    <link rel="icon" href="/assets/img/logo.svg">
+    <link rel="icon" href="/assets/img/favicon.png">
 
     <meta name="theme-color" content="#7952b3">
 </head>

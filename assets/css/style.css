@@ -3,9 +3,10 @@
 
 :root {
   --github-dark: #0d1117;
-  --mron-green: #43b581;
+  --mron-green: red;
   --mron-green-darker: #359067;
-  --mron-blue: #00dbd8;
+  --mron-blue: #41c6c0;
+  --mron-blue-darker: #2f8e89;
   --mron-white: #eeeeee;
   --body-font: "Nunito", sans-serif;
   --header-height: 3rem;
@@ -358,30 +359,30 @@ footer {
 .btn-mron,
 .btn-mron:active {
   color: var(--mron-white);
-  border-color: var(--mron-green);
-  background-color: var(--mron-green);
+  border-color: var(--mron-blue);
+  background-color: var(--mron-blue);
 }
 
 .btn-mron-fw,
 .btn-mron-fw:active {
   width: 100%;
   color: var(--mron-white);
-  border-color: var(--mron-green);
-  background-color: var(--mron-green);
+  border-color: var(--mron-blue);
+  background-color: var(--mron-blue);
 }
 
 .btn-mron:hover,
 .btn-mron-fw:hover {
   color: var(--mron-white);
-  background-color: var(--mron-green-darker);
+  background-color: var(--mron-blue-darker);
 }
 
 .bg-mron {
-  background-color: var(--mron-green);
+  background-color: var(--mron-blue);
 }
 
 .text-mron {
-  color: var(--mron-green);
+  color: var(--mron-blue);
 }
 
 .text-mron-blue {
@@ -389,7 +390,7 @@ footer {
 }
 
 a.text-mron:hover {
-  color: var(--mron-green-darker);
+  color: var(--mron-blue-darker);
   text-decoration: underline;
 }
 
@@ -441,7 +442,7 @@ a.text-mron:hover {
   right: 0;
   height: 100px;
   z-index: -1;
-  background: var(--mron-green);
+  background: var(--mron-blue);
   content: "";
   border-radius: 0;
   left: 0;
@@ -466,7 +467,7 @@ a.text-mron:hover {
 }
 
 .header-toggle {
-  color: var(--mron-green);
+  color: var(--mron-blue);
   cursor: pointer;
 }
 
@@ -483,7 +484,7 @@ a.text-mron:hover {
 
 .header-toggle-mobile i {
   font-size: 2.5rem;
-  color: var(--mron-green);
+  color: var(--mron-blue);
 }
 
 .header_img {
@@ -506,7 +507,7 @@ a.text-mron:hover {
   padding-right: 30px;
   visibility: hidden;
   position: relative;
-  color: var(--mron-green);
+  color: var(--mron-blue);
 }
 
 .question-mark {
@@ -519,7 +520,7 @@ a.text-mron:hover {
   padding-right: 30px;
   visibility: hidden;
   position: relative;
-  color: var(--mron-green);
+  color: var(--mron-blue);
 }
 
 .notify:before {
@@ -530,13 +531,13 @@ a.text-mron:hover {
   top: 3px;
   right: 22px;
   border-radius: 50%;
-  background-color: var(--mron-green);
+  background-color: var(--mron-blue);
   animation: notify-pulse 1.5s infinite;
 }
 
 @keyframes notify-pulse {
   0% {
-    box-shadow: 0 0 0 0 var(--mron-green);
+    box-shadow: 0 0 0 0 var(--mron-blue);
   }
   100% {
     box-shadow: 0 0 0 10px transparent;
@@ -548,7 +549,7 @@ a.text-mron:hover {
 }
 
 .header-action a:hover {
-  color: var(--mron-green);
+  color: var(--mron-blue);
   opacity: 0.6;
 }
 
@@ -590,7 +591,7 @@ a.text-mron:hover {
 }
 
 .nav_link i {
-  color: var(--mron-green);
+  color: var(--mron-blue);
 }
 
 .rotate-chevron {
@@ -662,7 +663,7 @@ a.text-mron:hover {
   left: 0;
   width: 4px;
   height: 32px;
-  background-color: var(--mron-green);
+  background-color: var(--mron-blue);
 }
 
 .height-100 {
@@ -749,7 +750,7 @@ a.text-mron:hover {
   color: var(--light-text-color);
   background: var(--background-color);
   border: none;
-  border-bottom: 3px solid var(--mron-green);
+  border-bottom: 3px solid var(--mron-blue);
 }
 
 .tooltip-underline {
@@ -767,7 +768,7 @@ a.text-mron:hover {
 .page-item.active .page-link {
   font-weight: bold;
   color: var(--light-text-color) !important;
-  background-color: var(--mron-green) !important;
+  background-color: var(--mron-blue) !important;
   border-radius: 5px;
 }
 
@@ -782,7 +783,7 @@ a.text-mron:hover {
 .page-link:hover {
   font-weight: bold;
   color: var(--light-text-color) !important;
-  background-color: var(--mron-green) !important;
+  background-color: var(--mron-blue) !important;
 }
 
 .page-link:focus {
@@ -799,8 +800,8 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 div.dataTables_wrapper div.dataTables_length select:focus {
-  border-color: var(--mron-green);
-  box-shadow: 0 0 0 0.2rem var(--mron-green);
+  border-color: var(--mron-blue);
+  box-shadow: 0 0 0 0.2rem var(--mron-blue);
   background-color: var(--input-background-color);
 }
 
@@ -915,7 +916,7 @@ td {
 }
 
 .dropdown-item:active {
-  background-color: var(--mron-green);
+  background-color: var(--mron-blue);
 }
 
 .dropdown > li > a:hover {
@@ -1010,8 +1011,8 @@ input[type="file"]:focus,
 .uneditable-input:focus {
   color: var(--light-text-color);
   background-color: var(--input-background-color);
-  border-color: var(--mron-green);
-  box-shadow: 0 0 0 0.2rem var(--mron-green);
+  border-color: var(--mron-blue);
+  box-shadow: 0 0 0 0.2rem var(--mron-blue);
   outline: none;
 }
 
@@ -1088,13 +1089,13 @@ input[type="file"],
   display: block;
   content: "\f058";
   font-family: "FontAwesome";
-  color: var(--mron-green);
+  color: var(--mron-blue);
   transform: rotate(-360deg);
 }
 
 .form-check-input:checked[type="checkbox"] {
   border: none;
-  background-color: var(--mron-green);
+  background-color: var(--mron-blue);
 }
 
 .daterangepicker {
@@ -1122,7 +1123,7 @@ input[type="file"],
 }
 
 .daterangepicker .ranges li.active {
-  background-color: var(--mron-green);
+  background-color: var(--mron-blue);
 }
 
 .daterangepicker .calendar-table {
@@ -1140,12 +1141,12 @@ input[type="file"],
 
 .daterangepicker td.active,
 .daterangepicker td.active:hover {
-  background-color: var(--mron-green);
+  background-color: var(--mron-blue);
   color: var(--mron-white);
 }
 
 .daterangepicker td .end-date {
-  background-color: var(--mron-green);
+  background-color: var(--mron-blue);
 }
 
 .daterangepicker td:not(.end-date).in-range {

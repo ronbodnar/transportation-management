@@ -994,7 +994,7 @@ $(document).ready(function () {
           template:
             '<div class="popover popover-assign-' +
             id +
-            '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-green); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
+            '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-blue); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
           title: function () {
             return "Shipment Details"
           },
@@ -1033,7 +1033,7 @@ $(document).ready(function () {
           template:
             '<div class="popover popover-assign-' +
             id +
-            '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-green); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
+            '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-blue); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
           title: function () {
             return "Shipment Details"
           },
@@ -1070,7 +1070,7 @@ $(document).ready(function () {
           template:
             '<div class="popover popover-assign-' +
             id +
-            '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-green); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
+            '"><a href="" class="close-popover"><i class="bi bi-x" style="color: var(--mron-blue); font-weight: bold; font-size: 1.7rem; position: absolute; top: 0; right: 10px;"></i></a><div class="popover-arrow"></div><h3 class="popover-header px-5"></h3><div class="popover-body"></div></div>',
           title: function () {
             return "Shipment Details"
           },

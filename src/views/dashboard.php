@@ -335,7 +335,7 @@
             </div>
 
             <div class="text-center pt-3">
-                <a class="text-mron" href="#" id="addMoves" style="height: 30px;"><i class="bi bi-plus-circle" style="font-size: 1.8rem; color: var(--mron-green); position: relative; bottom: -5px; left: -10px;"></i>Add Yard Move</a>
+                <a class="text-mron" href="#" id="addMoves" style="height: 30px;"><i class="bi bi-plus-circle" style="font-size: 1.8rem; color: var(--mron-blue); position: relative; bottom: -5px; left: -10px;"></i>Add Yard Move</a>
             </div>
 
             <div class="error-message text-danger py-2 fw-bold"></div>
@@ -398,7 +398,7 @@
                 <div class="cordova-move-fields"></div>
 
                 <div class="text-center pt-3">
-                    <a class="text-mron" href="#" id="add-moves-cordova" style="height: 30px;"><i class="bi bi-plus-circle" style="font-size: 1.8rem; color: var(--mron-green); position: relative; bottom: -5px; left: -10px;"></i>Add Yard Move</a>
+                    <a class="text-mron" href="#" id="add-moves-cordova" style="height: 30px;"><i class="bi bi-plus-circle" style="font-size: 1.8rem; color: var(--mron-blue); position: relative; bottom: -5px; left: -10px;"></i>Add Yard Move</a>
                 </div>
 
                 <div class="error-message text-danger py-2 fw-bold"></div>

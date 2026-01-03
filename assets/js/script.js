@@ -1,3 +1,15 @@
+;(function () {
+  window.parent.postMessage(
+    {
+      type: "nav_change",
+      route: window.location.pathname,
+      url: window.location.href,
+      title: document.title,
+    },
+    "https://ronbodnar.com"
+  )
+})()
+
 $(document).ready(function () {
   initializeTooltips()
 
