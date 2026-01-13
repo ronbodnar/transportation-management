@@ -109,13 +109,13 @@ if ($user === null) {
     <meta property="og:url" content="https://tms.ronbodnar.com/" />
     <meta property="og:title" content="<?php echo $pageTitle; ?> | TMS by Ron Bodnar" />
     <meta property="og:description" content="A prototype Logistics and Warehouse Management System designed to streamline logistics and provide real-time data analytics." />
-    <meta property="og:image" content="https://tms.ronbodnar.com/assets/img/og-image.png" />
+    <meta property="og:image" content="https://cdn.ronbodnar.com/images/og/tms.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://tms.ronbodnar.com/" />
     <meta name="twitter:title" content="<?php echo $pageTitle; ?> | TMS by Ron Bodnar" />
     <meta name="twitter:description" content="Streamlining logistics and warehouse operations with advanced data analytics." />
-    <meta name="twitter:image" content="https://tms.ronbodnar.com/assets/img/og-image.png" />
+    <meta name="twitter:image" content="https://cdn.ronbodnar.com/images/og/tms.png" />
 
     <script>
         // Render blocking
