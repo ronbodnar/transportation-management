@@ -20,8 +20,6 @@ session_start(); */
     session_unset();
     session_destroy();
 } */
-
-require __DIR__ . '/functions.php';
 require __DIR__ . '/database/Database.php';
 
 $database = new Database();
